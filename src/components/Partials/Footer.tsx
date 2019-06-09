@@ -8,11 +8,12 @@ import Container from '../Atoms/Container'
 import Row from '../Atoms/Row'
 import Wrapper from '../Atoms/Wrapper'
 import * as variable from '../constants'
-import { IsecondaryNavProps } from '../Templates/Layout'
+import { IPrimaryNavProps, ISecondaryNavProps, } from '../Templates/Layout'
 
 export interface IFooterProps {
   siteTitle: string
-  secondaryNav: IsecondaryNavProps
+  secondaryNav: ISecondaryNavProps
+  primaryNav: IPrimaryNavProps
 }
 
 const SecondaryNav = styled.ul`

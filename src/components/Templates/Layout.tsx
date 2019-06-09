@@ -16,26 +16,19 @@ export interface IPrimaryNavProps {
           secondaryNavOrder: number
           title: string
         }
-        node: {
-          relativePath: string
-        }
       }
     }
   }
 }
 
 export interface ISecondaryNavProps {
-  primaryNav: {
+  secondaryNav: {
     edges: {
       node: {
         frontmatter: {
-          MainNavOrder: number
           secondaryNavMenu: string
           secondaryNavOrder: number
           title: string
-        }
-        node: {
-          relativePath: string
         }
       }
     }
@@ -51,9 +44,7 @@ export interface ISiteMetaProps {
   }
 }
 
-export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, IsecondaryNavProps {
-  S
-}
+export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, ISecondaryNavProps {}
 
 const AccessibilityMainContentSkipLink = styled.a`
   height: 1px;
@@ -93,7 +84,10 @@ const Layout: React.SFC = ({ children }) => (
             title
           }
         }
-        primaryNav: allJavascriptFrontmatter(filter: { frontmatter: { MainNavOrder: { gt: 0 } } }) {
+        primaryNav: allJavascriptFrontmatter(
+          filter: { frontmatter: { MainNavOrder: { gt: 0 } } }
+          sort: {fields: frontmatter___MainNavOrder, order: ASC}
+          ) {
           edges {
             node {
               frontmatter {
@@ -108,6 +102,7 @@ const Layout: React.SFC = ({ children }) => (
         }
         secondaryNav: allJavascriptFrontmatter(
           filter: { frontmatter: { secondaryNavOrder: { gt: 0 } } }
+          sort: {fields: frontmatter___secondaryNavOrder, order: ASC}
         ) {
           edges {
             node {
