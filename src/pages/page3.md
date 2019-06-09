@@ -1,0 +1,12 @@
+---
+featuredImage: "../assets/404-image.jpg"
+title: page 3
+description: page 3
+author: Ranger 3ndymion
+type: page
+date: 2017-02-22T21:10:45+00:00
+MainNavOrder: 2
+secondaryNavMenu: 'page 3'
+secondaryNavOrder: 2
+---
+About this site

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> Should render a <span> 1`] = `
+<div>
+  <span>
+    test
+  </span>
+</div>
+`;
+
+exports[`<Link /> Should render an <a> tag 1`] = `
+.c0 {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c0:focus {
+  box-shadow: 0 0 2px black;
+}
+
+<div>
+  <a
+    class="c0"
+    href="https://deliciousreverie.co.uk"
+  >
+    test
+  </a>
+</div>
+`;
