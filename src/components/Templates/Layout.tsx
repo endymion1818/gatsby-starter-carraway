@@ -5,7 +5,7 @@ import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
 import Footer from '../Partials/Footer'
 import Header from '../Partials/Header'
-
+import ErrorBoundary from '../Molecules/ErrorBoundary'
 export interface IPrimaryNavProps {
   primaryNav: {
     edges: {
@@ -122,7 +122,7 @@ const Layout: React.SFC = ({ children }) => (
       }
     `}
     render={(data: IStaticQueryProps) => (
-      <>
+      <ErrorBoundary>
         <GlobalStyle />
         <Helmet>
           <title>{data.site.siteMetadata.title}</title>
@@ -146,7 +146,7 @@ const Layout: React.SFC = ({ children }) => (
           primaryNav={data.primaryNav}
           secondaryNav={data.secondaryNav}
         />
-      </>
+      </ErrorBoundary>
     )}
   />
 )
