@@ -5,6 +5,7 @@ module.exports = {
     pathPrefix: '/',
     title: siteTitle,
     siteUrl: `https://www.gatsby-starter-carraway.netlify.com`,
+    description: `A starter for Gatsbyjs with typescript, jest and several ui components`
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -77,7 +78,7 @@ module.exports = {
         {
       resolve: `gatsby-plugin-sentry`,
       options: {
-        dsn: `https://4d03fcf75e9a48d992e2179174e8bb9e@sentry.io/1477926`,
+        dsn: `dsn-here`,
         // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
         enabled: (() => [`production`, `stage`].indexOf(process.env.NODE_ENV) !== -1)(),
