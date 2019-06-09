@@ -74,5 +74,22 @@ module.exports = {
         maxWidth: 1080,
       },
     },
+        {
+      resolve: `gatsby-plugin-sentry`,
+      options: {
+        dsn: `https://4d03fcf75e9a48d992e2179174e8bb9e@sentry.io/1477926`,
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        environment: process.env.NODE_ENV,
+        enabled: (() => [`production`, `stage`].indexOf(process.env.NODE_ENV) !== -1)(),
+      },
+    },
+    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        exclude: [],
+      },
+    },
   ],
 }
