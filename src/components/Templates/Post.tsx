@@ -56,7 +56,7 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
             content={[
               {
                 innerContent: (
-                  <>
+                  <article className="h-entry">
                     <header>
                       <h1>{title}</h1>
                       {featuredImage && (
@@ -68,7 +68,7 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
                       <time>Published on: {date}</time>
                       <div>Categories: </div>
                     </footer>
-                  </>
+                  </article>
                 ),
               },
             ]}

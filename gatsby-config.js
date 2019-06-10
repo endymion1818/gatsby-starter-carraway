@@ -5,6 +5,7 @@ module.exports = {
     pathPrefix: '/',
     title: siteTitle,
     siteUrl: `https://www.gatsby-starter-carraway.netlify.com`,
+    description: `A starter for Gatsbyjs with typescript, jest and several ui components`
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -72,6 +73,23 @@ module.exports = {
       resolve: `gatsby-remark-images`,
       options: {
         maxWidth: 1080,
+      },
+    },
+        {
+      resolve: `gatsby-plugin-sentry`,
+      options: {
+        dsn: `dsn-here`,
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        environment: process.env.NODE_ENV,
+        enabled: (() => [`production`, `stage`].indexOf(process.env.NODE_ENV) !== -1)(),
+      },
+    },
+    `gatsby-plugin-feed`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        exclude: [],
       },
     },
   ],

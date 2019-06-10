@@ -5,7 +5,7 @@ import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
 import Footer from '../Partials/Footer'
 import Header from '../Partials/Header'
-
+import ErrorBoundary from '../Molecules/ErrorBoundary'
 export interface IPrimaryNavProps {
   primaryNav: {
     edges: {
@@ -16,26 +16,19 @@ export interface IPrimaryNavProps {
           secondaryNavOrder: number
           title: string
         }
-        node: {
-          relativePath: string
-        }
       }
     }
   }
 }
 
 export interface ISecondaryNavProps {
-  primaryNav: {
+  secondaryNav: {
     edges: {
       node: {
         frontmatter: {
-          MainNavOrder: number
           secondaryNavMenu: string
           secondaryNavOrder: number
           title: string
-        }
-        node: {
-          relativePath: string
         }
       }
     }
@@ -51,9 +44,7 @@ export interface ISiteMetaProps {
   }
 }
 
-export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, IsecondaryNavProps {
-  S
-}
+export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, ISecondaryNavProps {}
 
 const AccessibilityMainContentSkipLink = styled.a`
   height: 1px;
@@ -82,6 +73,9 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     font-family: system;
   }
+  #gatsby-noscript {
+    display:none;
+  }
 `
 
 const Layout: React.SFC = ({ children }) => (
@@ -93,7 +87,10 @@ const Layout: React.SFC = ({ children }) => (
             title
           }
         }
-        primaryNav: allJavascriptFrontmatter(filter: { frontmatter: { MainNavOrder: { gt: 0 } } }) {
+        primaryNav: allJavascriptFrontmatter(
+          filter: { frontmatter: { MainNavOrder: { gt: 0 } } }
+          sort: {fields: frontmatter___MainNavOrder, order: ASC}
+          ) {
           edges {
             node {
               frontmatter {
@@ -108,6 +105,7 @@ const Layout: React.SFC = ({ children }) => (
         }
         secondaryNav: allJavascriptFrontmatter(
           filter: { frontmatter: { secondaryNavOrder: { gt: 0 } } }
+          sort: {fields: frontmatter___secondaryNavOrder, order: ASC}
         ) {
           edges {
             node {
@@ -124,11 +122,19 @@ const Layout: React.SFC = ({ children }) => (
       }
     `}
     render={(data: IStaticQueryProps) => (
-      <>
+      <ErrorBoundary>
         <GlobalStyle />
         <Helmet>
           <title>{data.site.siteMetadata.title}</title>
           <meta name="description" content="FreeBabylon5" />
+          <script type="application/ld+json">
+            {`
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              "name": "#FreeBabylon5",
+              "url": "https://www.gatsby-starter-carraway.com",
+            `}
+        </script>
         </Helmet>
         <AccessibilityMainContentSkipLink href="#main">
           Skip to main content
@@ -140,7 +146,7 @@ const Layout: React.SFC = ({ children }) => (
           primaryNav={data.primaryNav}
           secondaryNav={data.secondaryNav}
         />
-      </>
+      </ErrorBoundary>
     )}
   />
 )
