@@ -1,5 +1,6 @@
 const path = require(`path`)
 const _ = require(`lodash`)
+const { paginate } = require(`gatsby-awesome-pagination`)
 
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -8,6 +9,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   const blogPostTemplate = path.resolve(`./src/components/Templates/Post.tsx`)
   const categoryTemplate = path.resolve(`./src/components/Templates/Category.tsx`)
+  const archiveTemplate = path.resolve(`./src/components/Templates/Archive.tsx`)
 
   return graphql(
     `
@@ -48,17 +50,23 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
     })
+    // archive pages
+    paginate({
+      createPage,
+      items: posts,
+      itemsPerPage: 10,
+      pathPrefix: '/post',
+      component: archiveTemplate,
+    })
+    // taxonomy pages
     let categories = []
-    // Iterate through each post, putting all found categories into `categories`
     _.each(posts, edge => {
       if (_.get(edge, `node.frontmatter.categories`)) {
         categories = categories.concat(edge.node.frontmatter.categories)
       }
     })
-    // Eliminate duplicate categories
     categories = _.uniq(categories)
 
-    // Make category pages
     categories.forEach(category => {
       createPage({
         path: `/categories/${_.kebabCase(category)}/`,

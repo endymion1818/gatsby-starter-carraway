@@ -34,6 +34,22 @@ interface IPostTemplateProps {
         categories: string[]
       }
     }
+    nextPost?: {
+      frontmatter: {
+        title: string
+      }
+      fields: {
+        slug: string
+      }
+    }
+    prevPost?: {
+      frontmatter: {
+        title: string
+      }
+      fields: {
+        slug: string
+      }
+    }
   }
 }
 
@@ -56,19 +72,37 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
             content={[
               {
                 innerContent: (
-                  <article className="h-entry">
-                    <header>
-                      <h1>{title}</h1>
-                      {featuredImage && (
-                        <Img fluid={featuredImage.childImageSharp.fluid} alt={featuredImageAlt} />
-                      )}
-                    </header>
-                    <section dangerouslySetInnerHTML={{ __html: html }} />
-                    <footer>
-                      <time>Published on: {date}</time>
-                      <div>Categories: </div>
-                    </footer>
-                  </article>
+                  <>
+                    <article className="h-entry">
+                      <header>
+                        <h1>{title}</h1>
+                        {featuredImage && (
+                          <Img fluid={featuredImage.childImageSharp.fluid} alt={featuredImageAlt} />
+                        )}
+                      </header>
+                      <section dangerouslySetInnerHTML={{ __html: html }} />
+                      <footer>
+                        <time>Published on: {date}</time>
+                        <div>Categories: </div>
+                      </footer>
+                    </article>
+                    {/* <nav className="post-navigation" aria-label="pagination">
+                      {nextPost && nextPost != null ? (
+                        <Link to={nextPost.fields.slug}>
+                          <span className="post-navigation__label">
+                            {nextPost.frontmatter.title}
+                          </span>
+                        </Link>
+                      ) : null}
+                      {prevPost && prevPost != null ? (
+                        <Link to={prevPost.fields.slug}>
+                          <span className="post-navigation__label">
+                            {prevPost.frontmatter.title}
+                          </span>
+                        </Link>
+                      ) : null}
+                    </nav> */}
+                  </>
                 ),
               },
             ]}

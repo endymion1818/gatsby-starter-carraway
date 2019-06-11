@@ -5,7 +5,7 @@ module.exports = {
     pathPrefix: '/',
     title: siteTitle,
     siteUrl: `https://www.gatsby-starter-carraway.netlify.com`,
-    description: `A starter for Gatsbyjs with typescript, jest and several ui components`
+    description: `A starter for Gatsbyjs with typescript, jest and several ui components`,
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -75,7 +75,7 @@ module.exports = {
         maxWidth: 1080,
       },
     },
-        {
+    {
       resolve: `gatsby-plugin-sentry`,
       options: {
         dsn: `dsn-here`,
@@ -92,5 +92,6 @@ module.exports = {
         exclude: [],
       },
     },
+    // `gatsby-plugin-lunr`
   ],
 }
