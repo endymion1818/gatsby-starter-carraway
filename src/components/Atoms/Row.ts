@@ -6,7 +6,7 @@ export interface IRowProps {
    * how many rows
    * @default 1
    */
-  size?: number
+  size: number
   /**
    * breakpoint
    *  @default variable.EBREAKPOINT.LARGE

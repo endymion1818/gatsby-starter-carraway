@@ -9,4 +9,8 @@ MainNavOrder: 2
 secondaryNavMenu: 'page 3'
 secondaryNavOrder: 2
 ---
-About this site
+This is a markdown _page_!
+
+Markdown pages must use the same template as posts.
+
+If you want to display Markdown pages in your navigation, you'll need to use a JS object instead of grapqhl query for your nav items.

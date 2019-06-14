@@ -62,7 +62,6 @@ const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
   <Wrapper
     backgroundColour={variable.EBACKGROUND_COLOUR.SURFACE}
     textColour={variable.ETEXT_COLOUR.ON_SURFACE}
-    bufferBottom={variable.ESIZE.SINGLE}
   >
     <HeaderContainer>
       <Link to={withPrefix('/')}>{siteTitle}</Link>
