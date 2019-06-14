@@ -5,11 +5,10 @@ import Container from '../Atoms/Container'
 import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
 import * as variable from '../constants'
-// import { PRIMARY_NAV_ITEMS } from '../constants'
 import Search from '../Molecules/Search'
+import { IPrimaryNavProps } from '../Templates/Layout'
 
-export interface IHeaderProps {
-  primaryNav: IprimaryNavProps
+export interface IHeaderProps extends IPrimaryNavProps {
   siteTitle: string
 }
 
@@ -62,7 +61,7 @@ const HeaderContainer = styled(Container)`
 const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
   <Wrapper
     backgroundColour={variable.EBACKGROUND_COLOUR.SURFACE}
-    textColor={variable.ETEXT_COLOUR.ON_SURFACE}
+    textColour={variable.ETEXT_COLOUR.ON_SURFACE}
     bufferBottom={variable.ESIZE.SINGLE}
   >
     <HeaderContainer>
