@@ -1,25 +1,9 @@
 import { Link, navigate } from 'gatsby'
 import React, { FC, useEffect, useState } from 'react'
+import SearchForm from '../components/Molecules/SearchForm'
 import Page from '../components/Templates/Page'
 
 export interface ISearchProps {}
-
-const SearchForm = ({ query }) => (
-  <form role="search" method="GET">
-    <label htmlFor="search-input">
-      <h1>Search posts</h1>
-    </label>
-    <input
-      type="search"
-      id="search-input"
-      name="keywords"
-      aria-controls="search-results-count"
-      onChange={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
-      value={query}
-    />
-    <button type="submit">Submit</button>
-  </form>
-)
 
 const SearchResults = ({ query, results }) => (
   <section aria-label="Search results for all posts">
