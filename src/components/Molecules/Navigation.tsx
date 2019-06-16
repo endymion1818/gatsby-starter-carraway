@@ -15,7 +15,7 @@ const Navigation: FC<INavigationProps> = ({ navitems }) => {
       <ul>
         {navitems.map(item => (
           <li key={item.title}>
-            <Link to={item.url}>{item.title}</Link>
+            <Link to={item.url} activeClassName="active">{item.title}</Link>
           </li>
         ))}
       </ul>

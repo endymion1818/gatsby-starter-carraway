@@ -1,7 +1,7 @@
 import { graphql, withPrefix } from 'gatsby'
 import React, { FC } from 'react'
 import Link from '../Atoms/Link'
-import Layout from '../Templates/Layout'
+import Page from '../Templates/Page'
 
 export interface IArchiveProps {
   data: {
@@ -27,7 +27,7 @@ const Archive: FC<IArchiveProps> = ({ data, pageContext }) => {
   const { posts } = data
 
   return (
-    <Layout>
+    <Page>
       <h2>Archives</h2>
       {posts &&
         posts.edges.map((edge, index) => (
@@ -56,7 +56,7 @@ const Archive: FC<IArchiveProps> = ({ data, pageContext }) => {
           )}
         </ul>
       </nav>
-    </Layout>
+    </Page>
   )
 }
 
