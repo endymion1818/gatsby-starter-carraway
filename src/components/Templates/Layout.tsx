@@ -3,36 +3,32 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
-import Footer from '../Partials/Footer'
-import Header from '../Partials/Header'
 import ErrorBoundary from '../Molecules/ErrorBoundary'
-export interface IPrimaryNavProps {
-  primaryNav: {
-    edges: {
+import Footer from '../Organisms/Footer'
+import Header from '../Organisms/Header'
+
+export interface INavEdges {
+  edges: [
+    {
       node: {
         frontmatter: {
           MainNavOrder: number
           secondaryNavMenu: string
           secondaryNavOrder: number
           title: string
+          path: string
         }
       }
     }
-  }
+  ]
+}
+
+export interface IPrimaryNavProps {
+  primaryNav: INavEdges
 }
 
 export interface ISecondaryNavProps {
-  secondaryNav: {
-    edges: {
-      node: {
-        frontmatter: {
-          secondaryNavMenu: string
-          secondaryNavOrder: number
-          title: string
-        }
-      }
-    }
-  }
+  secondaryNav: INavEdges
 }
 
 export interface ISiteMetaProps {
@@ -89,8 +85,8 @@ const Layout: React.SFC = ({ children }) => (
         }
         primaryNav: allJavascriptFrontmatter(
           filter: { frontmatter: { MainNavOrder: { gt: 0 } } }
-          sort: {fields: frontmatter___MainNavOrder, order: ASC}
-          ) {
+          sort: { fields: frontmatter___MainNavOrder, order: ASC }
+        ) {
           edges {
             node {
               frontmatter {
@@ -105,7 +101,7 @@ const Layout: React.SFC = ({ children }) => (
         }
         secondaryNav: allJavascriptFrontmatter(
           filter: { frontmatter: { secondaryNavOrder: { gt: 0 } } }
-          sort: {fields: frontmatter___secondaryNavOrder, order: ASC}
+          sort: { fields: frontmatter___secondaryNavOrder, order: ASC }
         ) {
           edges {
             node {
@@ -134,7 +130,7 @@ const Layout: React.SFC = ({ children }) => (
               "name": "#FreeBabylon5",
               "url": "https://www.gatsby-starter-carraway.com",
             `}
-        </script>
+          </script>
         </Helmet>
         <AccessibilityMainContentSkipLink href="#main">
           Skip to main content

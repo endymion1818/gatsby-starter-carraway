@@ -9,6 +9,7 @@ export interface ILinkProps {
   href?: string
   rel?: string
   noUnderline?: boolean
+  activeClassName?: string
 }
 
 const SLink = styled(GatsbyLink)<ILinkProps>`

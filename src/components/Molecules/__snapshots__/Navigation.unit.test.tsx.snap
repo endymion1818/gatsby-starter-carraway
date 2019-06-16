@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigation /> Should render 1`] = `
+<div>
+  <nav>
+    <ul>
+      <li>
+        <a
+          href="/some-url"
+        >
+          test
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
