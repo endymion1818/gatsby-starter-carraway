@@ -40,7 +40,8 @@ export interface ISearchProps {
 
 const Search: FC<ISearchProps> = ({ location }) => {
   const [results, setResults] = useState([])
-  const searchQuery
+  let searchQuery
+
   if (typeof window !== 'undefined') {
     searchQuery = new URLSearchParams(location.search).get('keywords') || ''
 
