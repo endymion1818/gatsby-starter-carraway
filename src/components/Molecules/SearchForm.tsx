@@ -1,7 +1,9 @@
 import { navigate } from 'gatsby'
-import React from 'react'
+import React, { FC } from 'react'
 
-export interface ISearchfFormProps {}
+export interface ISearchfFormProps {
+  query?: string
+}
 
 const SearchForm: FC<ISearchfFormProps> = ({ query }) => (
   <form role="search" method="GET">
@@ -14,7 +16,7 @@ const SearchForm: FC<ISearchfFormProps> = ({ query }) => (
       onChange={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
       value={query}
     />
-    <button type="submit">Submit</button>
+    <button type="submit">Search</button>
   </form>
 )
 export default SearchForm

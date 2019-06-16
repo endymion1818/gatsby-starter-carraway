@@ -3,9 +3,18 @@ import React, { FC, useEffect, useState } from 'react'
 import SearchForm from '../components/Molecules/SearchForm'
 import Page from '../components/Templates/Page'
 
-export interface ISearchProps {}
+export interface ISearchResultsProps {
+  results: [
+    {
+      title: string
+      url: string
+      date: string
+      description: string
+    }
+  ]
+}
 
-const SearchResults = ({ query, results }) => (
+const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
   <section aria-label="Search results for all posts">
     {!!results.length && (
       <ol className="search-results-list">
@@ -25,21 +34,29 @@ const SearchResults = ({ query, results }) => (
   </section>
 )
 
-const Search: FC<ISearchProps> = ({ data, location }) => {
-  const [results, setResults] = useState([])
-  const searchQuery = new URLSearchParams(location.search).get('keywords') || ''
+export interface ISearchProps {
+  location?: string
+}
 
-  useEffect(() => {
-    if (window.__LUNR__) {
-      window.__LUNR__.__loaded.then(lunr => {
-        const refs = lunr.en.index.search(searchQuery)
-        const posts = refs.map(({ ref }) => lunr.en.store[ref])
-        setResults(posts)
-      })
-    }
-  }, [])
+const Search: FC<ISearchProps> = ({ location }) => {
+  const [results, setResults] = useState([])
+  const searchQuery
+  if (typeof window !== 'undefined') {
+    searchQuery = new URLSearchParams(location.search).get('keywords') || ''
+
+    useEffect(() => {
+      if (window.__LUNR__) {
+        window.__LUNR__.__loaded.then(lunr => {
+          const refs = lunr.en.index.search(searchQuery)
+          const posts = refs.map(({ ref }) => lunr.en.store[ref])
+          setResults(posts)
+        })
+      }
+    }, [])
+  }
   return (
     <Page title="search" description="search results">
+      <h1>Search</h1>
       <SearchForm query={searchQuery} />
       <SearchResults query={searchQuery} results={results} />
     </Page>
