@@ -75,6 +75,9 @@ const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
               </li>
             ))
           : null}
+          <li>
+            <Link to="/post" activeClassName="active">Posts</Link>
+          </li>
       </MainNav>
       <SearchForm />
     </HeaderContainer>

@@ -28,7 +28,7 @@ const Archive: FC<IArchiveProps> = ({ data, pageContext }) => {
 
   return (
     <Page>
-      <h2>Archives</h2>
+      <h2>All Posts</h2>
       {posts &&
         posts.edges.map((edge, index) => (
           <article key={index}>
@@ -66,6 +66,7 @@ export const archiveQuery = graphql`
   query($skip: Int!, $limit: Int!) {
     posts: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
+      filter: {frontmatter: {type: { ne: "page" }}}
       skip: $skip
       limit: $limit
     ) {
