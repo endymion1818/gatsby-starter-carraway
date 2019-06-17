@@ -1,7 +1,12 @@
 import { graphql } from 'gatsby'
 import React, { FC } from 'react'
 import Helmet from 'react-helmet'
+import Container from '../components/Atoms/Container'
+import Wrapper from '../components/Atoms/Wrapper'
 import Layout from '../components/Templates/Layout'
+
+import Row from '../components/Atoms/Row';
+
 export interface IIndexPageProps {
   data: {
     site: {
@@ -29,7 +34,13 @@ const IndexPage: FC<IIndexPageProps> = ({ data }) => (
       </title>
       <meta name="description" content={frontmatter.description} />
     </Helmet>
-    <h1>Home</h1>
+    <Wrapper>
+      <Container>
+        <Row size={1}>
+          <h1>Home</h1>
+        </Row>
+      </Container>
+    </Wrapper>
   </Layout>
 )
 

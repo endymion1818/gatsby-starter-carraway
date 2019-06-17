@@ -1,7 +1,7 @@
 import { graphql, withPrefix } from 'gatsby'
 import React, { FC } from 'react'
 import Link from '../Atoms/Link'
-import Layout from '../Templates/Layout'
+import Page from '../Templates/Page'
 
 export interface IArchiveProps {
   data: {
@@ -27,8 +27,8 @@ const Archive: FC<IArchiveProps> = ({ data, pageContext }) => {
   const { posts } = data
 
   return (
-    <Layout>
-      <h2>Archives</h2>
+    <Page>
+      <h2>All Posts</h2>
       {posts &&
         posts.edges.map((edge, index) => (
           <article key={index}>
@@ -56,7 +56,7 @@ const Archive: FC<IArchiveProps> = ({ data, pageContext }) => {
           )}
         </ul>
       </nav>
-    </Layout>
+    </Page>
   )
 }
 
@@ -66,6 +66,7 @@ export const archiveQuery = graphql`
   query($skip: Int!, $limit: Int!) {
     posts: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
+      filter: {frontmatter: {type: { ne: "page" }}}
       skip: $skip
       limit: $limit
     ) {

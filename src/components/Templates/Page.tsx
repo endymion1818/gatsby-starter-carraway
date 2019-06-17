@@ -6,8 +6,8 @@ import Wrapper from '../Atoms/Wrapper'
 import Layout from './Layout'
 
 interface IPageTemplateProps {
-  title: string
-  description: string
+  title?: string
+  description?: string
   children: JSX.Element
 }
 

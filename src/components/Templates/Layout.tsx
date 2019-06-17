@@ -3,6 +3,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
+import * as variable from '../constants'
 import ErrorBoundary from '../Molecules/ErrorBoundary'
 import Footer from '../Organisms/Footer'
 import Header from '../Organisms/Header'
@@ -43,11 +44,18 @@ export interface ISiteMetaProps {
 export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, ISecondaryNavProps {}
 
 const AccessibilityMainContentSkipLink = styled.a`
-  height: 1px;
-  width: 1px;
-  position: absolute;
-  top: -10px;
-  overflow: hidden;
+  display: inline-block;
+  transform: translateY(-${variable.ESIZE.QUAD});
+  padding: ${variable.ESIZE.SINGLEPLUSHALF};
+  background-color: ${variable.EBACKGROUND_COLOUR.SURFACE_ALT};
+  color: ${variable.ETEXT_COLOUR.ON_SURFACE_ALT};
+
+
+  &:hover,
+  &:focus,
+  &:active {
+    transform: translateY(-${variable.ESIZE.ZERO});
+  }
 `
 
 const GlobalStyle = createGlobalStyle`

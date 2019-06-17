@@ -17,11 +17,11 @@ export interface ISearchResultsProps {
 const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
   <section aria-label="Search results for all posts">
     {!!results.length && (
-      <ol className="search-results-list">
+      <ol>
         {results.map(({ title, url, date, description }) => (
           <li key={title}>
-            <h3 className="search-results-list__heading">
-              <a href={url} className="search-results-list__link">
+            <h3>
+              <a href={url}>
                 {title}
               </a>
             </h3>
@@ -35,12 +35,23 @@ const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
 )
 
 export interface ISearchProps {
-  location?: string
+  location?: {
+    search?: string
+  }
+}
+
+declare global {
+  interface Window { 
+    __LUNR__: {
+      __loaded: boolean
+      
+    } 
+  }
 }
 
 const Search: FC<ISearchProps> = ({ location }) => {
   const [results, setResults] = useState([])
-  let searchQuery
+  let searchQuery:string
 
   if (typeof window !== 'undefined') {
     searchQuery = new URLSearchParams(location.search).get('keywords') || ''
