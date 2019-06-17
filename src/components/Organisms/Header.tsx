@@ -1,4 +1,3 @@
-import { withPrefix } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import Container from '../Atoms/Container'
@@ -69,7 +68,7 @@ const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
         {primaryNav
           ? primaryNav.edges.map(item => (
               <li key={item.node.frontmatter.path}>
-                <Link activeClassName="active" to={withPrefix(item.node.frontmatter.path)}>
+                <Link activeClassName="active" to={item.node.frontmatter.path}>
                   {item.node.frontmatter.title}
                 </Link>
               </li>
