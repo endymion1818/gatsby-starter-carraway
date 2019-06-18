@@ -5,7 +5,8 @@ import Container from '../components/Atoms/Container'
 import Wrapper from '../components/Atoms/Wrapper'
 import Layout from '../components/Templates/Layout'
 
-import Row from '../components/Atoms/Row';
+import Link from '../components/Atoms/Link'
+import Row from '../components/Atoms/Row'
 
 export interface IIndexPageProps {
   data: {
@@ -38,6 +39,9 @@ const IndexPage: FC<IIndexPageProps> = ({ data }) => (
       <Container>
         <Row size={1}>
           <h1>Home</h1>
+          <p>
+            Go to the <Link to={'/about'}>About page</Link>
+          </p>
         </Row>
       </Container>
     </Wrapper>

@@ -10,6 +10,11 @@ export interface ILinkProps {
   rel?: string
   noUnderline?: boolean
   activeClassName?: string
+  event: {
+    target: {
+      value: string
+    }
+  }
 }
 
 const SLink = styled(GatsbyLink)<ILinkProps>`
@@ -53,8 +58,12 @@ const Link: FC<ILinkProps> = ({ children, to, openInNewTab, noUnderline, ...othe
         </Anchor>
       )
     }
+    // Screen reader focus changes to target page
+    // to indicate a change of url.
+    const onChange = event => event.target.value.focus()
+
     return (
-      <SLink to={to} {...other} noUnderline={noUnderline}>
+      <SLink to={to} {...other} noUnderline={noUnderline} onChange={event => onChange(event)}>
         {children}
       </SLink>
     )

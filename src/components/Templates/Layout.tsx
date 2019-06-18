@@ -50,7 +50,6 @@ const AccessibilityMainContentSkipLink = styled.a`
   background-color: ${variable.EBACKGROUND_COLOUR.SURFACE_ALT};
   color: ${variable.ETEXT_COLOUR.ON_SURFACE_ALT};
 
-
   &:hover,
   &:focus,
   &:active {
@@ -89,6 +88,7 @@ const Layout: React.SFC = ({ children }) => (
         site {
           siteMetadata {
             title
+            siteUrl
           }
         }
         primaryNav: allJavascriptFrontmatter(

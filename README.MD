@@ -4,7 +4,7 @@ I spend a lot of time developing websites with Gatsby. It's a great starting poi
 
 *URL:* https://gatsby-starter-carraway.netlify.com
 *REPO:* https://github.com/endymion1818/gatsby-starter-carraway
-*TAGS:* TypeScript, Pagination, Search, Basic UI, Tests
+*TAGS:* TypeScript, Pagination, Search, Basic UI, Tests, Accessibility
 
 
 ## Features
