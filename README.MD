@@ -2,9 +2,9 @@
 
 I spend a lot of time developing websites with Gatsby. I often find myself adding these same features each time. This is my attempt at providing a starting point for a robust, accessible and well tested frontend.
 
-*URL:* https://gatsby-starter-carraway.netlify.com
-*REPO:* https://github.com/endymion1818/gatsby-starter-carraway
-*TAGS:* TypeScript, Pagination, Search, Basic UI, Tests, Accessibility
+*URL:* https://gatsby-starter-carraway.netlify.com  
+*REPO:* https://github.com/endymion1818/gatsby-starter-carraway  
+*TAGS:* TypeScript, Pagination, Search, Basic UI, Tests, Accessibility  
 
 ## Features
 
