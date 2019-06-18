@@ -21,16 +21,6 @@
       "pre-commit": "lint-staged -c ./lintstaged.json"
     }
   },
-  "lighthouse": {
-    "requiredScores": {
-      "performance": 95,
-      "accessibility": 90,
-      "best-practices": 80,
-      "seo": 90
-    },
-    "maxBundleSizeKb": 250,
-    "jsBundleRegex": "app-[a-z0-9_]*.js"
-  },
   "dependencies": {
     "gatsby": "^2.7.5",
     "gatsby-awesome-pagination": "^0.3.4",
@@ -81,7 +71,6 @@
     "gatsby-remark-images": "^3.0.14",
     "husky": "^2.3.0",
     "jest": "^24.8.0",
-    "lighthousebot": "git+https://github.com/GoogleChromeLabs/lighthousebot.git",
     "lint-staged": "^8.1.7",
     "lodash": "^4.17.11",
     "prettier": "^1.17.1",
