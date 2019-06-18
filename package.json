@@ -12,13 +12,24 @@
     "serve": "gatsby serve",
     "format": "prettier --write '**/*.{js, jsx, ts, tsx}'",
     "test": "jest --config ./etc/test/jest/config.js",
-    "lint": "tslint -c ./tslint.json 'src/**.{ts, tsx}'"
+    "lint": "tslint -c ./tslint.json 'src/**.{ts, tsx}'",
+    "lh": "lighthousebot"
   },
   "husky": {
     "hooks": {
       "pre-push": "yarn lint && yarn test",
       "pre-commit": "lint-staged -c ./lintstaged.json"
     }
+  },
+  "lighthouse": {
+    "requiredScores": {
+      "performance": 95,
+      "accessibility": 90,
+      "best-practices": 80,
+      "seo": 90
+    },
+    "maxBundleSizeKb": 250,
+    "jsBundleRegex": "app-[a-z0-9_]*.js"
   },
   "dependencies": {
     "gatsby": "^2.7.5",
@@ -70,6 +81,7 @@
     "gatsby-remark-images": "^3.0.14",
     "husky": "^2.3.0",
     "jest": "^24.8.0",
+    "lighthousebot": "git+https://github.com/GoogleChromeLabs/lighthousebot.git",
     "lint-staged": "^8.1.7",
     "lodash": "^4.17.11",
     "prettier": "^1.17.1",

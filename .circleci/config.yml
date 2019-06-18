@@ -25,3 +25,29 @@ jobs:
       # Run tests
       - run: yarn test
       - run: yarn build
+
+  perfTests:
+      docker:
+        - image: kporras07/lighthouse-ci
+
+      steps:
+        - checkout
+
+        - run:
+            name: Run lighthouse against staging deployment
+
+            environment:
+              TEST_URL: https://gatsby-starter-carraway.netlify.com
+
+            command: |
+              lighthouse $TEST_URL \
+                --port=9222 \
+                --chrome-flags=\"--headless\" \
+                --output-path=/home/chrome/reports/anonymous-"$(echo -n $CIRCLE_SHELL_ENV | md5sum | awk '{print $1}')" \
+                --output=json \
+                --output=html
+
+        - persist_to_workspace:
+            root: /home/chrome
+            paths:
+              - reports
