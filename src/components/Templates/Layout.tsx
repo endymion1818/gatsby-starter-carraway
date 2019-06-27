@@ -44,6 +44,7 @@ export interface ISiteMetaProps {
 export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, ISecondaryNavProps {}
 
 const AccessibilityMainContentSkipLink = styled.a`
+  position: absolute;
   display: inline-block;
   transform: translateY(-${variable.ESIZE.QUAD});
   padding: ${variable.ESIZE.SINGLEPLUSHALF};
