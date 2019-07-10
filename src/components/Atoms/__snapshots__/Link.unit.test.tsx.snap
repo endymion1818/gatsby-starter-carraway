@@ -12,6 +12,8 @@ exports[`<Link /> Should render an <a> tag 1`] = `
 .c0 {
   -webkit-text-decoration: underline;
   text-decoration: underline;
+  -webkit-text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
 }
 
 .c0:focus {
