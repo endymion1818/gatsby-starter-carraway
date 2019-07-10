@@ -11163,6 +11163,13 @@ react-fast-compare@^2.0.2:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+react-form-with-constraints@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/react-form-with-constraints/-/react-form-with-constraints-0.13.0.tgz#7909df60c09d6860721359f89421f5ff178d9c37"
+  integrity sha512-mneCHRcX44l5ECNerU/QGaRoTK/3mHHrq/bPGQ7reVw7HdEkQI4h3ehGjN3vbSth6gPTNPSbxhBf6slk+AmL+w==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-helmet@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.1.tgz#16a7192fdd09951f8e0fe22ffccbf9bb3e591ffa"

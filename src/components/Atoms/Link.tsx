@@ -1,7 +1,38 @@
 import GatsbyLink from 'gatsby-link'
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import * as variable from '../constants'
+
+export const ButtonStyles = css`
+  display: inline-block;
+  border: none;
+  padding: ${variable.ESIZE.SINGLE} ${variable.ESIZE.DOUBLE};
+  margin: 0;
+  text-decoration: none;
+  background: ${variable.EBACKGROUND_COLOUR.PRIMARY};
+  color: ${variable.ETEXT_COLOUR.ON_PRIMARY};
+  font-size: ${variable.ESIZE.SINGLE};
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: ${variable.EBORDERRADIUS.MEDIUM};
+
+  &:hover,
+  &:focus {
+    background: ${variable.EBACKGROUND_COLOUR.PRIMARY_LIGHT};
+  }
+
+  &:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+`
 
 export interface ILinkProps {
   openInNewTab?: boolean
@@ -10,22 +41,25 @@ export interface ILinkProps {
   rel?: string
   noUnderline?: boolean
   activeClassName?: string
+  isButton?: boolean
 }
 
-const SLink = styled(GatsbyLink)<ILinkProps>`
+const LinkStyles = css<ILinkProps>`
   ${({ noUnderline }) => (noUnderline ? `text-decoration: none` : `text-decoration: underline;`)}
   text-decoration-skip-ink: auto;
 
   &:focus {
     box-shadow: 0 0 2px ${variable.ETEXT_COLOUR.ON_SURFACE_ALT};
   }
+  ${({ isButton }) => isButton && ButtonStyles}
+`
+
+const SLink = styled(GatsbyLink)<ILinkProps>`
+  ${LinkStyles}
 `
 
 const Anchor = styled.a<ILinkProps>`
-  ${({ noUnderline }) => (noUnderline ? `text-decoration: none` : `text-decoration: underline;`)}
-  &:focus {
-    box-shadow: 0 0 2px ${variable.ETEXT_COLOUR.ON_SURFACE_ALT};
-  }
+  ${LinkStyles}
 `
 
 const Link: FC<ILinkProps> = ({ children, to, openInNewTab, noUnderline, ...other }) => {
