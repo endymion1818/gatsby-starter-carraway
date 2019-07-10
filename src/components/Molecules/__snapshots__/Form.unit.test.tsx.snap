@@ -230,6 +230,7 @@ exports[`<Form /> Should render 1`] = `
     class="c0"
   >
     <form
+      action="actionGoesHere"
       novalidate=""
     >
       <div
