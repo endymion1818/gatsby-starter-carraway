@@ -235,8 +235,9 @@ exports[`<Form /> Should render 1`] = `
 
 <div>
   <form
-    action="formSubmitActionGoesHere"
+    action="formActionGoesHere"
     class="c0"
+    method="POST"
   >
     <div
       class="form-group"
