@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Table /> Should render 1`] = `
+.c0,
+.c0 thead,
+.c0 tbody,
+.c0 tfoot,
+.c0 tr,
+.c0 th,
+.c0 td {
+  border: none;
+  border-collapse: inherit;
+  border-spacing: 0;
+  border-color: inherit;
+  vertical-align: inherit;
+  text-align: left;
+  font-weight: inherit;
+  -webkit-border-horizontal-spacing: 0;
+  -webkit-border-vertical-spacing: 0;
+}
+
+<div>
+  <table
+    class="c0"
+  />
+</div>
+`;
