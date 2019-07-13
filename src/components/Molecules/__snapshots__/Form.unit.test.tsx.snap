@@ -2,7 +2,7 @@
 
 exports[`<Form /> Should render 1`] = `
 .c0 label {
-  display: inline-block;
+  display: block;
   max-width: 100%;
   margin-bottom: 5px;
   font-size: 120%;
@@ -194,6 +194,14 @@ exports[`<Form /> Should render 1`] = `
   transform: scale(0.99);
 }
 
+.c0 .error > * {
+  margin-top: 1rem;
+  border: 1px solid red;
+  background-color: pink;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   .c0 input[type='date'].form-control,
   .c0 input[type='datetime-local'].form-control,
@@ -226,71 +234,64 @@ exports[`<Form /> Should render 1`] = `
 }
 
 <div>
-  <div
+  <form
+    action="formSubmitActionGoesHere"
     class="c0"
   >
-    <form
-      action="actionGoesHere"
-      novalidate=""
+    <div
+      class="form-group"
     >
-      <div
-        class="form-group"
+      <label
+        for="yourname"
       >
-        <label
-          for="name"
-        >
-          Your name
-        </label>
-        <input
-          class="form-control"
-          id="name"
-          minlength="5"
-          name="name"
-          required=""
-          type="name"
-          value=""
-        />
-      </div>
+        Your Name
+      </label>
+      <input
+        class="form-control"
+        id="yourname"
+      />
       <div
-        class="form-group"
+        class="error"
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        for="email"
       >
-        <label
-          for="email"
-        >
-          Your Email
-        </label>
-        <input
-          class="form-control"
-          id="email"
-          minlength="5"
-          name="email"
-          required=""
-          type="email"
-          value=""
-        />
-      </div>
+        Email
+      </label>
+      <input
+        class="form-control"
+        id="email"
+      />
       <div
-        class="form-group"
+        class="error"
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        for="phone"
       >
-        <label
-          for="phone"
-        >
-          Your phone number
-        </label>
-        <input
-          class="form-control"
-          id="phone"
-          minlength="5"
-          name="phone"
-          required=""
-          type="phone"
-          value=""
-        />
-      </div>
-      <button>
-        Send my details
-      </button>
-    </form>
-  </div>
+        Phone 
+        <small>
+          (optional)
+        </small>
+      </label>
+      <input
+        class="form-control"
+        id="phone"
+      />
+      <div
+        class="error"
+      />
+    </div>
+    <button>
+      Sign Up
+    </button>
+  </form>
 </div>
 `;

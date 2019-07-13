@@ -1,13 +1,18 @@
-import React, { useRef, useState } from 'react'
-import { FieldFeedback, FieldFeedbacks, FormWithConstraints } from 'react-form-with-constraints'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-
 import { ButtonStyles } from '../Atoms/Link'
+import * as variable from '../constants'
 
-export const FormWrapper = styled.div`
+interface IErrors {
+  email: string[]
+  yourname: string[]
+  phone: string[]
+}
+
+const SForm = styled.form`
   /* Form style reset */
   label {
-    display: inline-block;
+    display: block;
     max-width: 100%;
     margin-bottom: 5px;
     font-size: 120%;
@@ -174,138 +179,143 @@ export const FormWrapper = styled.div`
   button {
     ${ButtonStyles}
   }
+  .error > * {
+    margin-top: ${variable.ESIZE.SINGLE};
+    border: 1px solid red;
+    background-color: pink;
+    padding: ${variable.ESIZE.SINGLE};
+    border-radius: ${variable.EBORDERRADIUS.MEDIUM};
+  }
 `
 
-function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+function validateEmail(email: string) {
+  const errors = [] as string[]
+  if (email.length === 0) {
+    errors.push("email can't be empty")
+  }
+  if (!email.includes('@')) {
+    errors.push('Email should contain @')
+  }
+  return errors
+}
+function validatePhone(phone: string) {
+  const errors = [] as string[]
+  if (phone.length === 0) {
+    errors.push("Can't be empty")
+  }
+  return errors
+}
+function validateName(yourname: string) {
+  const errors = [] as string[]
+  if (yourname.length === 0) {
+    errors.push("Can't be empty")
+  }
+  return errors
 }
 
-// See https://en.wikipedia.org/wiki/List_of_the_most_common_passwords
-async function isACommonPassword(password: string) {
-  await sleep(1000)
-  return [
-    '123456',
-    'password',
-    '12345678',
-    'qwerty',
-    '12345',
-    '123456789',
-    'letmein',
-    '1234567',
-    'football',
-    'iloveyou',
-    'admin',
-    'welcome',
-    'monkey',
-    'login',
-    'abc123',
-  ].includes(password.toLowerCase())
+function hasErrors(errors: IErrors) {
+  return errors.email.length > 0 || errors.yourname.length > 0 || errors.phone.length > 0
 }
 
-const Form = () => {
-  const form = useRef<FormWithConstraints | null>(null)
+function Form() {
+  const email = useRef<HTMLInputElement | null>(null)
+  const yourname = useRef<HTMLInputElement | null>(null)
+  const phone = useRef<HTMLInputElement | null>(null)
 
-  const [inputs, setInputs] = useState({
-    email: '',
-    name: '',
-    phone: '',
+  const [errors, setErrors] = useState<IErrors>({
+    email: [],
+    yourname: [],
+    phone: [],
   })
-  const [signUpButtonDisabled, setSignUpButtonDisabled] = useState(false)
 
-  async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const target = e.target
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  useEffect(() => {
+    if (isSubmitted) {
+      if (!hasErrors(errors)) {
+        // submit form
+      } else {
+        alert('Please check your form has been filled out correctly.')
+      }
+      setIsSubmitted(false)
+    }
+  }, [isSubmitted, errors])
 
-    setInputs(prevState => {
-      return { ...prevState, [target.name]: target.value }
+  function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value
+    setErrors(prevState => {
+      return {
+        ...prevState,
+        email: validateEmail(value),
+      }
     })
-
-    // Validates only the given field and returns the related FieldValidation structures
-    const fields = await form.current!.validateFields(target)
-
-    const fieldIsValid = fields.every(fieldFeedbacksValidation =>
-      fieldFeedbacksValidation.isValid()
-    )
-
-    setSignUpButtonDisabled(!form.current!.isValid())
+  }
+  function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value
+    setErrors(prevState => {
+      return {
+        ...prevState,
+        yourname: validateName(value),
+      }
+    })
+  }
+  function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value
+    setErrors(prevState => {
+      return {
+        ...prevState,
+        phone: validatePhone(value),
+      }
+    })
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-
-    // Validates the non-dirty fields and returns the related FieldValidation structures
-    const fields = await form.current!.validateForm()
-
-    // or simply use form.current.isValid()
-    const formIsValid = fields.every(field => field.isValid())
-
-    setSignUpButtonDisabled(!form.current!.isValid())
-    if (formIsValid) {
-      alert(`Valid form\n\ninputs =\n${JSON.stringify(inputs, null, 2)}`)
-    }
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    setErrors(prevState => {
+      return {
+        ...prevState,
+        email: validateEmail(email.current!.value),
+        phone: validatePhone(phone.current!.value),
+        yourname: validateName(yourname.current!.value),
+      }
+    })
+    setIsSubmitted(true)
   }
 
   return (
-    <FormWrapper>
-      <FormWithConstraints ref={form} onSubmit={handleSubmit} action="actionGoesHere" noValidate>
-        <div className="form-group">
-          <label htmlFor="name">Your name</label>
-          <input
-            className="form-control"
-            type="name"
-            name="name"
-            id="name"
-            value={inputs.name}
-            onChange={handleChange}
-            required
-            minLength={5}
-          />
-          <FieldFeedbacks for="name">
-            <FieldFeedback when="tooShort">Too short</FieldFeedback>
-            <FieldFeedback when="*" />
-            <FieldFeedback when="valid">Looks good!</FieldFeedback>
-          </FieldFeedbacks>
+    <SForm onSubmit={handleSubmit} method="POST" action="formActionGoesHere">
+      <div className="form-group">
+        <label htmlFor="yourname">Your Name</label>
+        <input className="form-control" id="yourname" ref={yourname} onChange={handleNameChange} />
+        <div className="error">
+          {errors.yourname.map(error => (
+            <div key={error}>{error}</div>
+          ))}
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Your Email</label>
-          <input
-            className="form-control"
-            type="email"
-            name="email"
-            id="email"
-            value={inputs.email}
-            onChange={handleChange}
-            required
-            minLength={5}
-          />
-          <FieldFeedbacks for="email">
-            <FieldFeedback when="tooShort">Too short</FieldFeedback>
-            <FieldFeedback when="*" />
-            <FieldFeedback when="valid">Looks good!</FieldFeedback>
-          </FieldFeedbacks>
-        </div>
+      </div>
 
-        <div className="form-group">
-          <label htmlFor="phone">Your phone number</label>
-          <input
-            className="form-control"
-            type="phone"
-            name="phone"
-            id="phone"
-            value={inputs.phone}
-            onChange={handleChange}
-            required
-            minLength={5}
-          />
-          <FieldFeedbacks for="phone">
-            <FieldFeedback when="tooShort">Too short</FieldFeedback>
-            <FieldFeedback when="*" />
-            <FieldFeedback when="valid">Looks good!</FieldFeedback>
-          </FieldFeedbacks>
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input className="form-control" id="email" ref={email} onChange={handleEmailChange} />
+        <div className="error">
+          {errors.email.map(error => (
+            <div key={error}>{error}</div>
+          ))}
         </div>
+      </div>
 
-        <button disabled={signUpButtonDisabled}>Send my details</button>
-      </FormWithConstraints>
-    </FormWrapper>
+      <div className="form-group">
+        <label htmlFor="phone">
+          Phone <small>(optional)</small>
+        </label>
+        <input className="form-control" id="phone" ref={phone} onChange={handlePhoneChange} />
+        <div className="error">
+          {errors.phone.map(error => (
+            <div key={error}>{error}</div>
+          ))}
+        </div>
+      </div>
+
+      <button disabled={hasErrors(errors)}>Sign Up</button>
+    </SForm>
   )
 }
 
