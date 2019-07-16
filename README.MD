@@ -21,6 +21,8 @@ I spend a lot of time developing websites with Gatsby. I often find myself addin
     - Multi-column layout using CSS Grid (with float fallback)
     - Header with logo, basic navigation & search
     - Footer with 3-column layout, logo and 2 menu areas
+    - Form with default fields and error handling (uses react-form-with-constraints)
+    - Table default styles
 
 - TypeScript & Testing
     - Some sensible TypeScript defaults
