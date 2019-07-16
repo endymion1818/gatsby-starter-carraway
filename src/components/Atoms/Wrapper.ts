@@ -1,27 +1,27 @@
 import styled from 'styled-components'
-import * as variable from '../constants'
+import * as token from '../tokens'
 
 export interface IWrapperProps {
   /**
    * background colour
-   * @default variable.EBACKGROUND_COLOUR.SURFACE
+   * @default token.EBACKGROUND_COLOUR.SURFACE
    */
-  backgroundColour?: variable.EBACKGROUND_COLOUR
+  backgroundColour?: token.EBACKGROUND_COLOUR
   /**
    * text colour
-   * @default variable.ETEXT_COLOUR.ON_SURFACE
+   * @default token.ETEXT_COLOUR.ON_SURFACE
    */
-  textColour?: variable.ETEXT_COLOUR
+  textColour?: token.ETEXT_COLOUR
   /**
    * padding
-   * @default variable.ESIZE.SINGLE
+   * @default token.ESIZE.SINGLE
    */
-  paddingTop?: variable.ESIZE
+  paddingTop?: token.ESIZE
   /**
    * padding
-   * @default variable.ESIZE.SINGLE
+   * @default token.ESIZE.SINGLE
    */
-  paddingBottom?: variable.ESIZE
+  paddingBottom?: token.ESIZE
 }
 
 const Wrapper = styled.div<IWrapperProps>`
@@ -33,10 +33,10 @@ const Wrapper = styled.div<IWrapperProps>`
 `
 
 Wrapper.defaultProps = {
-  backgroundColour: variable.EBACKGROUND_COLOUR.SURFACE,
-  textColour: variable.ETEXT_COLOUR.ON_SURFACE,
-  paddingTop: variable.ESIZE.SINGLE,
-  paddingBottom: variable.ESIZE.SINGLE,
+  backgroundColour: token.EBACKGROUND_COLOUR.SURFACE,
+  textColour: token.ETEXT_COLOUR.ON_SURFACE,
+  paddingTop: token.ESIZE.SINGLE,
+  paddingBottom: token.ESIZE.SINGLE,
 }
 
 export default Wrapper

@@ -1,29 +1,29 @@
 import React, { FC } from 'react'
 import Column from '../Atoms/Column'
 import Row from '../Atoms/Row'
-import * as variable from '../constants'
+import * as token from '../tokens'
 
 export interface IEvenColumnsGlobalProps {
   /**
    * text alignment
-   * @default variable.ETEXTALIGN.LEFT
+   * @default token.ETEXTALIGN.LEFT
    */
-  textAlign?: variable.ETEXTALIGN
+  textAlign?: token.ETEXTALIGN
   /**
    * buffer top
-   * @default variable.ESIZE
+   * @default token.ESIZE
    */
-  bufferTop?: variable.ESIZE
+  bufferTop?: token.ESIZE
   /**
    * buffer bottom
-   * @default variable.ESIZE
+   * @default token.ESIZE
    */
-  bufferBottom?: variable.ESIZE
+  bufferBottom?: token.ESIZE
   /**
    * vertical align
-   * @default variable.EFLEXALIGN.TOP
+   * @default token.EFLEXALIGN.TOP
    */
-  verticalAlign?: variable.EFLEXALIGN
+  verticalAlign?: token.EFLEXALIGN
 }
 
 export interface IRenderContentProps extends IEvenColumnsGlobalProps {
@@ -42,10 +42,10 @@ export interface IRenderContentProps extends IEvenColumnsGlobalProps {
 export const renderContent: FC<IRenderContentProps> = ({
   item,
   index,
-  textAlign = variable.ETEXTALIGN.LEFT,
-  bufferBottom = variable.ESIZE.ZERO,
-  bufferTop = variable.ESIZE.ZERO,
-  verticalAlign = variable.EFLEXALIGN.START,
+  textAlign = token.ETEXTALIGN.LEFT,
+  bufferBottom = token.ESIZE.ZERO,
+  bufferTop = token.ESIZE.ZERO,
+  verticalAlign = token.EFLEXALIGN.START,
 }) => (
   <Column
     key={index}
@@ -99,10 +99,10 @@ EvenColumns.defaultProps = {
     },
   ],
   index: 0,
-  textAlign: variable.ETEXTALIGN.LEFT,
-  bufferTop: variable.ESIZE.ZERO,
-  bufferBottom: variable.ESIZE.ZERO,
-  verticalAlign: variable.EFLEXALIGN.START,
+  textAlign: token.ETEXTALIGN.LEFT,
+  bufferTop: token.ESIZE.ZERO,
+  bufferBottom: token.ESIZE.ZERO,
+  verticalAlign: token.EFLEXALIGN.START,
 }
 
 export default EvenColumns

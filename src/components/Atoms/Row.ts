@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import * as variable from '../constants'
+import * as token from '../tokens'
 
 export interface IRowProps {
   /**
@@ -9,10 +9,10 @@ export interface IRowProps {
   size: number
   /**
    * breakpoint
-   *  @default variable.EBREAKPOINT.LARGE
+   *  @default token.EBREAKPOINT.LARGE
    */
 
-  breakpoint?: variable.EBREAKPOINT
+  breakpoint?: token.EBREAKPOINT
 }
 
 const Row = styled.div<IRowProps>`
@@ -48,7 +48,7 @@ const Row = styled.div<IRowProps>`
 
 Row.defaultProps = {
   size: 1,
-  breakpoint: variable.EBREAKPOINT.LARGE,
+  breakpoint: token.EBREAKPOINT.LARGE,
 }
 
 export default Row
