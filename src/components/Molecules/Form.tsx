@@ -234,8 +234,8 @@ function Form() {
     // if JS is disabled, the user can still use the form
     // otherwise, set initial state to false
     setIsSubmitted(false)
-    // tslint:disable-next-line
   }),
+    // tslint:disable-next-line
     []
 
   useEffect(() => {

@@ -129,6 +129,7 @@ const Layout: React.SFC = ({ children }) => (
       <ErrorBoundary>
         <GlobalStyle />
         <Helmet>
+          <html lang="en" />
           <title>{data.site.siteMetadata.title}</title>
           <meta name="description" content="FreeBabylon5" />
           <script type="application/ld+json">
