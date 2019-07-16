@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Form /> Should render 1`] = `
+exports[`Should render 1`] = `
 .c0 label {
   display: block;
   max-width: 100%;
@@ -237,6 +237,7 @@ exports[`<Form /> Should render 1`] = `
   <form
     action="https://formActionGoesHere"
     class="c0"
+    data-testid="form"
     method="POST"
   >
     <div
@@ -292,6 +293,7 @@ exports[`<Form /> Should render 1`] = `
     </div>
     <button
       data-testid="submit-button"
+      name="submit"
     >
       Send
     </button>
