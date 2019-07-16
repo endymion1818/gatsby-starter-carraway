@@ -235,7 +235,7 @@ exports[`<Form /> Should render 1`] = `
 
 <div>
   <form
-    action="formActionGoesHere"
+    action="https://formActionGoesHere"
     class="c0"
     method="POST"
   >
@@ -290,8 +290,10 @@ exports[`<Form /> Should render 1`] = `
         class="error"
       />
     </div>
-    <button>
-      Sign Up
+    <button
+      data-testid="submit-button"
+    >
+      Send
     </button>
   </form>
 </div>

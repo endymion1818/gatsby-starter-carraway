@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { ButtonStyles } from '../Atoms/Link'
-import * as variable from '../constants'
+import * as token from '../tokens'
 
 interface IErrors {
   email: string[]
@@ -180,11 +180,11 @@ const SForm = styled.form`
     ${ButtonStyles}
   }
   .error > * {
-    margin-top: ${variable.ESIZE.SINGLE};
+    margin-top: ${token.ESIZE.SINGLE};
     border: 1px solid red;
     background-color: pink;
-    padding: ${variable.ESIZE.SINGLE};
-    border-radius: ${variable.EBORDERRADIUS.MEDIUM};
+    padding: ${token.ESIZE.SINGLE};
+    border-radius: ${token.EBORDERRADIUS.MEDIUM};
   }
 `
 
@@ -281,7 +281,7 @@ function Form() {
   }
 
   return (
-    <SForm onSubmit={handleSubmit} method="POST" action="formActionGoesHere">
+    <SForm onSubmit={handleSubmit} method="POST" action="https://formActionGoesHere">
       <div className="form-group">
         <label htmlFor="yourname">Your Name</label>
         <input className="form-control" id="yourname" ref={yourname} onChange={handleNameChange} />
@@ -314,7 +314,9 @@ function Form() {
         </div>
       </div>
 
-      <button disabled={hasErrors(errors)}>Sign Up</button>
+      <button data-testid="submit-button" disabled={hasErrors(errors)}>
+        Send
+      </button>
     </SForm>
   )
 }

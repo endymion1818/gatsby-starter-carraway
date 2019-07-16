@@ -21,9 +21,7 @@ const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
         {results.map(({ title, url, date, description }) => (
           <li key={title}>
             <h3>
-              <a href={url}>
-                {title}
-              </a>
+              <a href={url}>{title}</a>
             </h3>
             <small>{new Date(date).toLocaleString('en-GB')}</small>
             {description && <p>{description}</p>}
@@ -40,18 +38,9 @@ export interface ISearchProps {
   }
 }
 
-declare global {
-  interface Window { 
-    __LUNR__: {
-      __loaded: boolean
-      
-    } 
-  }
-}
-
 const Search: FC<ISearchProps> = ({ location }) => {
   const [results, setResults] = useState([])
-  let searchQuery:string
+  let searchQuery: string
 
   if (typeof window !== 'undefined') {
     searchQuery = new URLSearchParams(location.search).get('keywords') || ''

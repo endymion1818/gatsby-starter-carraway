@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import Container from '../Atoms/Container'
 import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
-import * as variable from '../constants'
 import SearchForm from '../Molecules/SearchForm'
 import { IPrimaryNavProps } from '../Templates/Layout'
+import * as token from '../tokens'
 
 export interface IHeaderProps extends IPrimaryNavProps {
   siteTitle: string
@@ -21,19 +21,19 @@ const MainNav = styled.ul`
   li {
     a {
       display: block;
-      padding: ${variable.ESIZE.SINGLE};
+      padding: ${token.ESIZE.SINGLE};
       text-decoration: none;
-      border-radius: ${variable.EBORDERRADIUS.MEDIUM};
+      border-radius: ${token.EBORDERRADIUS.MEDIUM};
 
       &:hover,
       &:active,
       &:focus {
-        background-color: ${variable.EBACKGROUND_COLOUR.SURFACE};
-        color: ${variable.ETEXT_COLOUR.ON_SURFACE_ALT};
+        background-color: ${token.EBACKGROUND_COLOUR.SURFACE};
+        color: ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
       }
       &.active {
-        background-color: ${variable.EBACKGROUND_COLOUR.SURFACE};
-        color: ${variable.ETEXT_COLOUR.ON_SURFACE_ALT};
+        background-color: ${token.EBACKGROUND_COLOUR.SURFACE};
+        color: ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
       }
     }
   }
@@ -42,7 +42,7 @@ const MainNav = styled.ul`
 const HeaderContainer = styled(Container)`
   overflow-x: hidden;
 
-  @media (min-width: ${variable.EBREAKPOINT.MEDIUM}) {
+  @media (min-width: ${token.EBREAKPOINT.MEDIUM}) {
     display: flex;
 
     > a {
@@ -60,8 +60,8 @@ const HeaderContainer = styled(Container)`
 
 const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
   <Wrapper
-    backgroundColour={variable.EBACKGROUND_COLOUR.SURFACE}
-    textColour={variable.ETEXT_COLOUR.ON_SURFACE}
+    backgroundColour={token.EBACKGROUND_COLOUR.SURFACE}
+    textColour={token.ETEXT_COLOUR.ON_SURFACE}
   >
     <HeaderContainer>
       <Link to={withPrefix('/')}>{siteTitle}</Link>
@@ -75,9 +75,11 @@ const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
               </li>
             ))
           : null}
-          <li>
-            <Link to="/post" activeClassName="active">Posts</Link>
-          </li>
+        <li>
+          <Link to="/post" activeClassName="active">
+            Posts
+          </Link>
+        </li>
       </MainNav>
       <SearchForm />
     </HeaderContainer>

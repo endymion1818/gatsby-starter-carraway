@@ -7,8 +7,8 @@ import Column from '../Atoms/Column'
 import Container from '../Atoms/Container'
 import Row from '../Atoms/Row'
 import Wrapper from '../Atoms/Wrapper'
-import * as variable from '../constants'
 import { IPrimaryNavProps, ISecondaryNavProps } from '../Templates/Layout'
+import * as token from '../tokens'
 
 export interface IFooterProps extends IPrimaryNavProps, ISecondaryNavProps {
   siteTitle: string
@@ -21,27 +21,27 @@ const SecondaryNav = styled.ul`
   li {
     a {
       display: block;
-      padding: ${variable.ESIZE.SINGLE};
+      padding: ${token.ESIZE.SINGLE};
       text-decoration: none;
-      border-radius: ${variable.EBORDERRADIUS.MEDIUM};
-      color: ${variable.ETEXT_COLOUR.ON_SURFACE};
+      border-radius: ${token.EBORDERRADIUS.MEDIUM};
+      color: ${token.ETEXT_COLOUR.ON_SURFACE};
 
       &:hover,
       &:active,
       &:focus {
-        background-color: ${variable.EBACKGROUND_COLOUR.SURFACE};
-        color: ${variable.ETEXT_COLOUR.ON_SURFACE};
+        background-color: ${token.EBACKGROUND_COLOUR.SURFACE};
+        color: ${token.ETEXT_COLOUR.ON_SURFACE};
       }
       &.active {
-        background-color: ${variable.EBACKGROUND_COLOUR.SURFACE_ALT};
-        color: ${variable.ETEXT_COLOUR.ON_SURFACE};
+        background-color: ${token.EBACKGROUND_COLOUR.SURFACE_ALT};
+        color: ${token.ETEXT_COLOUR.ON_SURFACE};
       }
     }
   }
 `
 
 const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
-  <Wrapper backgroundColour={variable.EBACKGROUND_COLOUR.SURFACE_ALT}>
+  <Wrapper backgroundColour={token.EBACKGROUND_COLOUR.SURFACE_ALT}>
     <Container>
       <Row size={3}>
         <Column>

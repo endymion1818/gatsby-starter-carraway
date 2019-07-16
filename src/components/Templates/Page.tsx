@@ -32,13 +32,3 @@ PageTemplate.defaultProps = {
   description: "there's currently no content in this page",
   children: <p>empty page</p>,
 }
-
-export const query = graphql`
-  query PageQuery($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`

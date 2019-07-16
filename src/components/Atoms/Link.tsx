@@ -1,27 +1,27 @@
 import GatsbyLink from 'gatsby-link'
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
-import * as variable from '../constants'
+import * as token from '../tokens'
 
 export const ButtonStyles = css`
   display: inline-block;
   border: none;
-  padding: ${variable.ESIZE.SINGLE} ${variable.ESIZE.DOUBLE};
+  padding: ${token.ESIZE.SINGLE} ${token.ESIZE.DOUBLE};
   margin: 0;
   text-decoration: none;
-  background: ${variable.EBACKGROUND_COLOUR.PRIMARY};
-  color: ${variable.ETEXT_COLOUR.ON_PRIMARY};
-  font-size: ${variable.ESIZE.SINGLE};
+  background: ${token.EBACKGROUND_COLOUR.PRIMARY};
+  color: ${token.ETEXT_COLOUR.ON_PRIMARY};
+  font-size: ${token.ESIZE.SINGLE};
   cursor: pointer;
   text-align: center;
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
-  border-radius: ${variable.EBORDERRADIUS.MEDIUM};
+  border-radius: ${token.EBORDERRADIUS.MEDIUM};
 
   &:hover,
   &:focus {
-    background: ${variable.EBACKGROUND_COLOUR.PRIMARY_LIGHT};
+    background: ${token.EBACKGROUND_COLOUR.PRIMARY_LIGHT};
   }
 
   &:focus {
@@ -49,7 +49,7 @@ const LinkStyles = css<ILinkProps>`
   text-decoration-skip-ink: auto;
 
   &:focus {
-    box-shadow: 0 0 2px ${variable.ETEXT_COLOUR.ON_SURFACE_ALT};
+    box-shadow: 0 0 2px ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
   }
   ${({ isButton }) => isButton && ButtonStyles}
 `

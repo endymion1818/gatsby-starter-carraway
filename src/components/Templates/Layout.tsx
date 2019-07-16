@@ -3,10 +3,10 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
-import * as variable from '../constants'
 import ErrorBoundary from '../Molecules/ErrorBoundary'
 import Footer from '../Organisms/Footer'
 import Header from '../Organisms/Header'
+import * as token from '../tokens'
 
 export interface INavEdges {
   edges: [
@@ -46,16 +46,15 @@ export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, ISe
 const AccessibilityMainContentSkipLink = styled.a`
   position: absolute;
   display: inline-block;
-  transform: translateY(-${variable.ESIZE.QUAD});
-  padding: ${variable.ESIZE.SINGLEPLUSHALF};
-  background-color: ${variable.EBACKGROUND_COLOUR.SURFACE_ALT};
-  color: ${variable.ETEXT_COLOUR.ON_SURFACE_ALT};
-
+  transform: translateY(-${token.ESIZE.QUAD});
+  padding: ${token.ESIZE.SINGLEPLUSHALF};
+  background-color: ${token.EBACKGROUND_COLOUR.SURFACE_ALT};
+  color: ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
 
   &:hover,
   &:focus,
   &:active {
-    transform: translateY(-${variable.ESIZE.ZERO});
+    transform: translateY(-${token.ESIZE.ZERO});
   }
 `
 
