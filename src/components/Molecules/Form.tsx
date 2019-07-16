@@ -228,13 +228,17 @@ function Form() {
     phone: [],
   })
 
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(true)
+
+  useEffect(() => {
+    // if JS is disabled, the user can still use the form
+    // otherwise, set initial state to false
+    setIsSubmitted(false)
+  }), []
 
   useEffect(() => {
     if (!hasErrors(errors)) {
       setIsSubmitted(true)
-    } else {
-      setIsSubmitted(false)
     }
   }, [isSubmitted, errors])
 
@@ -278,7 +282,7 @@ function Form() {
   }
 
   return (
-    <SForm onBlur={handleSubmit} method="POST" action="https://formActionGoesHere" data-testid="form">
+    <SForm onSubmit={handleSubmit} method="POST" action="https://formActionGoesHere" data-testid="form">
       <div className="form-group">
         <label htmlFor="yourname">Your Name</label>
         <input className="form-control" id="yourname" ref={yourname} onChange={handleNameChange} />
@@ -314,7 +318,6 @@ function Form() {
       <button data-testid="submit-button" name="submit" disabled={!isSubmitted}>
         Send
       </button>
-      {console.log(isSubmitted)}
     </SForm>
   )
 }
