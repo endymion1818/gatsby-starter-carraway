@@ -5,8 +5,8 @@ import Helmet from 'react-helmet'
 import Container from '../components/Atoms/Container'
 import Row from '../components/Atoms/Row'
 import Wrapper from '../components/Atoms/Wrapper'
-import Layout from '../components/Templates/Layout'
 import Form from '../components/Molecules/Form'
+import Layout from '../components/Templates/Layout'
 
 export interface IAboutPageProps {
   data: {
