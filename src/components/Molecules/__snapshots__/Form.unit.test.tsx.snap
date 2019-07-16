@@ -172,6 +172,8 @@ exports[`Should render 1`] = `
   margin: 0;
   -webkit-text-decoration: none;
   text-decoration: none;
+  background: white;
+  color: black;
   font-size: 1rem;
   cursor: pointer;
   text-align: center;
@@ -183,6 +185,11 @@ exports[`Should render 1`] = `
   border-radius: 0.5rem;
 }
 
+.c0 button:hover,
+.c0 button:focus {
+  background: white;
+}
+
 .c0 button:focus {
   outline: 1px solid #fff;
   outline-offset: -4px;
@@ -192,6 +199,11 @@ exports[`Should render 1`] = `
   -webkit-transform: scale(0.99);
   -ms-transform: scale(0.99);
   transform: scale(0.99);
+}
+
+.c0 button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .c0 .error > * {

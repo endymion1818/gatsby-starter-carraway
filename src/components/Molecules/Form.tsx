@@ -231,6 +231,14 @@ function Form() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   useEffect(() => {
+    // if JS is disabled, the user can still use the form
+    // otherwise, set initial state to false
+    setIsSubmitted(false)
+    // tslint:disable-next-line
+  }),
+    []
+
+  useEffect(() => {
     if (hasErrors(errors)) {
       setIsSubmitted(false)
     }
