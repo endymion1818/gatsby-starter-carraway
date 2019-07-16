@@ -229,15 +229,20 @@ function Form() {
   })
 
   const [isSubmitted, setIsSubmitted] = useState(false)
+
   useEffect(() => {
-    if (isSubmitted) {
-      if (!hasErrors(errors)) {
-        // submit form
-      } else {
-        alert('Please check your form has been filled out correctly.')
-      }
+    // if JS is disabled, the user can still use the form
+    // otherwise, set initial state to false
+    setIsSubmitted(false)
+    // tslint:disable-next-line
+  }),
+    []
+
+  useEffect(() => {
+    if (hasErrors(errors)) {
       setIsSubmitted(false)
     }
+    setIsSubmitted(true)
   }, [isSubmitted, errors])
 
   function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -277,11 +282,15 @@ function Form() {
         yourname: validateName(yourname.current!.value),
       }
     })
-    setIsSubmitted(true)
   }
 
   return (
-    <SForm onSubmit={handleSubmit} method="POST" action="https://formActionGoesHere">
+    <SForm
+      onSubmit={handleSubmit}
+      method="POST"
+      action="https://formActionGoesHere"
+      data-testid="form"
+    >
       <div className="form-group">
         <label htmlFor="yourname">Your Name</label>
         <input className="form-control" id="yourname" ref={yourname} onChange={handleNameChange} />
@@ -314,7 +323,7 @@ function Form() {
         </div>
       </div>
 
-      <button data-testid="submit-button" disabled={hasErrors(errors)}>
+      <button data-testid="submit-button" name="submit" disabled={!isSubmitted}>
         Send
       </button>
     </SForm>

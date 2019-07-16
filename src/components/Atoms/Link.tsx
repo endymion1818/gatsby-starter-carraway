@@ -9,8 +9,8 @@ export const ButtonStyles = css`
   padding: ${token.ESIZE.SINGLE} ${token.ESIZE.DOUBLE};
   margin: 0;
   text-decoration: none;
-  background: ${token.EBACKGROUND_COLOUR.PRIMARY};
-  color: ${token.ETEXT_COLOUR.ON_PRIMARY};
+  background: ${token.EBACKGROUND_COLOUR.SURFACE};
+  color: ${token.ETEXT_COLOUR.ON_SURFACE};
   font-size: ${token.ESIZE.SINGLE};
   cursor: pointer;
   text-align: center;
@@ -21,7 +21,7 @@ export const ButtonStyles = css`
 
   &:hover,
   &:focus {
-    background: ${token.EBACKGROUND_COLOUR.PRIMARY_LIGHT};
+    background: ${token.EBACKGROUND_COLOUR.SURFACE};
   }
 
   &:focus {
@@ -31,6 +31,10 @@ export const ButtonStyles = css`
 
   &:active {
     transform: scale(0.99);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `
 
@@ -42,6 +46,7 @@ export interface ILinkProps {
   noUnderline?: boolean
   activeClassName?: string
   isButton?: boolean
+  onClick?: (args: unknown) => void
 }
 
 const LinkStyles = css<ILinkProps>`
