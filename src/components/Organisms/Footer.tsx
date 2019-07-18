@@ -78,6 +78,9 @@ const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
                   </li>
                 ))
               : null}
+            <li>
+              <Link to="/feed.xml">RSS Feed</Link>
+            </li>
           </SecondaryNav>
         </Column>
       </Row>
