@@ -7,7 +7,7 @@ import Layout from '../components/Templates/Layout'
 
 export interface ICategoriesPageProps {
   data: {
-    allMarkdownRemark: {
+    allMdx: {
       group: [
         {
           category: {
@@ -25,7 +25,7 @@ export interface ICategoriesPageProps {
 
 const CategoriesPage: FC<ICategoriesPageProps> = ({
   data: {
-    allMarkdownRemark: { group },
+    allMdx: { group },
     site: {
       siteMetadata: { title },
     },
@@ -48,23 +48,23 @@ const CategoriesPage: FC<ICategoriesPageProps> = ({
   </Layout>
 )
 
-// CategoriesPage.propTypes = {
-//   data: PropTypes.shape({
-//     allMarkdownRemark: PropTypes.shape({
-//       group: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           fieldValue: PropTypes.string.isRequired,
-//           totalCount: PropTypes.number.isRequired,
-//         }).isRequired
-//       ),
-//     }),
-//     site: PropTypes.shape({
-//       siteMetadata: PropTypes.shape({
-//         title: PropTypes.string.isRequired,
-//       }),
-//     }),
-//   }),
-// }
+CategoriesPage.propTypes = {
+  data: PropTypes.shape({
+    allMdx: PropTypes.shape({
+      group: PropTypes.arrayOf(
+        PropTypes.shape({
+          fieldValue: PropTypes.string.isRequired,
+          totalCount: PropTypes.number.isRequired,
+        }).isRequired
+      ),
+    }),
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }),
+    }),
+  }),
+}
 
 export default CategoriesPage
 
@@ -75,7 +75,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(limit: 2000) {
+    allMdx(limit: 2000) {
       group(field: frontmatter___categories) {
         fieldValue
         totalCount

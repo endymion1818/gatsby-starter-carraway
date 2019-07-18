@@ -19,7 +19,7 @@ interface IPostTemplateProps {
         }
       }
     }
-    markdownRemark: {
+    mdx: {
       html: string
       excerpt: string
       frontmatter: {
@@ -59,12 +59,12 @@ interface IPostTemplateProps {
 }
 
 const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
-  const { html } = data.markdownRemark
-  const { title } = data.markdownRemark.frontmatter
-  const { type } = data.markdownRemark.frontmatter
-  const { date } = data.markdownRemark.frontmatter
-  const { featuredImage } = data.markdownRemark.frontmatter
-  const { featuredImageAlt } = data.markdownRemark.frontmatter
+  const { html } = data.mdx
+  const { title } = data.mdx.frontmatter
+  const { type } = data.mdx.frontmatter
+  const { date } = data.mdx.frontmatter
+  const { featuredImage } = data.mdx.frontmatter
+  const { featuredImageAlt } = data.mdx.frontmatter
 
   return (
     <Layout>
@@ -114,7 +114,7 @@ export const query = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title

@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-transformer-remark`,
+    `gatsby-plugin-mdx`,
     `gatsby-plugin-twitter`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
