@@ -16,8 +16,10 @@ export interface ICategoriesPageProps {
           }
         }
       ]
-      site: {
-        siteMetadata: string
+    }
+    site: {
+      siteMetadata: {
+        title: string
       }
     }
   }
@@ -36,10 +38,10 @@ const CategoriesPage: FC<ICategoriesPageProps> = ({
     <>
       <h1>Categories</h1>
       <ul>
-        {group.map(category => (
-          <li key={category.fieldValue}>
-            <Link to={`/categories/${kebabCase(category.fieldValue)}/`}>
-              {category.fieldValue} ({category.totalCount})
+        {group.map(({ fieldValue, totalCount }) => (
+          <li key={fieldValue}>
+            <Link to={`/categories/${kebabCase(fieldValue)}/`}>
+              {fieldValue} ({totalCount})
             </Link>
           </li>
         ))}
@@ -47,24 +49,6 @@ const CategoriesPage: FC<ICategoriesPageProps> = ({
     </>
   </Layout>
 )
-
-// CategoriesPage.propTypes = {
-//   data: PropTypes.shape({
-//     allMarkdownRemark: PropTypes.shape({
-//       group: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           fieldValue: PropTypes.string.isRequired,
-//           totalCount: PropTypes.number.isRequired,
-//         }).isRequired
-//       ),
-//     }),
-//     site: PropTypes.shape({
-//       siteMetadata: PropTypes.shape({
-//         title: PropTypes.string.isRequired,
-//       }),
-//     }),
-//   }),
-// }
 
 export default CategoriesPage
 
