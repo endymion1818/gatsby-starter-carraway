@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Link from '../Atoms/Link'
 
 import { withPrefix } from 'gatsby'
+import NavItem from '../../components/Molecules/NavItem'
 import Column from '../Atoms/Column'
 import Container from '../Atoms/Container'
 import Row from '../Atoms/Row'
@@ -39,27 +40,6 @@ const SecondaryNav = styled.ul`
     }
   }
 `
-
-export interface INavItemProps {
-  node: {
-    frontmatter: {
-      path: string
-      title: string
-    }
-  }
-}
-
-const NavItem: FC<INavItemProps> = ({ node }) => {
-  const { path } = node.frontmatter
-  const { title } = node.frontmatter
-  return (
-    <li key={path}>
-      <Link activeClassName="active" to={withPrefix(path)}>
-        {title}
-      </Link>
-    </li>
-  )
-}
 
 const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
   <Wrapper backgroundColour={token.EBACKGROUND_COLOUR.SURFACE_ALT}>
