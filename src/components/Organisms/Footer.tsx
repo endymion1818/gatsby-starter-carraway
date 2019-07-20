@@ -40,6 +40,27 @@ const SecondaryNav = styled.ul`
   }
 `
 
+export interface INavItemProps {
+  node: {
+    frontmatter: {
+      path: string
+      title: string
+    }
+  }
+}
+
+const NavItem: FC<INavItemProps> = ({ node }) => {
+  const { path } = node.frontmatter
+  const { title } = node.frontmatter
+  return (
+    <li key={path}>
+      <Link activeClassName="active" to={withPrefix(path)}>
+        {title}
+      </Link>
+    </li>
+  )
+}
+
 const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
   <Wrapper backgroundColour={token.EBACKGROUND_COLOUR.SURFACE_ALT}>
     <Container>
@@ -53,31 +74,17 @@ const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
           </p>
         </Column>
         <Column>
-          <h3>This Site</h3>
-          <SecondaryNav>
-            {primaryNav
-              ? primaryNav.edges.map(item => (
-                  <li key={item.node.frontmatter.path}>
-                    <Link activeClassName="active" to={withPrefix(item.node.frontmatter.path)}>
-                      {item.node.frontmatter.title}
-                    </Link>
-                  </li>
-                ))
-              : null}
-          </SecondaryNav>
+          {primaryNav ? (
+            <>
+              <h3>This Site</h3>
+              <SecondaryNav>{primaryNav.edges.map(item => NavItem(item))}</SecondaryNav>
+            </>
+          ) : null}
         </Column>
         <Column>
           <h3>Navigate</h3>
           <SecondaryNav>
-            {secondaryNav
-              ? secondaryNav.edges.map(item => (
-                  <li key={item.node.frontmatter.path}>
-                    <Link activeClassName="active" to={withPrefix(item.node.frontmatter.path)}>
-                      {item.node.frontmatter.title}
-                    </Link>
-                  </li>
-                ))
-              : null}
+            {secondaryNav ? secondaryNav.edges.map(item => NavItem(item)) : null}
             <li>
               <Link to="/feed.xml">RSS Feed</Link>
             </li>
