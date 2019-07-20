@@ -6,14 +6,18 @@ import Page from '../Templates/Page'
 export interface IArchiveProps {
   data: {
     posts: {
-      edges: {
+      edges: Array<{
         node: {
           frontmatter: {
             title: string
             date: string
           }
+          fields: {
+            slug: string
+          }
+          excerpt: string
         }
-      }
+      }>
     }
   }
   pageContext: {
@@ -66,7 +70,7 @@ export const archiveQuery = graphql`
   query($skip: Int!, $limit: Int!) {
     posts: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: {frontmatter: {type: { ne: "page" }}}
+      filter: { frontmatter: { type: { ne: "page" } } }
       skip: $skip
       limit: $limit
     ) {
