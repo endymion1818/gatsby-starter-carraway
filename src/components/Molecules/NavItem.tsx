@@ -1,3 +1,4 @@
+import { withPrefix } from 'gatsby'
 import React, { FC } from 'react'
 import Link from '../Atoms/Link'
 
@@ -18,7 +19,7 @@ const NavItem: FC<INavItemProps> = ({ node }) => {
   const { title } = node.frontmatter
   return (
     <li key={path}>
-      <Link activeClassName="active" to={path}>
+      <Link activeClassName="active" to={withPrefix(path)}>
         {title}
       </Link>
     </li>
