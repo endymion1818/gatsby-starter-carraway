@@ -1,10 +1,29 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-
-// Components
 import { graphql, Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import React, { FC } from 'react'
 
-const Categories = ({ pageContext, data }) => {
+export interface ICategoriesProps {
+  pageContext: {
+    category: string
+  }
+  data: {
+    allMarkdownRemark: {
+      edges: Array<{
+        node: {
+          fields: {
+            slug: string
+          }
+          frontmatter: {
+            title: string
+          }
+        }
+      }>
+      totalCount: number
+    }
+  }
+}
+
+const Categories: FC<ICategoriesProps> = ({ pageContext, data }) => {
   const { category } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const categoryHeader = `${totalCount} post${
@@ -25,36 +44,9 @@ const Categories = ({ pageContext, data }) => {
           )
         })}
       </ul>
-      {/*
-              This links to a page that does not yet exist.
-              We'll come back to it!
-            */}
       <Link to="/categories">All categories</Link>
     </div>
   )
-}
-
-Categories.propTypes = {
-  pageContext: PropTypes.shape({
-    category: PropTypes.string.isRequired,
-  }),
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-            }),
-          }),
-        }).isRequired
-      ),
-    }),
-  }),
 }
 
 export default Categories

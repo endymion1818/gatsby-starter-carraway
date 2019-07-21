@@ -14,17 +14,19 @@ const Label = styled.label`
   clip: rect(1px, 1px, 1px, 1px);
 `
 
-const SearchForm: FC<ISearchfFormProps> = ({ query }) => (
-  <form role="search" method="GET">
-    <label htmlFor="search-input">Search sites</label>
-    <input
-      type="search"
-      id="search-input"
-      name="keywords"
-      onChange={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
-      value={query}
-    />
-    <button type="submit">Search</button>
-  </form>
-)
+const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
+  return (
+    <form role="search" method="GET">
+      <label htmlFor="search-input">Search sites</label>
+      <input
+        type="search"
+        id="search-input"
+        name="keywords"
+        onChange={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
+        value={query}
+      />
+      <button type="submit">Search</button>
+    </form>
+  )
+}
 export default SearchForm

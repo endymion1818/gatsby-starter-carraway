@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Link from '../Atoms/Link'
 
 import { withPrefix } from 'gatsby'
+import NavItem from '../../components/Molecules/NavItem'
 import Column from '../Atoms/Column'
 import Container from '../Atoms/Container'
 import Row from '../Atoms/Row'
@@ -53,31 +54,17 @@ const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
           </p>
         </Column>
         <Column>
-          <h3>This Site</h3>
-          <SecondaryNav>
-            {primaryNav
-              ? primaryNav.edges.map(item => (
-                  <li key={item.node.frontmatter.path}>
-                    <Link activeClassName="active" to={withPrefix(item.node.frontmatter.path)}>
-                      {item.node.frontmatter.title}
-                    </Link>
-                  </li>
-                ))
-              : null}
-          </SecondaryNav>
+          {primaryNav ? (
+            <>
+              <h3>This Site</h3>
+              <SecondaryNav>{primaryNav.edges.map(item => NavItem(item))}</SecondaryNav>
+            </>
+          ) : null}
         </Column>
         <Column>
           <h3>Navigate</h3>
           <SecondaryNav>
-            {secondaryNav
-              ? secondaryNav.edges.map(item => (
-                  <li key={item.node.frontmatter.path}>
-                    <Link activeClassName="active" to={withPrefix(item.node.frontmatter.path)}>
-                      {item.node.frontmatter.title}
-                    </Link>
-                  </li>
-                ))
-              : null}
+            {secondaryNav ? secondaryNav.edges.map(item => NavItem(item)) : null}
             <li>
               <Link to="/feed.xml">RSS Feed</Link>
             </li>

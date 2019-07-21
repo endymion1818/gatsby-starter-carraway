@@ -46,17 +46,22 @@ export const renderContent: FC<IRenderContentProps> = ({
   bufferBottom = token.ESIZE.ZERO,
   bufferTop = token.ESIZE.ZERO,
   verticalAlign = token.EFLEXALIGN.START,
-}) => (
-  <Column
-    key={index}
-    textAlign={textAlign}
-    bufferBottom={bufferBottom}
-    bufferTop={bufferTop}
-    verticalAlign={verticalAlign}
-  >
-    {item.innerContent}
-  </Column>
-)
+}) => {
+  if (!item) {
+    return null
+  }
+  return (
+    <Column
+      key={index}
+      textAlign={textAlign}
+      bufferBottom={bufferBottom}
+      bufferTop={bufferTop}
+      verticalAlign={verticalAlign}
+    >
+      {item.innerContent}
+    </Column>
+  )
+}
 
 export interface IEvenColumnsProps extends IEvenColumnsGlobalProps {
   /**

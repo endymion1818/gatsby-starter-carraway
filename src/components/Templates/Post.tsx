@@ -23,6 +23,7 @@ interface IPostTemplateProps {
       html: string
       excerpt: string
       frontmatter: {
+        type: string
         featuredImage: {
           childImageSharp: {
             fluid: {
