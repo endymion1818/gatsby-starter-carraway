@@ -1,6 +1,4 @@
 {
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.test.*"],
   "compilerOptions": {
     "lib": ["es2018", "dom"],
     "module": "esnext",
@@ -20,6 +18,14 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "types": []
   },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+      "node_modules",
+      "**/*.test.tsx"
+  ]
 }
