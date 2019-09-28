@@ -34,7 +34,6 @@ interface IPostTemplateProps {
             }
           }
         }
-        featuredImageAlt: string
         title: string
         date: string
         categories: string[]

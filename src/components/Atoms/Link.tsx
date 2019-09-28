@@ -67,7 +67,7 @@ const Anchor = styled.a<ILinkProps>`
   ${LinkStyles}
 `
 
-const Link: FC<ILinkProps> = ({ children, to, openInNewTab, noUnderline, ...other }) => {
+const Link: FC<ILinkProps> = ({ children, to = '', openInNewTab, noUnderline, ...other }) => {
   // This regex assumes that any internal link (intended for Gatsby to process)
   // will start with exactly one slash, and that anything else is external.
   const internal = /^\/(?!\/)/.test(to)

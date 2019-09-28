@@ -8,14 +8,10 @@ import Layout from '../components/Templates/Layout'
 export interface ICategoriesPageProps {
   data: {
     allMarkdownRemark: {
-      group: [
-        {
-          category: {
-            fieldValue: number
-            totalCount: number
-          }
-        }
-      ]
+      group: Array<{
+        fieldValue: number
+        totalCount: number
+      }>
     }
     site: {
       siteMetadata: {
@@ -40,7 +36,7 @@ const CategoriesPage: FC<ICategoriesPageProps> = ({
       <ul>
         {group.map(({ fieldValue, totalCount }) => (
           <li key={fieldValue}>
-            <Link to={`/categories/${kebabCase(fieldValue)}/`}>
+            <Link to={`/categories/${kebabCase(fieldValue.toString())}/`}>
               {fieldValue} ({totalCount})
             </Link>
           </li>
