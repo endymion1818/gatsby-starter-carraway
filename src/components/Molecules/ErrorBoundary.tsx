@@ -3,7 +3,7 @@ import React from 'react'
 import Link from '../Atoms/Link'
 
 export interface IErrorBoundaryState {
-  hasError: boolean
+  hasError?: boolean
 }
 
 class ErrorBoundary extends React.Component<IErrorBoundaryState> {
