@@ -4,14 +4,13 @@ import SearchForm from '../components/Molecules/SearchForm'
 import Page from '../components/Templates/Page'
 
 export interface ISearchResultsProps {
-  results: [
-    {
+  query: string
+  results: Array<{
       title: string
       url: string
       date: string
       description: string
-    }
-  ]
+  }>
 }
 
 const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
@@ -33,17 +32,22 @@ const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
 )
 
 export interface ISearchProps {
-  location?: {
+  location: {
     search?: string
   }
 }
 
+export interface Window {
+  __LUNR__: any
+}
+
 const Search: FC<ISearchProps> = ({ location }) => {
   const [results, setResults] = useState([])
-  let searchQuery: string
+  let searchQuery: string = ''
+  const {search} = location
 
   if (typeof window !== 'undefined') {
-    searchQuery = new URLSearchParams(location.search).get('keywords') || ''
+    searchQuery = new URLSearchParams(search).get('keywords') || ''
 
     useEffect(() => {
       if (window.__LUNR__) {
@@ -59,7 +63,7 @@ const Search: FC<ISearchProps> = ({ location }) => {
     <Page title="search" description="search results">
       <h1>Search</h1>
       <SearchForm query={searchQuery} />
-      <SearchResults query={searchQuery} results={results} />
+      {searchQuery.length > 0 && <SearchResults query={searchQuery} results={results} />}
     </Page>
   )
 }

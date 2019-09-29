@@ -19,7 +19,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": []
+    "types":[
+      "lunr"
+    ]
   },
   "include": [
     "src/**/*"
