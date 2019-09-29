@@ -31,29 +31,26 @@ const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
   </section>
 )
 
-export interface ISearchProps {
-  location: {
-    search?: string
+export interface ILunrWindowProps extends Window {
+  __LUNR__: {
+    __loaded: Promise<{}>
   }
 }
 
-export interface Window {
-  __LUNR__: any
-}
-
-const Search: FC<ISearchProps> = ({ location }) => {
+const Search: FC<ILunrWindowProps> = ({ location }) => {
   const [results, setResults] = useState([])
-  let searchQuery: string = ''
+  let searchQuery = ''
   const {search} = location
 
   if (typeof window !== 'undefined') {
     searchQuery = new URLSearchParams(search).get('keywords') || ''
 
     useEffect(() => {
-      if (window.__LUNR__) {
-        window.__LUNR__.__loaded.then(lunr => {
-          const refs = lunr.en.index.search(searchQuery)
-          const posts = refs.map(({ ref }) => lunr.en.store[ref])
+      const { __LUNR__ } = window
+      if (__LUNR__) {
+        __LUNR__.__loaded.then((lunr:any) => {
+          const refs:Array<{ref:any}> = (lunr).en.index.search(searchQuery)
+          const posts:any = refs.map(({ ref }) => lunr.en.store[ref])
           setResults(posts)
         })
       }
