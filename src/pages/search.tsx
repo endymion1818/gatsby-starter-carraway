@@ -31,13 +31,9 @@ const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
   </section>
 )
 
-export interface ILunrWindowProps extends Window {
-  __LUNR__: {
-    __loaded: Promise<{}>
-  }
-}
+export interface ISearchProps extends Window {}
 
-const Search: FC<ILunrWindowProps> = ({ location }) => {
+const Search: FC<ISearchProps> = ({ location }) => {
   const [results, setResults] = useState([])
   let searchQuery = ''
   const {search} = location
@@ -46,7 +42,7 @@ const Search: FC<ILunrWindowProps> = ({ location }) => {
     searchQuery = new URLSearchParams(search).get('keywords') || ''
 
     useEffect(() => {
-      const { __LUNR__ } = window
+      const { __LUNR__ }:any = window
       if (__LUNR__) {
         __LUNR__.__loaded.then((lunr:any) => {
           const refs:Array<{ref:any}> = (lunr).en.index.search(searchQuery)
