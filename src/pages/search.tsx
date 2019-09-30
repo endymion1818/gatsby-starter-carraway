@@ -6,10 +6,10 @@ import Page from '../components/Templates/Page'
 export interface ISearchResultsProps {
   query: string
   results: Array<{
-      title: string
-      url: string
-      date: string
-      description: string
+    title: string
+    url: string
+    date: string
+    description: string
   }>
 }
 
@@ -36,20 +36,23 @@ export interface ISearchProps extends Window {}
 const Search: FC<ISearchProps> = ({ location }) => {
   const [results, setResults] = useState([])
   let searchQuery = ''
-  const {search} = location
+  const { search } = location
 
   if (typeof window !== 'undefined') {
     searchQuery = new URLSearchParams(search).get('keywords') || ''
 
     useEffect(() => {
-      const { __LUNR__ }:any = window
+      // LUNR type definitions do not yet include its extension on the window object
+      /* tslint:disable */
+      const { __LUNR__ }: any = window
       if (__LUNR__) {
-        __LUNR__.__loaded.then((lunr:any) => {
-          const refs:Array<{ref:any}> = (lunr).en.index.search(searchQuery)
-          const posts:any = refs.map(({ ref }) => lunr.en.store[ref])
+        __LUNR__.__loaded.then((lunr: any) => {
+          const refs: Array<{ ref: any }> = lunr.en.index.search(searchQuery)
+          const posts: any = refs.map(({ ref }) => lunr.en.store[ref])
           setResults(posts)
         })
       }
+      /* tslint:enable */
     }, [])
   }
   return (
