@@ -18,13 +18,16 @@ const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
   return (
     <form role="search" method="GET">
       <label htmlFor="search-input">Search sites</label>
+      {/* tslint:disable */}
       <input
+        tabindex="0"
         type="search"
         id="search-input"
         name="keywords"
         onChange={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
         value={query}
       />
+      {/* tslint:enable */}
       <button type="submit">Search</button>
     </form>
   )
