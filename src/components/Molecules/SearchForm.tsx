@@ -14,13 +14,18 @@ const Label = styled.label`
   clip: rect(1px, 1px, 1px, 1px);
 `
 
+export interface IInputProps {
+  tabindex: number
+}
+
+const Input = styled.input<IInputProps>``
+
 const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
   return (
     <form role="search" method="GET">
       <label htmlFor="search-input">Search sites</label>
-      {/* tslint:disable */}
-      <input
-        tabindex="0"
+      <Input
+        tabindex={0}
         type="search"
         id="search-input"
         name="keywords"
