@@ -14,9 +14,7 @@ const Label = styled.label`
   clip: rect(1px, 1px, 1px, 1px);
 `
 
-export interface IInputProps {
-  tabindex: number
-}
+export interface IInputProps {}
 
 const Input = styled.input<IInputProps>``
 
@@ -24,10 +22,10 @@ const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
   return (
     <form role="search" method="GET">
       <label htmlFor="search-input">Search sites</label>
-      <Input
-        tabindex={0}
+      <input
+        tabIndex={0}
         type="search"
-        id="search-input"
+        id="search-i"
         name="keywords"
         onChange={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
         value={query}
