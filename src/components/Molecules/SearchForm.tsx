@@ -27,7 +27,7 @@ const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
         type="search"
         id="search-i"
         name="keywords"
-        onChange={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
+        onEnter={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
         value={query}
       />
       {/* tslint:enable */}
