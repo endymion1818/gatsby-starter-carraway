@@ -1,5 +1,5 @@
 import { navigate } from 'gatsby'
-import React, { FC } from 'react'
+import React, { FC, SyntheticEvent } from 'react'
 import styled from 'styled-components'
 
 export interface ISearchfFormProps {
@@ -16,8 +16,6 @@ const Label = styled.label`
 
 export interface IInputProps {}
 
-const Input = styled.input<IInputProps>``
-
 const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
   return (
     <form role="search" method="GET">
@@ -27,10 +25,9 @@ const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
         type="search"
         id="search-i"
         name="keywords"
-        onEnter={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
+        onEnter={(e:SyntheticEvent) => navigate(`/search?keywords=${encodeURIComponent((e.target as HTMLTextAreaElement).value)}`)}
         value={query}
       />
-      {/* tslint:enable */}
       <button type="submit">Search</button>
     </form>
   )
