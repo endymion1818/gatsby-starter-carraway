@@ -1,10 +1,16 @@
 import { navigate } from 'gatsby'
-import React, { FC } from 'react'
+import React, { FC, SyntheticEvent } from 'react'
 import styled from 'styled-components'
 
 export interface ISearchfFormProps {
   query?: string
 }
+
+export interface IInputProps {
+  onEnter?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+}
+
+const Input = styled.input<IInputProps>``
 
 const Label = styled.label`
   position: absolute !important;
@@ -18,11 +24,16 @@ const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
   return (
     <form role="search" method="GET">
       <label htmlFor="search-input">Search sites</label>
-      <input
+      <Input
+        tabIndex={0}
         type="search"
         id="search-input"
         name="keywords"
-        onChange={e => navigate(`/search?keywords=${encodeURIComponent(e.target.value)}`)}
+        onEnter={(e: SyntheticEvent) =>
+          navigate(
+            `/search?keywords=${encodeURIComponent((e.target as HTMLTextAreaElement).value)}`
+          )
+        }
         value={query}
       />
       <button type="submit">Search</button>

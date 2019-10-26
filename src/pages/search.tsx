@@ -4,14 +4,13 @@ import SearchForm from '../components/Molecules/SearchForm'
 import Page from '../components/Templates/Page'
 
 export interface ISearchResultsProps {
-  results: [
-    {
-      title: string
-      url: string
-      date: string
-      description: string
-    }
-  ]
+  query: string
+  results: Array<{
+    title: string
+    url: string
+    date: string
+    description: string
+  }>
 }
 
 const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
@@ -32,34 +31,35 @@ const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
   </section>
 )
 
-export interface ISearchProps {
-  location?: {
-    search?: string
-  }
-}
+export interface ISearchProps extends Window {}
 
 const Search: FC<ISearchProps> = ({ location }) => {
   const [results, setResults] = useState([])
-  let searchQuery: string
+  let searchQuery = ''
+  const { search } = location
 
   if (typeof window !== 'undefined') {
-    searchQuery = new URLSearchParams(location.search).get('keywords') || ''
+    searchQuery = new URLSearchParams(search).get('keywords') || ''
 
     useEffect(() => {
-      if (window.__LUNR__) {
-        window.__LUNR__.__loaded.then(lunr => {
-          const refs = lunr.en.index.search(searchQuery)
-          const posts = refs.map(({ ref }) => lunr.en.store[ref])
+      // LUNR type definitions do not yet include its extension on the window object
+      /* tslint:disable */
+      const { __LUNR__ }: any = window
+      if (__LUNR__) {
+        __LUNR__.__loaded.then((lunr: any) => {
+          const refs: Array<{ ref: any }> = lunr.en.index.search(searchQuery)
+          const posts: any = refs.map(({ ref }) => lunr.en.store[ref])
           setResults(posts)
         })
       }
+      /* tslint:enable */
     }, [])
   }
   return (
     <Page title="search" description="search results">
       <h1>Search</h1>
       <SearchForm query={searchQuery} />
-      <SearchResults query={searchQuery} results={results} />
+      {searchQuery.length > 0 && <SearchResults query={searchQuery} results={results} />}
     </Page>
   )
 }

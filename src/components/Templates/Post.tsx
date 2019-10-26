@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import Img, {FluidObject} from 'gatsby-image'
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import Container from '../Atoms/Container'
@@ -24,17 +24,12 @@ interface IPostTemplateProps {
       excerpt: string
       frontmatter: {
         type: string
+        featuredImageAlt: string
         featuredImage: {
           childImageSharp: {
-            fluid: {
-              aspectRatio: string
-              src: string
-              srcSet: string
-              sizes: string
-            }
+            fluid: FluidObject
           }
         }
-        featuredImageAlt: string
         title: string
         date: string
         categories: string[]

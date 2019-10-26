@@ -1,10 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Link /> Should render a <span> 1`] = `
+.c0 {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
+}
+
+.c0:focus {
+  box-shadow: 0 0 2px black;
+}
+
 <div>
-  <span>
+  <a
+    class="c0"
+    href=""
+  >
     test
-  </span>
+  </a>
 </div>
 `;
 

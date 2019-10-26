@@ -8,7 +8,6 @@ import Layout from './Layout'
 interface IPageTemplateProps {
   title?: string
   description?: string
-  children: JSX.Element
 }
 
 const PageTemplate: FC<IPageTemplateProps> = ({ title, description, children }) => {
@@ -30,5 +29,4 @@ export default PageTemplate
 PageTemplate.defaultProps = {
   title: 'no content',
   description: "there's currently no content in this page",
-  children: <p>empty page</p>,
 }

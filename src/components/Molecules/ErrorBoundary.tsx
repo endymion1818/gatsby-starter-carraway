@@ -1,40 +1,31 @@
-import { Link } from '@reach/router'
 import * as Sentry from '@sentry/browser'
-import React from 'react'
-
-export interface IErrorBoundaryProps {
-  error: object
-  errorInfo: object
-  props: {
-    children: string[]
-  }
-}
+import React, { ErrorInfo } from 'react'
+import Link from '../Atoms/Link'
 
 export interface IErrorBoundaryState {
-  hasError: boolean
+  hasError?: boolean
 }
 
-export default class ErrorBoundary extends React.Component<IErrorBoundaryProps> {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: null }
+class ErrorBoundary extends React.Component<IErrorBoundaryState> {
+  public static getDerivedStateFromError(error: Error) {
+    return { hasError: true }
   }
-
-  public componentDidCatch(error, errorInfo) {
-    this.setState({ hasError: true })
+  public state: IErrorBoundaryState
+  constructor(props: object) {
+    super(props)
+    this.state = { hasError: false }
+  }
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     Sentry.configureScope(scope => {
       Object.keys(errorInfo).forEach(key => {
-        scope.setExtra(key, errorInfo[key])
+        scope.setExtra(key, errorInfo[key as keyof React.ErrorInfo])
       })
     })
     Sentry.captureException(error)
   }
-
   public render() {
     const { hasError } = this.state
-    const { children } = this.props
-    if (hasError === true) {
-      // render fallback UI
+    if (hasError) {
       return (
         <>
           <h1>We're sorry</h1>
@@ -45,9 +36,9 @@ export default class ErrorBoundary extends React.Component<IErrorBoundaryProps> 
           </p>
         </>
       )
-    } else {
-      // when there's not an error, render children untouched
-      return children
     }
+    return this.props.children
   }
 }
+
+export default ErrorBoundary
