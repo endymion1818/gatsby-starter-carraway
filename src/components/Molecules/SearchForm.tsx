@@ -6,6 +6,12 @@ export interface ISearchfFormProps {
   query?: string
 }
 
+export interface IInputProps {
+  onEnter?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+}
+
+const Input = styled.input<IInputProps>``
+
 const Label = styled.label`
   position: absolute !important;
   height: 1px;
@@ -14,18 +20,20 @@ const Label = styled.label`
   clip: rect(1px, 1px, 1px, 1px);
 `
 
-export interface IInputProps {}
-
 const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
   return (
     <form role="search" method="GET">
       <label htmlFor="search-input">Search sites</label>
-      <input
+      <Input
         tabIndex={0}
         type="search"
         id="search-i"
         name="keywords"
-        onEnter={(e:SyntheticEvent) => navigate(`/search?keywords=${encodeURIComponent((e.target as HTMLTextAreaElement).value)}`)}
+        onEnter={(e: SyntheticEvent) =>
+          navigate(
+            `/search?keywords=${encodeURIComponent((e.target as HTMLTextAreaElement).value)}`
+          )
+        }
         value={query}
       />
       <button type="submit">Search</button>

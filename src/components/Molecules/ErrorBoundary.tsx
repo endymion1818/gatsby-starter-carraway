@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/browser'
-import React from 'react'
+import React, { ErrorInfo } from 'react'
 import Link from '../Atoms/Link'
 
 export interface IErrorBoundaryState {
@@ -7,7 +7,7 @@ export interface IErrorBoundaryState {
 }
 
 class ErrorBoundary extends React.Component<IErrorBoundaryState> {
-  public static getDerivedStateFromError(error: object) {
+  public static getDerivedStateFromError(error: Error) {
     return { hasError: true }
   }
   public state: IErrorBoundaryState
@@ -15,7 +15,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryState> {
     super(props)
     this.state = { hasError: false }
   }
-  public componentDidCatch(error: Error, errorInfo: { [key: string]: any }) {
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     Sentry.configureScope(scope => {
       Object.keys(errorInfo).forEach(key => {
         scope.setExtra(key, errorInfo[key])
