@@ -4,24 +4,20 @@ import * as token from '../tokens'
 export interface IColumnProps {
   /**
    * alignment along vertical axis
-   * @default token.EFLEXALIGN.CENTER
    */
-  verticalAlign?: token.EFLEXALIGN
+  verticalAlign?: token.IFlexalign
   /**
    * gap above top of item
-   * @default token.ESIZE.ZERO
    */
-  bufferTop?: token.ESIZE
+  bufferTop?: token.ISize
   /**
    * gap below bottom of item
-   * @default token.ESIZE.ZERO
    */
-  bufferBottom?: token.ESIZE
+  bufferBottom?: token.ISize
   /**
    * text alignment
-   * @default token.ETEXTALIGN.LEFT
    */
-  textAlign?: token.ETEXTALIGN
+  textAlign?: token.ITextalign
 }
 
 const Column = styled.div<IColumnProps>`
@@ -55,10 +51,4 @@ const Column = styled.div<IColumnProps>`
     }
 `
 
-Column.defaultProps = {
-  verticalAlign: token.EFLEXALIGN.CENTER,
-  textAlign: token.ETEXTALIGN.LEFT,
-  bufferTop: token.ESIZE.ZERO,
-  bufferBottom: token.ESIZE.ZERO,
-}
 export default Column
