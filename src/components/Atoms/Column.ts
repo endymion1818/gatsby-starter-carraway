@@ -1,33 +1,33 @@
+import React from 'react'
 import styled from 'styled-components'
-import * as token from '../tokens'
+import { IFlexalign, ISize, ITextalign } from '../tokens'
 
-export interface IColumnProps {
+export interface IColumnProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * alignment along vertical axis
    */
-  verticalAlign?: token.IFlexalign
+  verticalAlign?: IFlexalign
   /**
    * gap above top of item
    */
-  bufferTop?: token.ISize
+  bufferTop?: ISize
   /**
    * gap below bottom of item
    */
-  bufferBottom?: token.ISize
+  bufferBottom?: ISize
   /**
    * text alignment
    */
-  textAlign?: token.ITextalign
+  textAlign?: ITextalign
 }
 
 const Column = styled.div<IColumnProps>`
     display: flex;
     flex-direction: column;
 
-    align-self: ${({ verticalAlign }) => verticalAlign};
-
-    ${({ bufferTop }) => bufferTop && `margin-top: ${bufferTop};`}
-    ${({ bufferBottom }) => bufferBottom && `margin-bottom: ${bufferBottom};`}
+    align-self: ${({ verticalAlign = 'left' }) => verticalAlign};
+    ${({ bufferTop = 'single' }) => bufferTop && `margin-top: ${bufferTop};`}
+    ${({ bufferBottom = 'single' }) => bufferBottom && `margin-bottom: ${bufferBottom};`}
 
     ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
 
