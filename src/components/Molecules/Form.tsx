@@ -180,11 +180,11 @@ const SForm = styled.form`
     ${ButtonStyles}
   }
   .error > * {
-    margin-top: ${token.ESIZE.SINGLE};
+    margin-top: ${token.size.single};
     border: 1px solid red;
     background-color: pink;
-    padding: ${token.ESIZE.SINGLE};
-    border-radius: ${token.EBORDERRADIUS.MEDIUM};
+    padding: ${token.size.single};
+    border-radius: ${token.borderradius.medium};
   }
 `
 

@@ -6,22 +6,22 @@ import * as token from '../tokens'
 export const ButtonStyles = css`
   display: inline-block;
   border: none;
-  padding: ${token.ESIZE.SINGLE} ${token.ESIZE.DOUBLE};
+  padding: ${token.size.single} ${token.size.double};
   margin: 0;
   text-decoration: none;
-  background: ${token.EBACKGROUND_COLOUR.SURFACE};
-  color: ${token.ETEXT_COLOUR.ON_SURFACE};
-  font-size: ${token.ESIZE.SINGLE};
+  background: ${token.colors.neutral.medium};
+  color: ${token.colors.base.primary};
+  font-size: ${token.size.single};
   cursor: pointer;
   text-align: center;
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
-  border-radius: ${token.EBORDERRADIUS.MEDIUM};
+  border-radius: ${token.borderradius.medium};
 
   &:hover,
   &:focus {
-    background: ${token.EBACKGROUND_COLOUR.SURFACE};
+    background: ${token.colors.neutral.medium};
   }
 
   &:focus {
@@ -54,7 +54,7 @@ const LinkStyles = css<ILinkProps>`
   text-decoration-skip-ink: auto;
 
   &:focus {
-    box-shadow: 0 0 2px ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
+    box-shadow: 0 0 2px ${token.colors.base.primary};
   }
   ${({ isButton }) => isButton && ButtonStyles}
 `

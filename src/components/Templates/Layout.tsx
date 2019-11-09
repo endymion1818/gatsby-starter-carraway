@@ -46,15 +46,15 @@ export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, ISe
 const AccessibilityMainContentSkipLink = styled.a`
   position: absolute;
   display: inline-block;
-  transform: translateY(-${token.ESIZE.QUAD});
-  padding: ${token.ESIZE.SINGLEPLUSHALF};
-  background-color: ${token.EBACKGROUND_COLOUR.SURFACE_ALT};
-  color: ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
+  transform: translateY(-${token.size.quad});
+  padding: ${token.size.singleplushalf};
+  background-color: ${token.colors.neutral.medium};
+  color: ${token.colors.base.primary};
 
   &:hover,
   &:focus,
   &:active {
-    transform: translateY(-${token.ESIZE.ZERO});
+    transform: translateY(-${token.size.zero});
   }
 `
 

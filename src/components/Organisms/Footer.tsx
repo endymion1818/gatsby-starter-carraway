@@ -22,27 +22,27 @@ const SecondaryNav = styled.ul`
   li {
     a {
       display: block;
-      padding: ${token.ESIZE.SINGLE};
+      padding: ${token.size.single};
       text-decoration: none;
-      border-radius: ${token.EBORDERRADIUS.MEDIUM};
-      color: ${token.ETEXT_COLOUR.ON_SURFACE};
+      border-radius: ${token.borderradius.medium};
+      color: ${token.colors.base.primary};
 
       &:hover,
       &:active,
       &:focus {
-        background-color: ${token.EBACKGROUND_COLOUR.SURFACE};
-        color: ${token.ETEXT_COLOUR.ON_SURFACE};
+        background-color: ${token.colors.neutral.medium};
+        color: ${token.colors.base.primary};
       }
       &.active {
-        background-color: ${token.EBACKGROUND_COLOUR.SURFACE_ALT};
-        color: ${token.ETEXT_COLOUR.ON_SURFACE};
+        background-color: ${token.colors.neutral.medium};
+        color: ${token.colors.base.primary};
       }
     }
   }
 `
 
 const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
-  <Wrapper backgroundColour={token.EBACKGROUND_COLOUR.SURFACE_ALT}>
+  <Wrapper backgroundColour={token.colors.neutral.medium}>
     <Container>
       <Row size={3}>
         <Column>

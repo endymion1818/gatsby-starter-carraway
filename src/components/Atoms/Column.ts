@@ -3,21 +3,9 @@ import styled from 'styled-components'
 import { IFlexalign, ISize, ITextalign } from '../tokens'
 
 export interface IColumnProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * alignment along vertical axis
-   */
   verticalAlign?: IFlexalign
-  /**
-   * gap above top of item
-   */
   bufferTop?: ISize
-  /**
-   * gap below bottom of item
-   */
   bufferBottom?: ISize
-  /**
-   * text alignment
-   */
   textAlign?: ITextalign
 }
 
