@@ -3,10 +3,6 @@
 exports[`<Wrapper /> Should render 1`] = `
 .c0 {
   width: 100%;
-  background-color: white;
-  color: black;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 <div>

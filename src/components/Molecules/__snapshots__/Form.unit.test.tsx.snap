@@ -172,8 +172,8 @@ exports[`Should render 1`] = `
   margin: 0;
   -webkit-text-decoration: none;
   text-decoration: none;
-  background: white;
-  color: black;
+  background: #DCDBE2;
+  color: #00B9A7;
   font-size: 1rem;
   cursor: pointer;
   text-align: center;
@@ -187,7 +187,7 @@ exports[`Should render 1`] = `
 
 .c0 button:hover,
 .c0 button:focus {
-  background: white;
+  background: #DCDBE2;
 }
 
 .c0 button:focus {
