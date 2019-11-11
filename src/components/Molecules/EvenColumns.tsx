@@ -1,16 +1,19 @@
 import React, { FC } from 'react'
 import Column from '../Atoms/Column'
 import Row from '../Atoms/Row'
-import * as token from '../tokens'
+import { flexalign, size, textalign } from '../tokens'
+import { IFlexalign, ISize, ITextalign } from '../types'
 
 export interface IEvenColumnsGlobalProps {
-  textAlign?: token.ITextalign
-  bufferTop?: token.ISize
-  bufferBottom?: token.ISize
-  verticalAlign?: token.IFlexalign
+  textAlign?: string
+  bufferTop?: string
+  bufferBottom?: string
+  verticalAlign?: string
 }
 
-export interface IRenderContentProps extends IEvenColumnsGlobalProps {
+export interface IRenderContentProps
+  extends IEvenColumnsGlobalProps,
+    React.HTMLAttributes<HTMLDivElement> {
   item: { innerContent: JSX.Element }
   index: number
 }
@@ -18,10 +21,10 @@ export interface IRenderContentProps extends IEvenColumnsGlobalProps {
 export const renderContent: FC<IRenderContentProps> = ({
   item,
   index,
-  textAlign = token.textalign.left,
-  bufferBottom = token.size.zero,
-  bufferTop = token.size.zero,
-  verticalAlign = token.flexalign.start,
+  textAlign = textalign.left,
+  bufferBottom = size.zero,
+  bufferTop = size.zero,
+  verticalAlign = flexalign.start,
 }) => {
   if (!item) {
     return null

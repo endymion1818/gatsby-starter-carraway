@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import * as token from '../tokens'
+import { ISemanticColorSpec, ISize } from '../types'
 
 export interface IWrapperProps {
-  backgroundColour?: token.ISemanticColorSpec
-  textColour?: token.ISemanticColorSpec
-  paddingTop?: token.ISize
-  paddingBottom?: token.ISize
+  backgroundColour?: string
+  textColour?: string
+  paddingTop?: string
+  paddingBottom?: string
 }
 
 const Wrapper = styled.div<IWrapperProps>`

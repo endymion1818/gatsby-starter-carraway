@@ -1,21 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-import { IFlexalign, ISize, ITextalign } from '../tokens'
+import { flexalign, size, textalign } from '../tokens'
+import { IFlexalign, ISize, ITextalign } from '../types'
 
-export interface IColumnProps extends React.HTMLAttributes<HTMLDivElement> {
-  verticalAlign?: IFlexalign
-  bufferTop?: ISize
-  bufferBottom?: ISize
-  textAlign?: ITextalign
+export interface IColumnProps {
+  verticalAlign?: string
+  bufferTop?: string
+  bufferBottom?: string
+  textAlign?: string
 }
 
 const Column = styled.div<IColumnProps>`
     display: flex;
     flex-direction: column;
 
-    align-self: ${({ verticalAlign = 'left' }) => verticalAlign};
-    ${({ bufferTop = 'single' }) => bufferTop && `margin-top: ${bufferTop};`}
-    ${({ bufferBottom = 'single' }) => bufferBottom && `margin-bottom: ${bufferBottom};`}
+    align-self: ${({ verticalAlign = flexalign.start }) => verticalAlign};
+    ${({ bufferTop = size.single }) => bufferTop && `margin-top: ${bufferTop};`}
+    ${({ bufferBottom = size.single }) => bufferBottom && `margin-bottom: ${bufferBottom};`}
 
     ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
 

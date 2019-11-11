@@ -9,7 +9,7 @@ import Container from '../Atoms/Container'
 import Row from '../Atoms/Row'
 import Wrapper from '../Atoms/Wrapper'
 import { IPrimaryNavProps, ISecondaryNavProps } from '../Templates/Layout'
-import * as token from '../tokens'
+import { borderradius, colors, size } from '../tokens'
 
 export interface IFooterProps extends IPrimaryNavProps, ISecondaryNavProps {
   siteTitle: string
@@ -22,27 +22,27 @@ const SecondaryNav = styled.ul`
   li {
     a {
       display: block;
-      padding: ${token.size.single};
+      padding: ${size.single};
       text-decoration: none;
-      border-radius: ${token.borderradius.medium};
-      color: ${token.colors.base.primary};
+      border-radius: ${borderradius.medium};
+      color: ${colors.base.primary};
 
       &:hover,
       &:active,
       &:focus {
-        background-color: ${token.colors.neutral.medium};
-        color: ${token.colors.base.primary};
+        background-color: ${colors.neutral.medium};
+        color: ${colors.base.primary};
       }
       &.active {
-        background-color: ${token.colors.neutral.medium};
-        color: ${token.colors.base.primary};
+        background-color: ${colors.neutral.medium};
+        color: ${colors.base.primary};
       }
     }
   }
 `
 
 const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
-  <Wrapper backgroundColour={token.colors.neutral.medium}>
+  <Wrapper backgroundColour={colors.neutral.medium}>
     <Container>
       <Row size={3}>
         <Column>

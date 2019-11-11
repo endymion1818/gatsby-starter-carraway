@@ -7,7 +7,7 @@ import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
 import SearchForm from '../Molecules/SearchForm'
 import { IPrimaryNavProps } from '../Templates/Layout'
-import * as token from '../tokens'
+import { borderradius, breakpoint, colors, size } from '../tokens'
 
 export interface IHeaderProps extends IPrimaryNavProps {
   siteTitle: string
@@ -22,19 +22,19 @@ const MainNav = styled.ul`
   li {
     a {
       display: block;
-      padding: ${token.size.single};
+      padding: ${size.single};
       text-decoration: none;
-      border-radius: ${token.borderradius.medium};
+      border-radius: ${borderradius.medium};
 
       &:hover,
       &:active,
       &:focus {
-        background-color: ${token.colors.neutral.medium};
-        color: ${token.colors.base.primary};
+        background-color: ${colors.neutral.medium};
+        color: ${colors.base.primary};
       }
       &.active {
-        background-color: ${token.colors.neutral.medium};
-        color: ${token.colors.base.primary};
+        background-color: ${colors.neutral.medium};
+        color: ${colors.base.primary};
       }
     }
   }
@@ -43,7 +43,7 @@ const MainNav = styled.ul`
 const HeaderContainer = styled(Container)`
   overflow-x: hidden;
 
-  @media (min-width: ${token.breakpoint.medium}) {
+  @media (min-width: ${breakpoint.medium}) {
     display: flex;
 
     > a {
@@ -60,7 +60,7 @@ const HeaderContainer = styled(Container)`
 `
 
 const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
-  <Wrapper backgroundColour={token.colors.neutral.medium} textColour={token.colors.base.primary}>
+  <Wrapper backgroundColour={colors.neutral.medium} textColour={colors.base.primary}>
     <HeaderContainer>
       <Link to={withPrefix('/')}>{siteTitle}</Link>
       <MainNav>
