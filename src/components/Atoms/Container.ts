@@ -1,7 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
 import { breakpoint, size } from '../tokens'
-import { IBreakpoint } from '../types'
 
 export interface IContainerProps {
   maxWidth?: string

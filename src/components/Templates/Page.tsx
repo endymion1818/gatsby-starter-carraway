@@ -1,4 +1,3 @@
-import { graphql } from 'gatsby'
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import Container from '../Atoms/Container'

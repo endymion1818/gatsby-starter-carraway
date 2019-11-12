@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import Column from '../Atoms/Column'
 import Row from '../Atoms/Row'
 import { flexalign, size, textalign } from '../tokens'
-import { IFlexalign, ISize, ITextalign } from '../types'
 
 export interface IEvenColumnsGlobalProps {
   textAlign?: string
@@ -11,9 +10,7 @@ export interface IEvenColumnsGlobalProps {
   verticalAlign?: string
 }
 
-export interface IRenderContentProps
-  extends IEvenColumnsGlobalProps,
-    React.HTMLAttributes<HTMLDivElement> {
+export interface IRenderContentProps extends IEvenColumnsGlobalProps {
   item: { innerContent: JSX.Element }
   index: number
 }
