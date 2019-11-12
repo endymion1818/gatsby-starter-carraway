@@ -1,11 +1,11 @@
 import { cleanup, render } from '@testing-library/react'
 import React from 'react'
-import Container from './Container'
+import Column from './Column'
 
-describe('<Container />', () => {
+describe('<Column />', () => {
   beforeEach(cleanup)
   it('Should render', () => {
-    const { container } = render(<Container />)
+    const { container } = render(<Column />)
     expect(container).toMatchSnapshot()
   })
 })

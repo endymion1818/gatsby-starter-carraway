@@ -1,24 +1,16 @@
 import styled from 'styled-components'
-import * as token from '../tokens'
+import { breakpoint, size } from '../tokens'
 
 export interface IContainerProps {
-  /**
-   * maximum width of container
-   * @default token.EBREAKPOINT.LARGE
-   */
-  maxWidth?: token.EBREAKPOINT
+  maxWidth?: string
 }
 
 const Container = styled.div<IContainerProps>`
-  max-width: ${({ maxWidth }) => maxWidth};
+  max-width: ${({ maxWidth = breakpoint.small }) => maxWidth};
   margin-left: auto;
   margin-right: auto;
-  padding-left: ${token.ESIZE.SINGLE};
-  padding-right: ${token.ESIZE.SINGLE};
+  padding-left: ${size.single};
+  padding-right: ${size.single};
 `
 
 export default Container
-
-Container.defaultProps = {
-  maxWidth: token.EBREAKPOINT.LARGE,
-}

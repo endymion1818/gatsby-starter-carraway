@@ -2,41 +2,7 @@ import GatsbyLink from 'gatsby-link'
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import * as token from '../tokens'
-
-export const ButtonStyles = css`
-  display: inline-block;
-  border: none;
-  padding: ${token.ESIZE.SINGLE} ${token.ESIZE.DOUBLE};
-  margin: 0;
-  text-decoration: none;
-  background: ${token.EBACKGROUND_COLOUR.SURFACE};
-  color: ${token.ETEXT_COLOUR.ON_SURFACE};
-  font-size: ${token.ESIZE.SINGLE};
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: ${token.EBORDERRADIUS.MEDIUM};
-
-  &:hover,
-  &:focus {
-    background: ${token.EBACKGROUND_COLOUR.SURFACE};
-  }
-
-  &:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
-  }
-
-  &:active {
-    transform: scale(0.99);
-  }
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-`
+import ButtonStyles from './ButtonStyles'
 
 export interface ILinkProps {
   openInNewTab?: boolean
@@ -54,7 +20,7 @@ const LinkStyles = css<ILinkProps>`
   text-decoration-skip-ink: auto;
 
   &:focus {
-    box-shadow: 0 0 2px ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
+    box-shadow: 0 0 2px ${token.colors.base.primary};
   }
   ${({ isButton }) => isButton && ButtonStyles}
 `

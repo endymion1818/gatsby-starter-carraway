@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { ButtonStyles } from '../Atoms/Link'
-import * as token from '../tokens'
+import ButtonStyles from '../Atoms/ButtonStyles'
+import { borderradius, size } from '../tokens'
 
 interface IErrors {
   email: string[]
@@ -180,11 +180,11 @@ const SForm = styled.form`
     ${ButtonStyles}
   }
   .error > * {
-    margin-top: ${token.ESIZE.SINGLE};
+    margin-top: ${size.single};
     border: 1px solid red;
     background-color: pink;
-    padding: ${token.ESIZE.SINGLE};
-    border-radius: ${token.EBORDERRADIUS.MEDIUM};
+    padding: ${size.single};
+    border-radius: ${borderradius.medium};
   }
 `
 

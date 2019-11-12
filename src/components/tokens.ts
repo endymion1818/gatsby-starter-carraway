@@ -1,42 +1,69 @@
-export enum ETEXT_COLOUR {
-  ON_SURFACE = 'black',
-  ON_SURFACE_ALT = 'black',
+import {
+  IBorderradius,
+  IBreakpoint,
+  IColorSpec,
+  IFlexalign,
+  IGridalign,
+  ISize,
+  ITextalign,
+} from './types'
+
+export const colors: IColorSpec = {
+  base: {
+    primary: '#00B9A7',
+    secondary: '#4A3EDE',
+  },
+  neutral: {
+    white: '#FFFFFF',
+    nearWhite: '#F8F8F8',
+    light: '#EAEAEE',
+    medium: '#DCDBE2',
+    nearDark: '#63637E',
+    dark: '#0D0A38',
+  },
+  semantic: {
+    success: '#1EC06A',
+    alert: '#FFB428',
+    error: '#EE0505',
+  },
 }
-export enum EBACKGROUND_COLOUR {
-  SURFACE = 'white',
-  SURFACE_ALT = 'white',
+
+export const breakpoint: IBreakpoint = {
+  small: '36em',
+  medium: '64em',
+  large: '75em',
 }
-export enum EBREAKPOINT {
-  SMALL = '36em',
-  MEDIUM = '64em',
-  LARGE = '75em',
+
+export const size: ISize = {
+  zero: '0rem',
+  single: '1rem',
+  singleplushalf: '1.5rem',
+  double: '2rem',
+  triple: '3rem',
+  quad: '4rem',
+  sextuple: '6rem',
 }
-export enum ESIZE {
-  ZERO = '0rem',
-  SINGLE = '1rem',
-  SINGLEPLUSHALF = '1.5rem',
-  DOUBLE = '2rem',
-  TRIPLE = '3rem',
-  QUAD = '4rem',
-  SEXTUPLE = '6rem',
+
+export const textalign: ITextalign = {
+  left: 'left',
+  center: 'center',
+  right: 'right',
 }
-export enum ETEXTALIGN {
-  LEFT = 'left',
-  CENTER = 'center',
-  RIGHT = 'right',
+
+export const gridalign: IGridalign = {
+  start: 'grid-start',
+  center: 'center',
+  end: 'grid-end',
 }
-export enum EGRIDALIGN {
-  START = 'grid-start',
-  CENTER = 'center',
-  END = 'grid-end',
+
+export const flexalign: IFlexalign = {
+  start: 'flex-start',
+  center: 'center',
+  end: 'flex-end',
 }
-export enum EFLEXALIGN {
-  START = 'flex-start',
-  CENTER = 'center',
-  END = 'flex-end',
-}
-export enum EBORDERRADIUS {
-  SMALL = '0.25rem',
-  MEDIUM = '0.5rem',
-  LARGE = '0.75rem',
+
+export const borderradius: IBorderradius = {
+  small: '0.25rem',
+  medium: '0.5rem',
+  large: '0.75rem',
 }

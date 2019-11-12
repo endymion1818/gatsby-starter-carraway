@@ -1,5 +1,4 @@
 import { graphql, Link } from 'gatsby'
-import PropTypes from 'prop-types'
 import React, { FC } from 'react'
 
 export interface ICategoriesProps {

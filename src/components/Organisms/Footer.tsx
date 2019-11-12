@@ -9,7 +9,7 @@ import Container from '../Atoms/Container'
 import Row from '../Atoms/Row'
 import Wrapper from '../Atoms/Wrapper'
 import { IPrimaryNavProps, ISecondaryNavProps } from '../Templates/Layout'
-import * as token from '../tokens'
+import { borderradius, colors, size } from '../tokens'
 
 export interface IFooterProps extends IPrimaryNavProps, ISecondaryNavProps {
   siteTitle: string
@@ -22,27 +22,27 @@ const SecondaryNav = styled.ul`
   li {
     a {
       display: block;
-      padding: ${token.ESIZE.SINGLE};
+      padding: ${size.single};
       text-decoration: none;
-      border-radius: ${token.EBORDERRADIUS.MEDIUM};
-      color: ${token.ETEXT_COLOUR.ON_SURFACE};
+      border-radius: ${borderradius.medium};
+      color: ${colors.base.primary};
 
       &:hover,
       &:active,
       &:focus {
-        background-color: ${token.EBACKGROUND_COLOUR.SURFACE};
-        color: ${token.ETEXT_COLOUR.ON_SURFACE};
+        background-color: ${colors.neutral.medium};
+        color: ${colors.base.primary};
       }
       &.active {
-        background-color: ${token.EBACKGROUND_COLOUR.SURFACE_ALT};
-        color: ${token.ETEXT_COLOUR.ON_SURFACE};
+        background-color: ${colors.neutral.medium};
+        color: ${colors.base.primary};
       }
     }
   }
 `
 
 const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
-  <Wrapper backgroundColour={token.EBACKGROUND_COLOUR.SURFACE_ALT}>
+  <Wrapper backgroundColour={colors.neutral.medium}>
     <Container>
       <Row size={3}>
         <Column>

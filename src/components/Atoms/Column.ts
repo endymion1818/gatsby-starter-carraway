@@ -1,37 +1,21 @@
+import React from 'react'
 import styled from 'styled-components'
-import * as token from '../tokens'
+import { flexalign, size, textalign } from '../tokens'
 
 export interface IColumnProps {
-  /**
-   * alignment along vertical axis
-   * @default token.EFLEXALIGN.CENTER
-   */
-  verticalAlign?: token.EFLEXALIGN
-  /**
-   * gap above top of item
-   * @default token.ESIZE.ZERO
-   */
-  bufferTop?: token.ESIZE
-  /**
-   * gap below bottom of item
-   * @default token.ESIZE.ZERO
-   */
-  bufferBottom?: token.ESIZE
-  /**
-   * text alignment
-   * @default token.ETEXTALIGN.LEFT
-   */
-  textAlign?: token.ETEXTALIGN
+  verticalAlign?: string
+  bufferTop?: string
+  bufferBottom?: string
+  textAlign?: string
 }
 
 const Column = styled.div<IColumnProps>`
     display: flex;
     flex-direction: column;
 
-    align-self: ${({ verticalAlign }) => verticalAlign};
-
-    ${({ bufferTop }) => bufferTop && `margin-top: ${bufferTop};`}
-    ${({ bufferBottom }) => bufferBottom && `margin-bottom: ${bufferBottom};`}
+    align-self: ${({ verticalAlign = flexalign.start }) => verticalAlign};
+    ${({ bufferTop = size.single }) => bufferTop && `margin-top: ${bufferTop};`}
+    ${({ bufferBottom = size.single }) => bufferBottom && `margin-bottom: ${bufferBottom};`}
 
     ${({ textAlign }) => textAlign && `text-align: ${textAlign};`}
 
@@ -55,10 +39,4 @@ const Column = styled.div<IColumnProps>`
     }
 `
 
-Column.defaultProps = {
-  verticalAlign: token.EFLEXALIGN.CENTER,
-  textAlign: token.ETEXTALIGN.LEFT,
-  bufferTop: token.ESIZE.ZERO,
-  bufferBottom: token.ESIZE.ZERO,
-}
 export default Column

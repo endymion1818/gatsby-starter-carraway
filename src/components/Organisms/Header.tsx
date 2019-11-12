@@ -7,7 +7,7 @@ import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
 import SearchForm from '../Molecules/SearchForm'
 import { IPrimaryNavProps } from '../Templates/Layout'
-import * as token from '../tokens'
+import { borderradius, breakpoint, colors, size } from '../tokens'
 
 export interface IHeaderProps extends IPrimaryNavProps {
   siteTitle: string
@@ -22,19 +22,19 @@ const MainNav = styled.ul`
   li {
     a {
       display: block;
-      padding: ${token.ESIZE.SINGLE};
+      padding: ${size.single};
       text-decoration: none;
-      border-radius: ${token.EBORDERRADIUS.MEDIUM};
+      border-radius: ${borderradius.medium};
 
       &:hover,
       &:active,
       &:focus {
-        background-color: ${token.EBACKGROUND_COLOUR.SURFACE};
-        color: ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
+        background-color: ${colors.neutral.medium};
+        color: ${colors.base.primary};
       }
       &.active {
-        background-color: ${token.EBACKGROUND_COLOUR.SURFACE};
-        color: ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
+        background-color: ${colors.neutral.medium};
+        color: ${colors.base.primary};
       }
     }
   }
@@ -43,7 +43,7 @@ const MainNav = styled.ul`
 const HeaderContainer = styled(Container)`
   overflow-x: hidden;
 
-  @media (min-width: ${token.EBREAKPOINT.MEDIUM}) {
+  @media (min-width: ${breakpoint.medium}) {
     display: flex;
 
     > a {
@@ -60,10 +60,7 @@ const HeaderContainer = styled(Container)`
 `
 
 const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
-  <Wrapper
-    backgroundColour={token.EBACKGROUND_COLOUR.SURFACE}
-    textColour={token.ETEXT_COLOUR.ON_SURFACE}
-  >
+  <Wrapper backgroundColour={colors.neutral.medium} textColour={colors.base.primary}>
     <HeaderContainer>
       <Link to={withPrefix('/')}>{siteTitle}</Link>
       <MainNav>

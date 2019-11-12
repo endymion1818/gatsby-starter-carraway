@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import ErrorBoundary from '../Molecules/ErrorBoundary'
 import Footer from '../Organisms/Footer'
 import Header from '../Organisms/Header'
-import * as token from '../tokens'
+import { colors, size } from '../tokens'
 
 export interface INavEdges {
   edges: [
@@ -46,15 +46,15 @@ export interface IStaticQueryProps extends ISiteMetaProps, IPrimaryNavProps, ISe
 const AccessibilityMainContentSkipLink = styled.a`
   position: absolute;
   display: inline-block;
-  transform: translateY(-${token.ESIZE.QUAD});
-  padding: ${token.ESIZE.SINGLEPLUSHALF};
-  background-color: ${token.EBACKGROUND_COLOUR.SURFACE_ALT};
-  color: ${token.ETEXT_COLOUR.ON_SURFACE_ALT};
+  transform: translateY(-${size.quad});
+  padding: ${size.singleplushalf};
+  background-color: ${colors.neutral.medium};
+  color: ${colors.base.primary};
 
   &:hover,
   &:focus,
   &:active {
-    transform: translateY(-${token.ESIZE.ZERO});
+    transform: translateY(-${size.zero});
   }
 `
 

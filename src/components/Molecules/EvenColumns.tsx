@@ -1,51 +1,27 @@
 import React, { FC } from 'react'
 import Column from '../Atoms/Column'
 import Row from '../Atoms/Row'
-import * as token from '../tokens'
+import { flexalign, size, textalign } from '../tokens'
 
 export interface IEvenColumnsGlobalProps {
-  /**
-   * text alignment
-   * @default token.ETEXTALIGN.LEFT
-   */
-  textAlign?: token.ETEXTALIGN
-  /**
-   * buffer top
-   * @default token.ESIZE
-   */
-  bufferTop?: token.ESIZE
-  /**
-   * buffer bottom
-   * @default token.ESIZE
-   */
-  bufferBottom?: token.ESIZE
-  /**
-   * vertical align
-   * @default token.EFLEXALIGN.TOP
-   */
-  verticalAlign?: token.EFLEXALIGN
+  textAlign?: string
+  bufferTop?: string
+  bufferBottom?: string
+  verticalAlign?: string
 }
 
 export interface IRenderContentProps extends IEvenColumnsGlobalProps {
-  /**
-   * an array of objects with JSX elements
-   * @default <>&nbsp;</>
-   */
   item: { innerContent: JSX.Element }
-  /**
-   * index
-   * @default 0
-   */
   index: number
 }
 
 export const renderContent: FC<IRenderContentProps> = ({
   item,
   index,
-  textAlign = token.ETEXTALIGN.LEFT,
-  bufferBottom = token.ESIZE.ZERO,
-  bufferTop = token.ESIZE.ZERO,
-  verticalAlign = token.EFLEXALIGN.START,
+  textAlign = textalign.left,
+  bufferBottom = size.zero,
+  bufferTop = size.zero,
+  verticalAlign = flexalign.start,
 }) => {
   if (!item) {
     return null
@@ -64,15 +40,7 @@ export const renderContent: FC<IRenderContentProps> = ({
 }
 
 export interface IEvenColumnsProps extends IEvenColumnsGlobalProps {
-  /**
-   * an array of objects with JSX elements
-   * @default <>&nbsp;</>
-   */
   content: Array<{ innerContent: JSX.Element }>
-  /**
-   * index
-   * @default 0
-   */
   index?: number
 }
 
@@ -96,18 +64,5 @@ const EvenColumns: FC<IEvenColumnsProps> = ({
     )}
   </Row>
 )
-
-EvenColumns.defaultProps = {
-  content: [
-    {
-      innerContent: <div>test</div>,
-    },
-  ],
-  index: 0,
-  textAlign: token.ETEXTALIGN.LEFT,
-  bufferTop: token.ESIZE.ZERO,
-  bufferBottom: token.ESIZE.ZERO,
-  verticalAlign: token.EFLEXALIGN.START,
-}
 
 export default EvenColumns
