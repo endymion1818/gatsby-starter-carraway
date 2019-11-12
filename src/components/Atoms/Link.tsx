@@ -2,6 +2,7 @@ import GatsbyLink from 'gatsby-link'
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import * as token from '../tokens'
+import ButtonStyles from './ButtonStyles'
 
 export interface ILinkProps {
   openInNewTab?: boolean
