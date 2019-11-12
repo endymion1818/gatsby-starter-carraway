@@ -165,47 +165,6 @@ exports[`Should render 1`] = `
   display: none;
 }
 
-.c0 button {
-  display: inline-block;
-  border: none;
-  padding: 1rem 2rem;
-  margin: 0;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  background: #DCDBE2;
-  color: #00B9A7;
-  font-size: 1rem;
-  cursor: pointer;
-  text-align: center;
-  -webkit-transition: background 250ms ease-in-out,-webkit-transform 150ms ease;
-  -webkit-transition: background 250ms ease-in-out,transform 150ms ease;
-  transition: background 250ms ease-in-out,transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 0.5rem;
-}
-
-.c0 button:hover,
-.c0 button:focus {
-  background: #DCDBE2;
-}
-
-.c0 button:focus {
-  outline: 1px solid #fff;
-  outline-offset: -4px;
-}
-
-.c0 button:active {
-  -webkit-transform: scale(0.99);
-  -ms-transform: scale(0.99);
-  transform: scale(0.99);
-}
-
-.c0 button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .c0 .error > * {
   margin-top: 1rem;
   border: 1px solid red;

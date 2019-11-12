@@ -3,41 +3,6 @@ import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import * as token from '../tokens'
 
-export const ButtonStyles = css`
-  display: inline-block;
-  border: none;
-  padding: ${token.size.single} ${token.size.double};
-  margin: 0;
-  text-decoration: none;
-  background: ${token.colors.neutral.medium};
-  color: ${token.colors.base.primary};
-  font-size: ${token.size.single};
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: ${token.borderradius.medium};
-
-  &:hover,
-  &:focus {
-    background: ${token.colors.neutral.medium};
-  }
-
-  &:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
-  }
-
-  &:active {
-    transform: scale(0.99);
-  }
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-`
-
 export interface ILinkProps {
   openInNewTab?: boolean
   to?: string

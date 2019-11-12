@@ -1,8 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Wrapper /> Should render 1`] = `
+exports[`<Container /> Should render 1`] = `
 .c0 {
-  width: 100%;
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 <div>
