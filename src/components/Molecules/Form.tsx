@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { ButtonStyles } from '../Atoms/Link'
+import ButtonStyles from '../Atoms/ButtonStyles'
 import { borderradius, size } from '../tokens'
 
 interface IErrors {
