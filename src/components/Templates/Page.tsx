@@ -10,7 +10,7 @@ interface IPageTemplateProps {
   description?: string
 }
 
-const PageTemplate: FC<IPageTemplateProps> = ({ title, description, children }) => {
+const PageTemplate: FC<IPageTemplateProps> = ({ title = '', description = '', children }) => {
   return (
     <Layout>
       <Helmet>
@@ -25,8 +25,3 @@ const PageTemplate: FC<IPageTemplateProps> = ({ title, description, children }) 
 }
 
 export default PageTemplate
-
-PageTemplate.defaultProps = {
-  title: 'no content',
-  description: "there's currently no content in this page",
-}
