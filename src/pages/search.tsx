@@ -15,7 +15,7 @@ export interface ISearchResultsProps {
 
 const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
   <section aria-label="Search results for all posts">
-    {!!results.length && (
+    {!!results.length ? (
       <ol>
         {results.map(({ title, url, date, description }) => (
           <li key={title}>
@@ -27,6 +27,10 @@ const SearchResults: FC<ISearchResultsProps> = ({ results }) => (
           </li>
         ))}
       </ol>
+    ) : (
+      <p>
+        <strong>No results.</strong> Sorry!
+      </p>
     )}
   </section>
 )
