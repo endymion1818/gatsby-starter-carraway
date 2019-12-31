@@ -12,6 +12,11 @@ export interface IInputProps {
 
 const Input = styled.input<IInputProps>``
 
+const Form = styled.form`
+  display: flex;
+  align-items: center;
+`
+
 const Label = styled.label`
   position: absolute !important;
   height: 1px;
@@ -22,7 +27,7 @@ const Label = styled.label`
 
 const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
   return (
-    <form role="search" method="GET">
+    <Form role="search" method="GET" action="/search">
       <Label htmlFor="search-input">Search sites</Label>
       <Input
         tabIndex={0}
@@ -37,7 +42,7 @@ const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
         value={query}
       />
       <button type="submit">Search</button>
-    </form>
+    </Form>
   )
 }
 export default SearchForm
