@@ -1,8 +1,9 @@
 import { graphql } from 'gatsby'
-import Img, {FluidObject} from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import Container from '../Atoms/Container'
+import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
 import EvenColumns from '../Molecules/EvenColumns'
 import Layout from './Layout'
@@ -33,6 +34,7 @@ interface IPostTemplateProps {
         title: string
         date: string
         categories: string[]
+        tags: string[]
       }
     }
     nextPost?: {
@@ -61,7 +63,7 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
   const { date } = data.markdownRemark.frontmatter
   const { featuredImage } = data.markdownRemark.frontmatter
   const { featuredImageAlt } = data.markdownRemark.frontmatter
-
+  const { categories, tags } = data.markdownRemark.frontmatter
   return (
     <Layout>
       <Helmet>
@@ -86,7 +88,30 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
                       {type !== 'page' && (
                         <footer>
                           <time>Published on: {date}</time>
-                          <div>Categories: </div>
+                          {categories ? (
+                            <>
+                              <h4>Categories:</h4>
+                              <ul>
+                                {categories.map(category => (
+                                  <li key={category.replace(/ /g, '_')}>
+                                    <Link href={`/categories/${category}`}>{category}</Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          ) : null}
+                          {tags ? (
+                            <>
+                              <h4>Tags:</h4>
+                              <ul>
+                                {tags.map(tag => (
+                                  <li key={tag.replace(/ /g, '_')}>
+                                    <Link href={`/tags/${tag}`}>{tag}</Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          ) : null}
                         </footer>
                       )}
                     </article>
@@ -114,7 +139,8 @@ export const query = graphql`
       html
       frontmatter {
         title
-        type
+        categories
+        tags
         date(formatString: "DD MMMM, YYYY")
         featuredImage {
           publicURL

@@ -23,7 +23,7 @@ const Label = styled.label`
 const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
   return (
     <form role="search" method="GET">
-      <label htmlFor="search-input">Search sites</label>
+      <Label htmlFor="search-input">Search sites</Label>
       <Input
         tabIndex={0}
         type="search"
