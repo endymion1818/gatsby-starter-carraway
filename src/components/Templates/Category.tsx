@@ -1,5 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import React, { FC } from 'react'
+import Page from '../Templates/Page'
 
 export interface ICategoriesProps {
   pageContext: {
@@ -30,7 +31,7 @@ const Categories: FC<ICategoriesProps> = ({ pageContext, data }) => {
   } categorised with "${category}"`
 
   return (
-    <div>
+    <Page>
       <h1>{categoryHeader}</h1>
       <ul>
         {edges.map(({ node }) => {
@@ -44,7 +45,7 @@ const Categories: FC<ICategoriesProps> = ({ pageContext, data }) => {
         })}
       </ul>
       <Link to="/categories">All categories</Link>
-    </div>
+    </Page>
   )
 }
 
