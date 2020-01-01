@@ -9,6 +9,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   const blogPostTemplate = path.resolve(`./src/components/Templates/Post.tsx`)
   const categoryTemplate = path.resolve(`./src/components/Templates/Category.tsx`)
+  const tagTemplate = path.resolve(`./src/components/Templates/Tag.tsx`)
   const archiveTemplate = path.resolve(`./src/components/Templates/Archive.tsx`)
 
   return graphql(
@@ -23,6 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
               frontmatter {
                 title
                 categories
+                tags
               }
             }
           }
@@ -55,7 +57,7 @@ exports.createPages = ({ graphql, actions }) => {
       createPage,
       items: posts,
       itemsPerPage: 10,
-      pathPrefix: '/post',
+      pathPrefix: '/',
       component: archiveTemplate,
     })
     // taxonomy pages
@@ -73,6 +75,24 @@ exports.createPages = ({ graphql, actions }) => {
         component: categoryTemplate,
         context: {
           category,
+        },
+      })
+    })
+
+    let tags = []
+    _.each(posts, edge => {
+      if (_.get(edge, `node.frontmatter.tags`)) {
+        tags = tags.concat(edge.node.frontmatter.tags)
+      }
+    })
+    tags = _.uniq(tags)
+
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${_.kebabCase(tag)}/`,
+        component: tagTemplate,
+        context: {
+          tag,
         },
       })
     })
