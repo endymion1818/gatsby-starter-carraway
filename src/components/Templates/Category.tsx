@@ -1,5 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import React, { FC } from 'react'
+import Page from '../Templates/Page'
 
 export interface ICategoriesProps {
   pageContext: {
@@ -30,7 +31,7 @@ const Categories: FC<ICategoriesProps> = ({ pageContext, data }) => {
   } categorised with "${category}"`
 
   return (
-    <div>
+    <Page pageTitle={categoryHeader}>
       <h1>{categoryHeader}</h1>
       <ul>
         {edges.map(({ node }) => {
@@ -44,7 +45,7 @@ const Categories: FC<ICategoriesProps> = ({ pageContext, data }) => {
         })}
       </ul>
       <Link to="/categories">All categories</Link>
-    </div>
+    </Page>
   )
 }
 
@@ -53,7 +54,6 @@ export default Categories
 export const pageQuery = graphql`
   query($category: String) {
     allMarkdownRemark(
-      limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { categories: { in: [$category] } } }
     ) {
@@ -65,6 +65,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            categories
           }
         }
       }

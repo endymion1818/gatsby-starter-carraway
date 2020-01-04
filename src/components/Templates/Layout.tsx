@@ -81,8 +81,13 @@ const GlobalStyle = createGlobalStyle`
     display:none;
   }
 `
+export interface ILayoutProps {
+  pageTitle?: string
+  pageDescription?: string
+  isIndexable?: boolean
+}
 
-const Layout: React.SFC = ({ children }) => (
+const Layout: React.SFC<ILayoutProps> = ({ children, pageTitle, pageDescription, isIndexable }) => (
   <StaticQuery
     query={graphql`
       query LayoutQuery {
@@ -129,9 +134,12 @@ const Layout: React.SFC = ({ children }) => (
       <ErrorBoundary>
         <GlobalStyle />
         <Helmet>
-          <html lang="en" />
-          <title>{data.site.siteMetadata.title}</title>
-          <meta name="description" content="FreeBabylon5" />
+          <html lang="en-GB" />
+          <title>{`${pageTitle} - ${data.site.siteMetadata.title}`}</title>
+          <meta
+            name="description"
+            content={`${pageDescription} - ${data.site.siteMetadata.description}`}
+          />
           <script type="application/ld+json">
             {`
               "@context": "http://schema.org",

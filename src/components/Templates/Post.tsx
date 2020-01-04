@@ -1,10 +1,10 @@
 import { graphql } from 'gatsby'
-import Img, {FluidObject} from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import Container from '../Atoms/Container'
+import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
-import EvenColumns from '../Molecules/EvenColumns'
 import Layout from './Layout'
 
 interface IPostTemplateProps {
@@ -24,6 +24,7 @@ interface IPostTemplateProps {
       excerpt: string
       frontmatter: {
         type: string
+        description: string
         featuredImageAlt: string
         featuredImage: {
           childImageSharp: {
@@ -33,6 +34,7 @@ interface IPostTemplateProps {
         title: string
         date: string
         categories: string[]
+        tags: string[]
       }
     }
     nextPost?: {
@@ -57,44 +59,56 @@ interface IPostTemplateProps {
 const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
   const { html } = data.markdownRemark
   const { title } = data.markdownRemark.frontmatter
+  const { description } = data.markdownRemark.frontmatter
   const { type } = data.markdownRemark.frontmatter
   const { date } = data.markdownRemark.frontmatter
   const { featuredImage } = data.markdownRemark.frontmatter
   const { featuredImageAlt } = data.markdownRemark.frontmatter
-
+  const { categories, tags } = data.markdownRemark.frontmatter
   return (
-    <Layout>
-      <Helmet>
-        <title>{data.site.siteMetadata.title}</title>
-        <meta name="description" content="#FreeBabylon5" />
-      </Helmet>
+    <Layout pageTitle={title} pageDescription={description}>
       <Wrapper>
         <Container>
-          <EvenColumns
-            content={[
-              {
-                innerContent: (
+          <article className="h-entry">
+            <header>
+              <h1>{title}</h1>
+              {featuredImage && (
+                <Img fluid={featuredImage.childImageSharp.fluid} alt={featuredImageAlt} />
+              )}
+            </header>
+            <section dangerouslySetInnerHTML={{ __html: html }} />
+            {type !== 'page' && (
+              <footer>
+                <time>Published on: {date}</time>
+                {categories ? (
                   <>
-                    <article className="h-entry">
-                      <header>
-                        <h1>{title}</h1>
-                        {featuredImage && (
-                          <Img fluid={featuredImage.childImageSharp.fluid} alt={featuredImageAlt} />
-                        )}
-                      </header>
-                      <section dangerouslySetInnerHTML={{ __html: html }} />
-                      {type !== 'page' && (
-                        <footer>
-                          <time>Published on: {date}</time>
-                          <div>Categories: </div>
-                        </footer>
-                      )}
-                    </article>
+                    <h4>Categories:</h4>
+                    <ul>
+                      {categories.map(category => (
+                        <li key={category}>
+                          <Link href={`/categories/${category.replace(/ /g, '-')}`}>
+                            {category}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </>
-                ),
-              },
-            ]}
-          />
+                ) : null}
+                {tags ? (
+                  <>
+                    <h4>Tags:</h4>
+                    <ul>
+                      {tags.map(tag => (
+                        <li key={tag}>
+                          <Link href={`/tags/${tag.replace(/ /g, '-')}`}>{tag}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : null}
+              </footer>
+            )}
+          </article>
         </Container>
       </Wrapper>
     </Layout>
@@ -114,7 +128,10 @@ export const query = graphql`
       html
       frontmatter {
         title
+        categories
+        tags
         type
+        description
         date(formatString: "DD MMMM, YYYY")
         featuredImage {
           publicURL

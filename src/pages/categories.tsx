@@ -30,19 +30,16 @@ const CategoriesPage: FC<ICategoriesPageProps> = ({
   },
 }) => (
   <Layout>
-    <Helmet title={title} />
-    <>
-      <h1>Categories</h1>
-      <ul>
-        {group.map(({ fieldValue, totalCount }) => (
-          <li key={fieldValue}>
-            <Link to={`/categories/${kebabCase(fieldValue.toString())}/`}>
-              {fieldValue} ({totalCount})
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
+    <h1>Categories</h1>
+    <ul>
+      {group.map(({ fieldValue, totalCount }) => (
+        <li key={fieldValue}>
+          <Link to={`/categories/${kebabCase(fieldValue.toString())}/`}>
+            {fieldValue} ({totalCount})
+          </Link>
+        </li>
+      ))}
+    </ul>
   </Layout>
 )
 
