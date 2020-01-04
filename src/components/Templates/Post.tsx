@@ -64,7 +64,7 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
   const { date } = data.markdownRemark.frontmatter
   const { featuredImage } = data.markdownRemark.frontmatter
   const { featuredImageAlt } = data.markdownRemark.frontmatter
-  const { categories, tags } = data.markdownRemark.frontmatter
+  const { categories } = data.markdownRemark.frontmatter
   return (
     <Layout pageTitle={title} pageDescription={description}>
       <Wrapper>
@@ -94,18 +94,6 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
                     </ul>
                   </>
                 ) : null}
-                {tags ? (
-                  <>
-                    <h4>Tags:</h4>
-                    <ul>
-                      {tags.map(tag => (
-                        <li key={tag}>
-                          <Link href={`/tags/${tag.replace(/ /g, '-')}`}>{tag}</Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : null}
               </footer>
             )}
           </article>
@@ -129,7 +117,6 @@ export const query = graphql`
       frontmatter {
         title
         categories
-        tags
         type
         description
         date(formatString: "DD MMMM, YYYY")
