@@ -5,17 +5,13 @@ import Wrapper from '../Atoms/Wrapper'
 import Layout from './Layout'
 
 interface IPageTemplateProps {
-  title?: string
-  description?: string
+  pageTitle?: string
+  pageDescription?: string
 }
 
-const PageTemplate: FC<IPageTemplateProps> = ({ title = '', description = '', children }) => {
+const PageTemplate: FC<IPageTemplateProps> = ({ pageTitle, pageDescription, children }) => {
   return (
-    <Layout>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-      </Helmet>
+    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
       <Wrapper>
         <Container>{children}</Container>
       </Wrapper>

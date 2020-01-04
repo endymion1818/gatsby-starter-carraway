@@ -56,7 +56,7 @@ const Search: FC<ISearchProps> = ({ location }) => {
     }, [])
   }
   return (
-    <Page title="search" description="search results">
+    <Page pageTitle="Search this site" pageDescription="Search results">
       <h1>Search</h1>
       <SearchForm query={searchQuery} />
       {searchQuery.length > 0 && <SearchResults query={searchQuery} results={results} />}
