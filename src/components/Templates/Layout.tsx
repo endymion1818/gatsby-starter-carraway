@@ -8,6 +8,8 @@ import Footer from '../Organisms/Footer'
 import Header from '../Organisms/Header'
 import { colors, size } from '../tokens'
 
+import ShareCard from '../../assets/sharecard-default.png'
+
 export interface INavEdges {
   edges: [
     {
@@ -148,6 +150,13 @@ const Layout: React.SFC<ILayoutProps> = ({ children, pageTitle, pageDescription,
               "url": "https://www.gatsby-starter-carraway.com",
             `}
           </script>
+          <meta property="og:site_name" content={data.site.siteMetadata.title} />
+          <meta property="og:locale" content="en_GB" />
+          <meta property="og:type" content="website" />
+          <meta property="og:description" content={data.site.siteMetadata.description} />
+          <meta property="og:title" content={data.site.siteMetadata.title} />
+          <meta property="og:image" content={ShareCard} />
+          {!isIndexable && <meta name="robots" content="NOINDEX, NOFOLLOW" />}
         </Helmet>
         <AccessibilityMainContentSkipLink href="#main">
           Skip to main content
