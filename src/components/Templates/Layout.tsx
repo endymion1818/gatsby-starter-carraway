@@ -169,9 +169,13 @@ const Layout: React.SFC<ILayoutProps> = ({ children, pageTitle, pageDescription,
           <AccessibilityMainContentSkipLink href="#main">
             Skip to main content
           </AccessibilityMainContentSkipLink>
-          <Header siteTitle={title} primaryNav={data.primaryNav} />
+          <Header siteTitle={data.site.siteMetadata.title} primaryNav={data.primaryNav} />
           <main id="main">{children}</main>
-          <Footer siteTitle={title} primaryNav={data.primaryNav} secondaryNav={data.secondaryNav} />
+          <Footer
+            siteTitle={data.site.siteMetadata.title}
+            primaryNav={data.primaryNav}
+            secondaryNav={data.secondaryNav}
+          />
         </ErrorBoundary>
       )
     }}
