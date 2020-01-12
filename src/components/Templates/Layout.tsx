@@ -156,6 +156,11 @@ const Layout: React.SFC<ILayoutProps> = ({ children, pageTitle, pageDescription,
           <meta property="og:description" content={data.site.siteMetadata.description} />
           <meta property="og:title" content={data.site.siteMetadata.title} />
           <meta property="og:image" content={ShareCard} />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content="@you" />
+          <meta name="twitter:title" content={pageTitle} />
+          <meta name="twitter:description" content={pageDescription} />
+          <meta name="twitter:image" content={ShareCard} />
           {!isIndexable && <meta name="robots" content="NOINDEX, NOFOLLOW" />}
         </Helmet>
         <AccessibilityMainContentSkipLink href="#main">
