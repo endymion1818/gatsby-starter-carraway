@@ -39,6 +39,7 @@ export interface ISiteMetaProps {
     siteMetadata: {
       title: string
       description: string
+      siteUrl: string
     }
   }
 }
@@ -96,6 +97,8 @@ const Layout: React.SFC<ILayoutProps> = ({ children, pageTitle, pageDescription,
         site {
           siteMetadata {
             title
+            description
+            siteUrl
           }
         }
         primaryNav: allJavascriptFrontmatter(
@@ -132,49 +135,50 @@ const Layout: React.SFC<ILayoutProps> = ({ children, pageTitle, pageDescription,
         }
       }
     `}
-    render={(data: IStaticQueryProps) => (
-      <ErrorBoundary>
-        <GlobalStyle />
-        <Helmet>
-          <html lang="en-GB" />
-          <title>{`${pageTitle} - ${data.site.siteMetadata.title}`}</title>
-          <meta
-            name="description"
-            content={`${pageDescription} - ${data.site.siteMetadata.description}`}
-          />
-          <script type="application/ld+json">
-            {`
+    render={(data: IStaticQueryProps) => {
+      const { title, description, siteUrl } = data.site.siteMetadata
+      const sharecardAbsoluteUrl = siteUrl + ShareCard
+      return (
+        <ErrorBoundary>
+          <GlobalStyle />
+          <Helmet>
+            <html lang="en-GB" />
+            <title>{`${pageTitle} - ${title}`}</title>
+            <meta name="description" content={`${pageDescription} - ${description}`} />
+            <script type="application/ld+json">
+              {`
               "@context": "http://schema.org",
               "@type": "Organization",
               "name": "#FreeBabylon5",
               "url": "https://www.gatsby-starter-carraway.com",
             `}
-          </script>
-          <meta property="og:site_name" content={data.site.siteMetadata.title} />
-          <meta property="og:locale" content="en_GB" />
-          <meta property="og:type" content="website" />
-          <meta property="og:description" content={data.site.siteMetadata.description} />
-          <meta property="og:title" content={data.site.siteMetadata.title} />
-          <meta property="og:image" content={ShareCard} />
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:site" content="@you" />
-          <meta name="twitter:title" content={pageTitle} />
-          <meta name="twitter:description" content={pageDescription} />
-          <meta name="twitter:image" content={ShareCard} />
-          {!isIndexable && <meta name="robots" content="NOINDEX, NOFOLLOW" />}
-        </Helmet>
-        <AccessibilityMainContentSkipLink href="#main">
-          Skip to main content
-        </AccessibilityMainContentSkipLink>
-        <Header siteTitle={data.site.siteMetadata.title} primaryNav={data.primaryNav} />
-        <main id="main">{children}</main>
-        <Footer
-          siteTitle={data.site.siteMetadata.title}
-          primaryNav={data.primaryNav}
-          secondaryNav={data.secondaryNav}
-        />
-      </ErrorBoundary>
-    )}
+            </script>
+            <meta property="og:site_name" content={title} />
+            <meta property="og:locale" content="en_GB" />
+            <meta property="og:type" content="website" />
+            <meta property="og:description" content={description} />
+            <meta property="og:title" content={title} />
+            <meta property="og:image" content={sharecardAbsoluteUrl} />
+            <meta name="twitter:card" content="summary" />
+            <meta name="twitter:site" content="@you" />
+            <meta name="twitter:title" content={pageTitle} />
+            <meta name="twitter:description" content={pageDescription} />
+            <meta name="twitter:image" content={sharecardAbsoluteUrl} />
+            {!isIndexable && <meta name="robots" content="NOINDEX, NOFOLLOW" />}
+          </Helmet>
+          <AccessibilityMainContentSkipLink href="#main">
+            Skip to main content
+          </AccessibilityMainContentSkipLink>
+          <Header siteTitle={data.site.siteMetadata.title} primaryNav={data.primaryNav} />
+          <main id="main">{children}</main>
+          <Footer
+            siteTitle={data.site.siteMetadata.title}
+            primaryNav={data.primaryNav}
+            secondaryNav={data.secondaryNav}
+          />
+        </ErrorBoundary>
+      )
+    }}
   />
 )
 export default Layout
