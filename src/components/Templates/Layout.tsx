@@ -90,7 +90,12 @@ export interface ILayoutProps {
   isIndexable?: boolean
 }
 
-const Layout: React.SFC<ILayoutProps> = ({ children, pageTitle, pageDescription, isIndexable }) => (
+const Layout: React.SFC<ILayoutProps> = ({
+  children,
+  pageTitle,
+  pageDescription,
+  isIndexable = true,
+}) => (
   <StaticQuery
     query={graphql`
       query LayoutQuery {
