@@ -3,9 +3,7 @@
 describe('Accessibility checks', () => {
   before(() => {
     cy.visit('/').wait(500)
-    /* tslint:disable */
     cy.injectAxe()
-    /* tslint:enable */
   })
   beforeEach(() => {
   })
