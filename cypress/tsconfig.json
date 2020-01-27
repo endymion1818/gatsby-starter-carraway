@@ -7,6 +7,6 @@
     "types": ["cypress"]
   },
   "include": [
-    "**/*.ts"
+    "**/*.ts", "support/commands.ts"
   ]
 }
