@@ -173,7 +173,7 @@ exports[`Should render 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   background: #DCDBE2;
-  color: #00B9A7;
+  color: #000080;
   font-size: 1rem;
   cursor: pointer;
   text-align: center;

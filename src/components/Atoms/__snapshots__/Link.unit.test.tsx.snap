@@ -9,7 +9,7 @@ exports[`<Link /> Should render a <span> 1`] = `
 }
 
 .c0:focus {
-  box-shadow: 0 0 2px #00B9A7;
+  box-shadow: 0 0 2px #000080;
 }
 
 <div>
@@ -31,7 +31,7 @@ exports[`<Link /> Should render an <a> tag 1`] = `
 }
 
 .c0:focus {
-  box-shadow: 0 0 2px #00B9A7;
+  box-shadow: 0 0 2px #000080;
 }
 
 <div>
