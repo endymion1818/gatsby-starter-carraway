@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import Container from '../Atoms/Container'
 import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
-import Layout from './Layout'
+import Entry from './Entry'
 
 interface IPostTemplateProps {
   data: {
@@ -66,7 +66,7 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
   const { featuredImageAlt } = data.markdownRemark.frontmatter
   const { categories } = data.markdownRemark.frontmatter
   return (
-    <Layout pageTitle={title} pageDescription={description}>
+    <Entry pageTitle={title} pageDescription={description}>
       <Wrapper>
         <Container>
           <article className="h-entry">
@@ -99,7 +99,7 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
           </article>
         </Container>
       </Wrapper>
-    </Layout>
+    </Entry>
   )
 }
 

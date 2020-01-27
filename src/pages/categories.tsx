@@ -3,7 +3,7 @@ import kebabCase from 'lodash/kebabCase'
 import PropTypes from 'prop-types'
 import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
-import Layout from '../components/Templates/Layout'
+import Entry from '../components/Templates/Entry'
 
 export interface ICategoriesPageProps {
   data: {
@@ -29,7 +29,7 @@ const CategoriesPage: FC<ICategoriesPageProps> = ({
     },
   },
 }) => (
-  <Layout>
+  <Entry>
     <h1>Categories</h1>
     <ul>
       {group.map(({ fieldValue, totalCount }) => (
@@ -40,7 +40,7 @@ const CategoriesPage: FC<ICategoriesPageProps> = ({
         </li>
       ))}
     </ul>
-  </Layout>
+  </Entry>
 )
 
 export default CategoriesPage

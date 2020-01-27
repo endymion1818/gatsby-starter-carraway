@@ -8,7 +8,7 @@ import Column from '../Atoms/Column'
 import Container from '../Atoms/Container'
 import Row from '../Atoms/Row'
 import Wrapper from '../Atoms/Wrapper'
-import { IPrimaryNavProps, ISecondaryNavProps } from '../Templates/Layout'
+import { IPrimaryNavProps, ISecondaryNavProps } from '../Templates/Entry'
 import { borderradius, colors, size } from '../tokens'
 
 export interface IFooterProps extends IPrimaryNavProps, ISecondaryNavProps {
@@ -42,11 +42,11 @@ const SecondaryNav = styled.ul`
 `
 
 const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
-  <Wrapper backgroundColour={colors.neutral.medium}>
+  <Wrapper backgroundColour={colors.neutral.medium} as="footer">
     <Container>
       <Row size={3}>
         <Column>
-          <h3>About This Site</h3>
+          <h2>About This Site</h2>
           <Link to={withPrefix('/')}>{siteTitle}</Link>
           <p>Copyright notice or something nice.</p>
           <p>
