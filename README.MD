@@ -26,7 +26,8 @@ I spend a lot of time developing websites with Gatsby. I often find myself addin
 
 - TypeScript & Testing
     - Some sensible TypeScript defaults
-    - Tests with @testing-library/react
+    - Unit & Integration Tests with @testing-library/react
+    - End-to-end tests with Cypress
     - Pre-commit and pre-push hooks
     - Setup for a CircleCI pipeline so you can run the above tests in branches before merging to master 
     - Features some enums for repeating values such as font & background colours
