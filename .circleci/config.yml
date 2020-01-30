@@ -24,6 +24,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # Run tests
-      - run: yarn test
       - run: yarn build
+      - run: yarn test
       - run: yarn test:e2e:ci
