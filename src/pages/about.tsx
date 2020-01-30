@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import Container from '../components/Atoms/Container'
 import Row from '../components/Atoms/Row'
 import Wrapper from '../components/Atoms/Wrapper'
-import Layout from '../components/Templates/Layout'
+import Entry from '../components/Templates/Entry'
 
 export interface IAboutPageProps {
   data: {
@@ -26,7 +26,7 @@ export const frontmatter = {
 }
 
 const AboutPage: FC<IAboutPageProps> = ({ data }) => (
-  <Layout>
+  <Entry>
     <Helmet>
       <title>
         {frontmatter.title} &ndash; {data.site.siteMetadata.title}
@@ -49,7 +49,7 @@ const AboutPage: FC<IAboutPageProps> = ({ data }) => (
         </Row>
       </Container>
     </Wrapper>
-  </Layout>
+  </Entry>
 )
 
 export default AboutPage

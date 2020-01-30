@@ -13,7 +13,11 @@
     "format": "prettier --write '**/*.{js, jsx, ts, tsx}'",
     "test": "jest --config ./etc/test/jest/config.js",
     "lint": "tslint -c ./tslint.json 'src/**.{ts, tsx}'",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:e2e": "start-server-and-test develop http://localhost:8000 cy:open",
+    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run"
   },
   "husky": {
     "hooks": {
@@ -55,13 +59,17 @@
     "styled-components": "^4.2.1"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^5.0.2",
     "@testing-library/react": "^9.4.0",
     "@types/jest": "^24.0.13",
     "@types/lodash": "^4.14.133",
     "@types/lunr": "^2.3.2",
     "@types/react-helmet": "^5.0.8",
     "@types/styled-components": "^4.1.15",
+    "axe-core": "^3.4.1",
     "babel-jest": "^24.8.0",
+    "cypress": "^3.8.3",
+    "cypress-axe": "^0.5.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.9.0",
@@ -77,6 +85,7 @@
     "lint-staged": "^9.5.0",
     "lodash": "^4.17.11",
     "prettier": "^1.17.1",
+    "start-server-and-test": "^1.10.7",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.0.0",

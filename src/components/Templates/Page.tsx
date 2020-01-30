@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 import Container from '../Atoms/Container'
 import Wrapper from '../Atoms/Wrapper'
-import Layout from './Layout'
+import Entry from './Entry'
 
 interface IPageTemplateProps {
   pageTitle?: string
@@ -11,11 +11,11 @@ interface IPageTemplateProps {
 
 const PageTemplate: FC<IPageTemplateProps> = ({ pageTitle, pageDescription, children }) => {
   return (
-    <Layout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <Entry pageTitle={pageTitle} pageDescription={pageDescription}>
       <Wrapper>
         <Container>{children}</Container>
       </Wrapper>
-    </Layout>
+    </Entry>
   )
 }
 

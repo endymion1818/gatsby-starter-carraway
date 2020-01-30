@@ -6,7 +6,7 @@ import Container from '../Atoms/Container'
 import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
 import SearchForm from '../Molecules/SearchForm'
-import { IPrimaryNavProps } from '../Templates/Layout'
+import { IPrimaryNavProps } from '../Templates/Entry'
 import { borderradius, breakpoint, colors, size } from '../tokens'
 
 export interface IHeaderProps extends IPrimaryNavProps {
@@ -60,7 +60,7 @@ const HeaderContainer = styled(Container)`
 `
 
 const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
-  <Wrapper backgroundColour={colors.neutral.medium} textColour={colors.base.primary}>
+  <Wrapper backgroundColour={colors.neutral.medium} textColour={colors.base.primary} as="header">
     <HeaderContainer>
       <Link to={withPrefix('/')}>{siteTitle}</Link>
       <MainNav>

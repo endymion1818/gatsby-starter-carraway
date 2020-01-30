@@ -175,7 +175,7 @@ const Layout: React.SFC<ILayoutProps> = ({
             Skip to main content
           </AccessibilityMainContentSkipLink>
           <Header siteTitle={data.site.siteMetadata.title} primaryNav={data.primaryNav} />
-          <main id="main">{children}</main>
+          <main id="main" role="main">{children}</main>
           <Footer
             siteTitle={data.site.siteMetadata.title}
             primaryNav={data.primaryNav}

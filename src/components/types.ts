@@ -1,5 +1,5 @@
 export interface IBaseColorSpec {
-  primary: '#00B9A7'
+  primary: '#000080'
   secondary: '#4A3EDE'
 }
 

@@ -3,7 +3,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.17.0-browsers
+      # - image: circleci/node:10.17.0-browsers
+      - image: cypress/base:8
     working_directory: ~/repo
     steps:
       - checkout
@@ -23,5 +24,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # Run tests
-      - run: yarn test
       - run: yarn build
+      - run: yarn test
+      - run: yarn test:e2e:ci
