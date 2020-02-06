@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create new Semantic Version
+        uses: zwaldowski/semver-release-action@v1
+        with:
+          bump: minor
+          github_token: secrets.GITHUB_TOKEN
