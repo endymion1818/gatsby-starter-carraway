@@ -143,13 +143,14 @@ const Layout: React.SFC<ILayoutProps> = ({
     render={(data: IStaticQueryProps) => {
       const { title, description, siteUrl } = data.site.siteMetadata
       const sharecardAbsoluteUrl = siteUrl + ShareCard
+      const amalgamatedDescription = `${pageDescription} - ${description}`
       return (
         <ErrorBoundary>
           <GlobalStyle />
           <Helmet>
             <html lang="en-GB" />
             <title>{`${pageTitle} - ${title}`}</title>
-            <meta name="description" content={`${pageDescription} - ${description}`} />
+            <meta name="description" content={amalgamatedDescription} />
             <script type="application/ld+json">
               {`
               "@context": "http://schema.org",
@@ -161,13 +162,13 @@ const Layout: React.SFC<ILayoutProps> = ({
             <meta property="og:site_name" content={title} />
             <meta property="og:locale" content="en_GB" />
             <meta property="og:type" content="website" />
-            <meta property="og:description" content={description} />
+            <meta property="og:description" content={amalgamatedDescription} />
             <meta property="og:title" content={title} />
             <meta property="og:image" content={sharecardAbsoluteUrl} />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@you" />
             <meta name="twitter:title" content={pageTitle} />
-            <meta name="twitter:description" content={pageDescription} />
+            <meta name="twitter:description" content={amalgamatedDescription} />
             <meta name="twitter:image" content={sharecardAbsoluteUrl} />
             {!isIndexable && <meta name="robots" content="NOINDEX, NOFOLLOW" />}
           </Helmet>
@@ -175,7 +176,9 @@ const Layout: React.SFC<ILayoutProps> = ({
             Skip to main content
           </AccessibilityMainContentSkipLink>
           <Header siteTitle={data.site.siteMetadata.title} primaryNav={data.primaryNav} />
-          <main id="main" role="main">{children}</main>
+          <main id="main" role="main">
+            {children}
+          </main>
           <Footer
             siteTitle={data.site.siteMetadata.title}
             primaryNav={data.primaryNav}
