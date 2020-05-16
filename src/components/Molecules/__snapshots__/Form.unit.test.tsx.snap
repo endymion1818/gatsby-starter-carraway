@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render 1`] = `
-.c0 label {
+.c1 {
   display: block;
   max-width: 100%;
   margin-bottom: 5px;
@@ -9,39 +9,7 @@ exports[`Should render 1`] = `
   font-weight: bold;
 }
 
-.c0 input[type='search'] {
-  box-sizing: border-box;
-}
-
-.c0 input[type='checkbox'],
-.c0 input[type='radio'] {
-  margin: 1px9 0 0;
-  line-height: normal;
-}
-
-.c0 input[type='file'] {
-  display: block;
-}
-
-.c0 input[type='range'] {
-  display: block;
-  width: 100%;
-}
-
-.c0 select[multiple],
-.c0 select[size] {
-  height: auto;
-}
-
-.c0 input[type='checkbox']:focus,
-.c0 input[type='file']:focus,
-.c0 input[type='radio']:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
-.c0 .form-control {
+.c2 {
   display: block;
   width: 80%;
   height: 34px;
@@ -58,114 +26,43 @@ exports[`Should render 1`] = `
   transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
 }
 
-.c0 .form-control:focus {
+.c2:focus {
   border-color: #66afe9;
   outline: 0;
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
 }
 
-.c0 .form-control::-moz-placeholder {
+.c2::-moz-placeholder {
   color: #999;
   opacity: 1;
 }
 
-.c0 .form-control:-ms-input-placeholder {
+.c2:-ms-input-placeholder {
   color: #999;
 }
 
-.c0 .form-control::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   color: #999;
 }
 
-.c0 .form-control::-ms-expand {
+.c2::-ms-expand {
   background-color: transparent;
   border: 0;
 }
 
-.c0 .form-control[disabled],
-.c0 .form-control[readonly],
-.c0 fieldset[disabled] .form-control {
+.c2[disabled],
+.c2[readonly],
+fieldset[disabled] .c2 {
   background-color: #eee;
   opacity: 1;
 }
 
-.c0 .form-control[disabled],
-.c0 fieldset[disabled] .form-control {
+.c2[disabled],
+.c2 fieldset[disabled] .form-control {
   cursor: not-allowed;
 }
 
-.c0 textarea.form-control {
-  height: auto;
-}
-
-.c0 input[type='search'] {
-  -webkit-appearance: none;
-}
-
-.c0 .form-group {
-  margin-bottom: 15px;
-}
-
-.c0 .checkbox,
-.c0 .radio {
-  position: relative;
-  display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.c0 .checkbox label,
-.c0 .radio label {
-  min-height: 20px;
-  padding-left: 20px;
-  margin-bottom: 0;
-  font-weight: normal;
-  cursor: pointer;
-}
-
-.c0 .checkbox input[type='checkbox'],
-.c0 .checkbox-inline input[type='checkbox'],
-.c0 .radio input[type='radio'],
-.c0 .radio-inline input[type='radio'] {
-  position: absolute;
-  margin-top: 4px9;
-  margin-left: -20px;
-}
-
-.c0 .checkbox-inline,
-.c0 .radio-inline {
-  position: relative;
-  display: inline-block;
-  padding-left: 20px;
-  margin-bottom: 0;
-  font-weight: normal;
-  vertical-align: middle;
-  cursor: pointer;
-}
-
-.c0 fieldset[disabled] input[type='checkbox'],
-.c0 fieldset[disabled] input[type='radio'],
-.c0 input[type='checkbox'].disabled,
-.c0 input[type='checkbox'][disabled],
-.c0 input[type='radio'].disabled,
-.c0 input[type='radio'][disabled] {
-  cursor: not-allowed;
-}
-
-.c0 form.form-hello {
-  width: 100%;
-}
-
-.c0 form.form-hello .checkbox {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.c0 .antispam {
-  display: none;
-}
-
-.c0 button {
+.c4 {
   display: inline-block;
   border: none;
   padding: 1rem 2rem;
@@ -185,28 +82,32 @@ exports[`Should render 1`] = `
   border-radius: 0.5rem;
 }
 
-.c0 button:hover,
-.c0 button:focus {
+.c4:hover,
+.c4:focus {
   background: #DCDBE2;
 }
 
-.c0 button:focus {
+.c4:focus {
   outline: 1px solid #fff;
   outline-offset: -4px;
 }
 
-.c0 button:active {
+.c4:active {
   -webkit-transform: scale(0.99);
   -ms-transform: scale(0.99);
   transform: scale(0.99);
 }
 
-.c0 button:disabled {
+.c4:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.c0 .error > * {
+.c0 {
+  margin-bottom: 15px;
+}
+
+.c3 > * {
   margin-top: 1rem;
   border: 1px solid red;
   background-color: pink;
@@ -214,80 +115,53 @@ exports[`Should render 1`] = `
   border-radius: 0.5rem;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  .c0 input[type='date'].form-control,
-  .c0 input[type='datetime-local'].form-control,
-  .c0 input[type='month'].form-control,
-  .c0 input[type='time'].form-control {
-    line-height: 34px;
-  }
-
-  .c0 .input-group-sm input[type='date'],
-  .c0 .input-group-sm input[type='datetime-local'],
-  .c0 .input-group-sm input[type='month'],
-  .c0 .input-group-sm input[type='time'],
-  .c0 input[type='date'].input-sm,
-  .c0 input[type='datetime-local'].input-sm,
-  .c0 input[type='month'].input-sm,
-  .c0 input[type='time'].input-sm {
-    line-height: 30px;
-  }
-
-  .c0 .input-group-lg input[type='date'],
-  .c0 .input-group-lg input[type='datetime-local'],
-  .c0 .input-group-lg input[type='month'],
-  .c0 .input-group-lg input[type='time'],
-  .c0 input[type='date'].input-lg,
-  .c0 input[type='datetime-local'].input-lg,
-  .c0 input[type='month'].input-lg,
-  .c0 input[type='time'].input-lg {
-    line-height: 46px;
-  }
-}
-
 <div>
   <form
-    action="https://formActionGoesHere"
-    class="c0"
-    data-testid="form"
+    action="https://formspree.io/rxd_david@gmail.com"
     method="POST"
   >
     <div
-      class="form-group"
+      class="c0"
     >
       <label
+        class="c1"
         for="yourname"
       >
         Your Name
       </label>
       <input
-        class="form-control"
+        class="c2"
         id="yourname"
+        required=""
       />
       <div
-        class="error"
+        class="c3"
       />
     </div>
     <div
-      class="form-group"
+      class="c0"
     >
       <label
+        class="c1"
         for="email"
       >
         Email
       </label>
       <input
-        class="form-control"
+        class="c2"
         id="email"
+        required=""
+        type="email"
       />
       <div
-        class="error"
+        class="c3"
       />
     </div>
     <div
-      class="form-group"
+      class="c0"
     >
       <label
+        class="c1"
         for="phone"
       >
         Phone 
@@ -296,18 +170,18 @@ exports[`Should render 1`] = `
         </small>
       </label>
       <input
-        class="form-control"
+        class="c2"
         id="phone"
+        type="tel"
       />
       <div
-        class="error"
+        class="c3"
       />
     </div>
     <button
-      data-testid="submit-button"
-      name="submit"
+      class="c4"
     >
-      Send
+      Sign Up
     </button>
   </form>
 </div>
