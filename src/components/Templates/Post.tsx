@@ -1,7 +1,6 @@
 import { graphql } from 'gatsby'
 import Img, { FluidObject } from 'gatsby-image'
 import React, { FC } from 'react'
-import { Helmet } from 'react-helmet'
 import Container from '../Atoms/Container'
 import Link from '../Atoms/Link'
 import Wrapper from '../Atoms/Wrapper'
@@ -84,7 +83,7 @@ const PostTemplate: FC<IPostTemplateProps> = ({ data }) => {
                   <>
                     <h4>Categories:</h4>
                     <ul>
-                      {categories.map(category => (
+                      {categories.map((category) => (
                         <li key={category}>
                           <Link href={`/categories/${category.replace(/ /g, '-')}`}>
                             {category}
@@ -107,11 +106,6 @@ export default PostTemplate
 
 export const query = graphql`
   query BlogPostQuery($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

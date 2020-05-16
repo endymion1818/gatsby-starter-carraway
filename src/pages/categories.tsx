@@ -1,8 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import kebabCase from 'lodash/kebabCase'
-import PropTypes from 'prop-types'
 import React, { FC } from 'react'
-import { Helmet } from 'react-helmet'
 import Entry from '../components/Templates/Entry'
 
 export interface ICategoriesPageProps {
@@ -24,12 +22,9 @@ export interface ICategoriesPageProps {
 const CategoriesPage: FC<ICategoriesPageProps> = ({
   data: {
     allMarkdownRemark: { group },
-    site: {
-      siteMetadata: { title },
-    },
   },
 }) => (
-  <Entry>
+  <Entry pageTitle="All categories" pageDescription="a list of categories">
     <h1>Categories</h1>
     <ul>
       {group.map(({ fieldValue, totalCount }) => (
@@ -47,11 +42,6 @@ export default CategoriesPage
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allMarkdownRemark(limit: 2000) {
       group(field: frontmatter___categories) {
         fieldValue

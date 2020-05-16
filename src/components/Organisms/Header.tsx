@@ -64,7 +64,7 @@ const Header: FC<IHeaderProps> = ({ primaryNav, siteTitle }) => (
     <HeaderContainer>
       <Link to={withPrefix('/')}>{siteTitle}</Link>
       <MainNav>
-        {primaryNav ? primaryNav.edges.map(item => NavItem(item)) : null}
+        {primaryNav ? primaryNav.edges.map((item) => NavItem(item)) : null}
         <li>
           <Link to="/post" activeClassName="active">
             Posts

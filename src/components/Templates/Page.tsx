@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { Helmet } from 'react-helmet'
 import Container from '../Atoms/Container'
 import Wrapper from '../Atoms/Wrapper'
 import Entry from './Entry'

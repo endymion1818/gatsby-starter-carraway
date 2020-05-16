@@ -7,7 +7,7 @@ export interface IErrorBoundaryState {
 }
 
 class ErrorBoundary extends React.Component<IErrorBoundaryState> {
-  public static getDerivedStateFromError(error: Error) {
+  public static getDerivedStateFromError() {
     return { hasError: true }
   }
   public state: IErrorBoundaryState
@@ -16,8 +16,8 @@ class ErrorBoundary extends React.Component<IErrorBoundaryState> {
     this.state = { hasError: false }
   }
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    Sentry.configureScope(scope => {
-      Object.keys(errorInfo).forEach(key => {
+    Sentry.configureScope((scope) => {
+      Object.keys(errorInfo).forEach((key) => {
         scope.setExtra(key, errorInfo[key as keyof React.ErrorInfo])
       })
     })

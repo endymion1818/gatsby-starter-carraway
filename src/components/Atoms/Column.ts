@@ -1,6 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
-import { flexalign, size, textalign } from '../tokens'
+import { flexalign, size } from '../tokens'
 
 export interface IColumnProps {
   verticalAlign?: string

@@ -3,9 +3,9 @@ const siteTitle = `Carraway`
 module.exports = {
   siteMetadata: {
     pathPrefix: '/',
-    title: siteTitle,
+    siteTitle: siteTitle,
     siteUrl: `https://www.gatsby-starter-carraway.netlify.com`,
-    description: `A starter for Gatsbyjs with typescript, jest and several ui components`,
+    siteDescription: `A starter for Gatsbyjs with typescript, jest and several ui components`,
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -91,8 +91,8 @@ module.exports = {
           {
             site {
               siteMetadata {
-                title
-                description
+                siteTitle
+                siteDescription
                 siteUrl
                 site_url: siteUrl
               }
@@ -102,7 +102,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
@@ -159,9 +159,9 @@ module.exports = {
         ],
         resolvers: {
           MarkdownRemark: {
-            title: node => node.frontmatter.title,
-            content: node => node.rawMarkdownBody,
-            url: node => node.fields.slug,
+            title: (node) => node.frontmatter.title,
+            content: (node) => node.rawMarkdownBody,
+            url: (node) => node.fields.slug,
           },
         },
       },

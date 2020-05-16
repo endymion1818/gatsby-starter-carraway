@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { ISemanticColorSpec, ISize } from '../types'
 
 export interface IWrapperProps {
   backgroundColour?: string

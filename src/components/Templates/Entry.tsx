@@ -37,8 +37,8 @@ export interface ISecondaryNavProps {
 export interface ISiteMetaProps {
   site: {
     siteMetadata: {
-      title: string
-      description: string
+      siteTitle: string
+      siteDescription: string
       siteUrl: string
     }
   }
@@ -101,8 +101,8 @@ const Layout: React.SFC<ILayoutProps> = ({
       query LayoutQuery {
         site {
           siteMetadata {
-            title
-            description
+            siteTitle
+            siteDescription
             siteUrl
           }
         }
@@ -141,16 +141,17 @@ const Layout: React.SFC<ILayoutProps> = ({
       }
     `}
     render={(data: IStaticQueryProps) => {
-      const { title, description, siteUrl } = data.site.siteMetadata
+      const { siteTitle, siteDescription, siteUrl } = data.site.siteMetadata
       const sharecardAbsoluteUrl = siteUrl + ShareCard
-      const amalgamatedDescription = `${pageDescription} - ${description}`
+      const description = pageDescription ? pageDescription : siteDescription
+      const amalgamatedTitle = `${pageTitle} - ${siteTitle}`
       return (
         <ErrorBoundary>
           <GlobalStyle />
           <Helmet>
             <html lang="en-GB" />
-            <title>{`${pageTitle} - ${title}`}</title>
-            <meta name="description" content={amalgamatedDescription} />
+            <title>{amalgamatedTitle}</title>
+            <meta name="description" content={description} />
             <script type="application/ld+json">
               {`
               "@context": "http://schema.org",
@@ -159,28 +160,28 @@ const Layout: React.SFC<ILayoutProps> = ({
               "url": "https://www.gatsby-starter-carraway.com",
             `}
             </script>
-            <meta property="og:site_name" content={title} />
+            <meta property="og:site_name" content={amalgamatedTitle} />
             <meta property="og:locale" content="en_GB" />
             <meta property="og:type" content="website" />
-            <meta property="og:description" content={amalgamatedDescription} />
-            <meta property="og:title" content={title} />
+            <meta property="og:description" content={description} />
+            <meta property="og:title" content={amalgamatedTitle} />
             <meta property="og:image" content={sharecardAbsoluteUrl} />
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:site" content="@you" />
-            <meta name="twitter:title" content={pageTitle} />
-            <meta name="twitter:description" content={amalgamatedDescription} />
+            <meta name="twitter:title" content={amalgamatedTitle} />
+            <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={sharecardAbsoluteUrl} />
             {!isIndexable && <meta name="robots" content="NOINDEX, NOFOLLOW" />}
           </Helmet>
           <AccessibilityMainContentSkipLink href="#main">
             Skip to main content
           </AccessibilityMainContentSkipLink>
-          <Header siteTitle={data.site.siteMetadata.title} primaryNav={data.primaryNav} />
+          <Header siteTitle={data.site.siteMetadata.siteTitle} primaryNav={data.primaryNav} />
           <main id="main" role="main">
             {children}
           </main>
           <Footer
-            siteTitle={data.site.siteMetadata.title}
+            siteTitle={data.site.siteMetadata.siteTitle}
             primaryNav={data.primaryNav}
             secondaryNav={data.secondaryNav}
           />

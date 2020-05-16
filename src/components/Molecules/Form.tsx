@@ -247,7 +247,7 @@ function Form() {
 
   function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
-    setErrors(prevState => {
+    setErrors((prevState) => {
       return {
         ...prevState,
         email: validateEmail(value),
@@ -256,7 +256,7 @@ function Form() {
   }
   function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
-    setErrors(prevState => {
+    setErrors((prevState) => {
       return {
         ...prevState,
         yourname: validateName(value),
@@ -265,7 +265,7 @@ function Form() {
   }
   function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
-    setErrors(prevState => {
+    setErrors((prevState) => {
       return {
         ...prevState,
         phone: validatePhone(value),
@@ -273,8 +273,8 @@ function Form() {
     })
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    setErrors(prevState => {
+  function handleSubmit() {
+    setErrors((prevState) => {
       return {
         ...prevState,
         email: validateEmail(email.current!.value),
@@ -295,7 +295,7 @@ function Form() {
         <label htmlFor="yourname">Your Name</label>
         <input className="form-control" id="yourname" ref={yourname} onChange={handleNameChange} />
         <div className="error">
-          {errors.yourname.map(error => (
+          {errors.yourname.map((error) => (
             <div key={error}>{error}</div>
           ))}
         </div>
@@ -305,7 +305,7 @@ function Form() {
         <label htmlFor="email">Email</label>
         <input className="form-control" id="email" ref={email} onChange={handleEmailChange} />
         <div className="error">
-          {errors.email.map(error => (
+          {errors.email.map((error) => (
             <div key={error}>{error}</div>
           ))}
         </div>
@@ -317,7 +317,7 @@ function Form() {
         </label>
         <input className="form-control" id="phone" ref={phone} onChange={handlePhoneChange} />
         <div className="error">
-          {errors.phone.map(error => (
+          {errors.phone.map((error) => (
             <div key={error}>{error}</div>
           ))}
         </div>

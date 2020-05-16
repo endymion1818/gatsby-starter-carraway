@@ -57,14 +57,14 @@ const Footer: FC<IFooterProps> = ({ secondaryNav, primaryNav, siteTitle }) => (
           {primaryNav ? (
             <>
               <h3>This Site</h3>
-              <SecondaryNav>{primaryNav.edges.map(item => NavItem(item))}</SecondaryNav>
+              <SecondaryNav>{primaryNav.edges.map((item) => NavItem(item))}</SecondaryNav>
             </>
           ) : null}
         </Column>
         <Column>
           <h3>Navigate</h3>
           <SecondaryNav>
-            {secondaryNav ? secondaryNav.edges.map(item => NavItem(item)) : null}
+            {secondaryNav ? secondaryNav.edges.map((item) => NavItem(item)) : null}
             <li>
               <Link to="/feed.xml">RSS Feed</Link>
             </li>

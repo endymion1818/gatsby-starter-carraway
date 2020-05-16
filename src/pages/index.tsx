@@ -1,11 +1,8 @@
-import { graphql } from 'gatsby'
 import React, { FC } from 'react'
-import Helmet from 'react-helmet'
 import Container from '../components/Atoms/Container'
 import Wrapper from '../components/Atoms/Wrapper'
 import Entry from '../components/Templates/Entry'
-
-import Row from '../components/Atoms/Row';
+import Row from '../components/Atoms/Row'
 
 export interface IIndexPageProps {
   data: {
@@ -26,14 +23,8 @@ export const frontmatter = {
   secondaryNavOrder: 1,
 }
 
-const IndexPage: FC<IIndexPageProps> = ({ data }) => (
-  <Entry> 
-    <Helmet>
-      <title>
-        {frontmatter.title} &ndash; {data.site.siteMetadata.title}
-      </title>
-      <meta name="description" content={frontmatter.description} />
-    </Helmet>
+const IndexPage: FC<IIndexPageProps> = () => (
+  <Entry pageTitle={frontmatter.title} pageDescription={frontmatter.description}>
     <Wrapper>
       <Container>
         <Row size={1}>
@@ -45,13 +36,3 @@ const IndexPage: FC<IIndexPageProps> = ({ data }) => (
 )
 
 export default IndexPage
-
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
