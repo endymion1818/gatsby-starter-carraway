@@ -1,6 +1,6 @@
 import { cleanup, render } from '@testing-library/react'
 import React from 'react'
-import EvenColumns, { IEvenColumnsProps } from './EvenColumns'
+import EvenColumns from './EvenColumns'
 
 const defaultProps = {
   content: [

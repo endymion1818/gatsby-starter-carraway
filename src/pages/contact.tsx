@@ -1,6 +1,4 @@
-import { graphql } from 'gatsby'
 import React, { FC } from 'react'
-import Helmet from 'react-helmet'
 
 import Container from '../components/Atoms/Container'
 import Row from '../components/Atoms/Row'
@@ -27,19 +25,13 @@ export const frontmatter = {
   secondaryNavOrder: 4,
 }
 
-const AboutPage: FC<IAboutPageProps> = ({ data }) => (
-  <Entry>
-    <Helmet>
-      <title>
-        {frontmatter.title} &ndash; {data.site.siteMetadata.title}
-      </title>
-      <meta name="description" content={frontmatter.description} />
-    </Helmet>
+const AboutPage: FC<IAboutPageProps> = () => (
+  <Entry pageTitle={frontmatter.title} pageDescription={frontmatter.description}>
     <Wrapper>
       <Container>
         <Row size={1}>
           <h1>About Nick Carraway</h1>
-          <Form/>
+          <Form />
         </Row>
       </Container>
     </Wrapper>
@@ -47,13 +39,3 @@ const AboutPage: FC<IAboutPageProps> = ({ data }) => (
 )
 
 export default AboutPage
-
-export const query = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`

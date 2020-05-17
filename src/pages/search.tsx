@@ -1,4 +1,3 @@
-import { Link, navigate } from 'gatsby'
 import React, { FC, useEffect, useState } from 'react'
 import SearchForm from '../components/Molecules/SearchForm'
 import Page from '../components/Templates/Page'
@@ -56,7 +55,7 @@ const Search: FC<ISearchProps> = ({ location }) => {
     }, [])
   }
   return (
-    <Page pageTitle="Search this site" pageDescription="Search results">
+    <Page pageTitle="search" pageDescription="Search the site here">
       <h1>Search</h1>
       <SearchForm query={searchQuery} />
       {searchQuery.length > 0 && <SearchResults query={searchQuery} results={results} />}

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { IBreakpoint } from '../types'
 
 export interface IRowProps {
   size: number

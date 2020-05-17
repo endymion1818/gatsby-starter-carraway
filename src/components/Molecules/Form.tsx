@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import ButtonStyles from '../Atoms/ButtonStyles'
-import { borderradius, colors, size } from '../tokens'
+import { borderradius, size } from '../tokens'
 
 interface IErrors {
   email: string[]
@@ -67,16 +67,8 @@ const Button = styled.button`
   ${ButtonStyles}
 `
 
-const TextArea = styled.textarea`
-  height: auto;
-`
-
 const FormGroup = styled.div`
   margin-bottom: 15px;
-`
-
-const AntiSpam = styled.div`
-  display: none;
 `
 
 const Error = styled.div`
@@ -148,7 +140,7 @@ function Form() {
 
   function handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
-    setErrors(prevState => {
+    setErrors((prevState) => {
       return {
         ...prevState,
         email: validateEmail(value),
@@ -157,7 +149,7 @@ function Form() {
   }
   function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
-    setErrors(prevState => {
+    setErrors((prevState) => {
       return {
         ...prevState,
         yourname: validateName(value),
@@ -166,7 +158,7 @@ function Form() {
   }
   function handlePhoneChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
-    setErrors(prevState => {
+    setErrors((prevState) => {
       return {
         ...prevState,
         phone: validatePhone(value),
@@ -174,8 +166,8 @@ function Form() {
     })
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    setErrors(prevState => {
+  function handleSubmit() {
+    setErrors((prevState) => {
       return {
         ...prevState,
         email: validateEmail(email.current!.value),
@@ -191,7 +183,7 @@ function Form() {
         <Label htmlFor="yourname">Your Name</Label>
         <Input id="yourname" required ref={yourname} onChange={handleNameChange} />
         <Error>
-          {errors.yourname.map(error => (
+          {errors.yourname.map((error) => (
             <div key={error}>{error}</div>
           ))}
         </Error>
@@ -201,7 +193,7 @@ function Form() {
         <Label htmlFor="email">Email</Label>
         <Input type="email" id="email" ref={email} onChange={handleEmailChange} required />
         <Error>
-          {errors.email.map(error => (
+          {errors.email.map((error) => (
             <div key={error}>{error}</div>
           ))}
         </Error>
@@ -213,7 +205,7 @@ function Form() {
         </Label>
         <Input id="phone" type="tel" ref={phone} onChange={handlePhoneChange} />
         <Error>
-          {errors.phone.map(error => (
+          {errors.phone.map((error) => (
             <div key={error}>{error}</div>
           ))}
         </Error>
