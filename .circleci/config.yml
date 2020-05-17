@@ -3,13 +3,25 @@ version: 2
 jobs:
   build:
     docker:
-      # - image: circleci/node:10.17.0-browsers
+      - image: circleci/node:12.16.3-browsers
       - image: cypress/base:12
     working_directory: ~/repo
     steps:
       - checkout
 
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # Fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
       - run: yarn install --frozen-lockfile
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
 
       # Run tests
       - run: yarn build
