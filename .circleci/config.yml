@@ -6,10 +6,14 @@ jobs:
       # - image: circleci/node:10.17.0-browsers
       - image: cypress/base:12
     working_directory: ~/repo
-    environment:
-      CYPRESS_CACHE_FOLDER: '~/.cache/Cypress'
     steps:
       - checkout
+      
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules/*
+            - cypress/*
 
       # Download and cache dependencies
       - restore_cache:
