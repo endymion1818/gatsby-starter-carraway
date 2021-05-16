@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as Sentry from '@sentry/browser'
 import React, { ErrorInfo } from 'react'
 import Link from '../Atoms/Link'
@@ -11,7 +12,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryState> {
     return { hasError: true }
   }
   public state: IErrorBoundaryState
-  constructor(props: object) {
+  constructor(props: any) {
     super(props)
     this.state = { hasError: false }
   }
