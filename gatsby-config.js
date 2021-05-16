@@ -137,13 +137,7 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        output: `/sitemap.xml`,
-        exclude: [],
-      },
-    },
+    'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-plugin-lunr`,
       options: {
