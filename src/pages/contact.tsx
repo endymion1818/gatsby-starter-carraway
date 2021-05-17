@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 
 import Container from '../components/Atoms/Container'
-import Row from '../components/Atoms/Row'
 import Wrapper from '../components/Atoms/Wrapper'
 import Form from '../components/Molecules/Form'
 import Entry from '../components/Templates/Entry'
@@ -29,10 +28,8 @@ const AboutPage: FC<IAboutPageProps> = () => (
   <Entry pageTitle={frontmatter.title} pageDescription={frontmatter.description}>
     <Wrapper>
       <Container>
-        <Row size={1}>
           <h1>About Nick Carraway</h1>
           <Form />
-        </Row>
       </Container>
     </Wrapper>
   </Entry>
