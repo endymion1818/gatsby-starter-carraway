@@ -29,7 +29,7 @@ const SearchForm: FC<ISearchfFormProps> = ({ query }) => {
         type="search"
         id="search-input"
         name="keywords"
-        onEnter={(e: SyntheticEvent) =>
+        onKeyUp={(e: SyntheticEvent) =>
           navigate(
             `/search?keywords=${encodeURIComponent((e.target as HTMLTextAreaElement).value)}`
           )

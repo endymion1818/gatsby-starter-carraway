@@ -1,14 +1,15 @@
 import styled from 'styled-components'
+import { breakpoint } from '../tokens'
 
 export interface IRowProps {
-  size: number
-  breakpoint?: string
+  width: number
+  breakWidth?: string
 }
 
 const Row = styled.div<IRowProps>`
-  @media (min-width: ${({ breakpoint }) => breakpoint}) {
+  @media (min-width: ${({ breakWidth }) => (breakWidth ? breakWidth : breakpoint.medium)}) {
     display: grid;
-    grid-template-columns: repeat(${({ size }) => (size ? size : 100)}, 1fr);
+    grid-template-columns: repeat(${({ width }) => (width ? width : 100)}, 1fr);
     grid-gap: 15px;
   }
   /* IE fallback to float since Grid version is older & likely */
@@ -18,7 +19,7 @@ const Row = styled.div<IRowProps>`
     > * {
       display: block !important;
       float: left;
-      width: ${({ size }) => (size <= 1 ? 100 : (size / 10) * 100)}%;
+      width: ${({ width }) => (width <= 1 ? 100 : (width / 10) * 100)}%;
 
       &:not(:first-child) {
         margin-left: 1rem;

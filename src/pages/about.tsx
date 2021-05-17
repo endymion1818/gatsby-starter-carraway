@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import Container from '../components/Atoms/Container'
-import Row from '../components/Atoms/Row'
 import Wrapper from '../components/Atoms/Wrapper'
 import Entry from '../components/Templates/Entry'
 
@@ -27,7 +26,6 @@ const AboutPage: FC<IAboutPageProps> = () => (
   <Entry pageTitle={frontmatter.title} pageDescription={frontmatter.description}>
     <Wrapper>
       <Container>
-        <Row size={1}>
           <h1>About Nick Carraway</h1>
           <p>
             In his narration, Nick Carraway explains that he was born in the Middle West. The
@@ -57,7 +55,6 @@ const AboutPage: FC<IAboutPageProps> = () => (
             decides to leave West Egg and return to his native Midwest, reflecting that the era of
             dreaming that Gatsby represented is over.
           </p>
-        </Row>
       </Container>
     </Wrapper>
   </Entry>

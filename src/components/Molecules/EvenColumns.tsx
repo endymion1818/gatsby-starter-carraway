@@ -1,13 +1,14 @@
 import React, { FC } from 'react'
 import Column from '../Atoms/Column'
 import Row from '../Atoms/Row'
-import { flexalign, size, textalign } from '../tokens'
+import { flexalign, size, textalign, breakpoint } from '../tokens'
 
 export interface IEvenColumnsGlobalProps {
   textAlign?: string
   bufferTop?: string
   bufferBottom?: string
   verticalAlign?: string
+  breakWidth?: string
 }
 
 export interface IRenderContentProps extends IEvenColumnsGlobalProps {
@@ -50,8 +51,9 @@ const EvenColumns: FC<IEvenColumnsProps> = ({
   bufferBottom,
   bufferTop,
   verticalAlign,
+  breakWidth = breakpoint.medium,
 }) => (
-  <Row size={content.length}>
+  <Row width={content.length} breakWidth={breakWidth}>
     {content.map((item, index) =>
       renderContent({
         item,

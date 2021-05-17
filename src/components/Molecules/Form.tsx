@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import ButtonStyles from '../Atoms/ButtonStyles'
 import { borderradius, size } from '../tokens'
@@ -110,7 +110,7 @@ function hasErrors(errors: IErrors) {
   return errors.email.length > 0 || errors.yourname.length > 0 || errors.phone.length > 0
 }
 
-function Form() {
+const Form:FC = () => {
   const email = useRef<HTMLInputElement | null>(null)
   const yourname = useRef<HTMLInputElement | null>(null)
   const phone = useRef<HTMLInputElement | null>(null)

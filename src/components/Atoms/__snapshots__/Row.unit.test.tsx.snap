@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Row /> Should render 1`] = `
-@media (min-width:) {
+@media (min-width:64em) {
   .c0 {
     display: grid;
     grid-template-columns: repeat(100,1fr);
