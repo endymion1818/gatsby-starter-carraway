@@ -50,7 +50,7 @@
     "gatsby-source-filesystem": "^3.5.0",
     "gatsby-transformer-javascript-frontmatter": "^3.5.0",
     "gatsby-transformer-json": "^3.5.0",
-    "gatsby-transformer-remark": "^4.2.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^3.5.0",
     "jest-dom": "^4.0.0",
     "jest-styled-components": "^7.0.4",
